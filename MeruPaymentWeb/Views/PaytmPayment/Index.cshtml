@@ -1,0 +1,39 @@
+﻿@model MeruPaymentBO.PayTMCheckout
+
+@{
+    ViewBag.Title = "Checkout";
+}
+<p>
+    @ViewBag.Message
+</p>
+
+@if (ViewBag.Message == null || ViewBag.Message.Length == 0)
+{
+    <center><h1>Please do not refresh this page...</h1></center>
+
+    <form method="post" action="@Model.TRANURL" name="f1">
+        <table border="1">
+            <tbody>
+                <input type="hidden" name="MID" value="@Model.MID">
+                <input type="hidden" name="WEBSITE" value="@Model.WEBSITE">
+                <input type="hidden" name="ORDER_ID" value="@Model.ORDER_ID">
+                <input type="hidden" name="CUST_ID" value="@Model.CUST_ID">
+                <input type="hidden" name="MOBILE_NO" value="@Model.MOBILE_NO">
+                <input type="hidden" name="EMAIL" value="@Model.EMAIL">
+                <input type="hidden" name="INDUSTRY_TYPE_ID" value="@Model.INDUSTRY_TYPE_ID">
+                <input type="hidden" name="CHANNEL_ID" value="@Model.CHANNEL_ID">
+                <input type="hidden" name="TXN_AMOUNT" value="@Model.TXN_AMOUNT">
+                <input type="hidden" name="CALLBACK_URL" value="@Model.CALLBACK_URL">
+                <input type="hidden" name="PAYMENT_MODE_ONLY" value="@Model.PAYMENT_MODE_ONLY">
+                <input type="hidden" name="AUTH_MODE" value="@Model.AUTH_MODE">
+                <input type="hidden" name="PAYMENT_TYPE_ID" value="@Model.PAYMENT_TYPE_ID">
+                <input type="hidden" name="MERC_UNQ_REF" value="@Model.MERC_UNQ_REF">
+                <input type="hidden" name="CHECKSUMHASH" value="@Model.CHECKSUMHASH">
+            </tbody>
+        </table>
+
+        <script type="text/javascript">
+            document.f1.submit();
+        </script>
+    </form>
+}

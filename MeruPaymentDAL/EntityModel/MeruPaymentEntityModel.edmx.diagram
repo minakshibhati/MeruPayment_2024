@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="3ef40c85737446d79178acbe6e842810" Name="Diagram1" ZoomLevel="103">
+        <EntityTypeShape EntityType="CDSBusinessModel.tbl_Payment_Gateway" Width="1.5" PointX="0.75" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="CDSBusinessModel.tbl_Payment_History" Width="1.5" PointX="2.75" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="CDSBusinessModel.tbl_Payment_Method" Width="1.875" PointX="0.75" PointY="3.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="CDSBusinessModel.tbl_Payment_Request_Response" Width="1.5" PointX="2.75" PointY="3.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="CDSBusinessModel.tbl_Payment_Request_System" Width="2" PointX="4.75" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="CDSBusinessModel.tbl_Payment_Status_Master" Width="1.5" PointX="4.75" PointY="5.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="CDSBusinessModel.tblMeruPayment" Width="1.5" PointX="0.75" PointY="7.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="CDSBusinessModel.tbl_PaymentTransaction" Width="2.625" PointX="7.375" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="CDSBusinessModel.tbl_Payment_Customer_Details" Width="1.5" PointX="10" PointY="0.75" />
+        <EntityTypeShape EntityType="CDSBusinessModel.tbl_Payment_Customer_Card_Details" Width="1.5" PointX="6.25" PointY="7.875" />
+        <EntityTypeShape EntityType="CDSBusinessModel.tblTripReceiptCalculator" Width="1.5" PointX="3.375" PointY="9.75" />
+        <EntityTypeShape EntityType="CDSBusinessModel.tblJobBooking" Width="1.5" PointX="9.375" PointY="4.75" />
+        <EntityTypeShape EntityType="CDSBusinessModel.tblKerbTripsCustomersData" Width="1.5" PointX="11.375" PointY="0.75" />
+        <EntityTypeShape EntityType="CDSBusinessModel.tblTripMaster" Width="1.5" PointX="11.375" PointY="5.75" />
+        <EntityTypeShape EntityType="CDSBusinessModel.tbl_Payment_Link" Width="1.5" PointX="0.75" PointY="12.75" />
+        <EntityTypeShape EntityType="CDSBusinessModel.Tbl_Payment_BlackListedCards" Width="1.5" PointX="5.375" PointY="12.75" />
+        <EntityTypeShape EntityType="CDSBusinessModel.tblCabMaster" Width="1.5" PointX="13.375" PointY="0.75" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>

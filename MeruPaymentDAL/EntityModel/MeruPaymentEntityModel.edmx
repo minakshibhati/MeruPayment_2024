@@ -1,0 +1,1813 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+    <Schema Namespace="CDSBusinessModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="Tbl_Payment_BlackListedCards">
+          <Key>
+            <PropertyRef Name="BlackListedCardId" />
+          </Key>
+          <Property Name="BlackListedCardId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="IssuerCode" Type="nvarchar" MaxLength="255" Nullable="false" />
+          <Property Name="NetworkName" Type="nvarchar" MaxLength="255" Nullable="false" />
+          <Property Name="CardType" Type="nvarchar" MaxLength="255" Nullable="false" />
+          <Property Name="IsActive" Type="bit" Nullable="false" />
+          <Property Name="CreatedOn" Type="datetime" Nullable="false" />
+          <Property Name="UpdatedOn" Type="datetime" Nullable="false" />
+        </EntityType>
+        <EntityType Name="tbl_Payment_Customer_Card_Details">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Name_On_Card" Type="varchar" MaxLength="100" />
+          <Property Name="Network_Name" Type="varchar" MaxLength="20" />
+          <Property Name="Last_Four_Digit" Type="varchar" MaxLength="5" />
+          <Property Name="Token_ID" Type="varchar" MaxLength="100" />
+          <Property Name="Provider_Customer_ID" Type="varchar" MaxLength="100" />
+          <Property Name="Is_Default" Type="bit" />
+          <Property Name="Card_Type" Type="varchar" MaxLength="10" />
+          <Property Name="Card_Issuer_Code" Type="varchar" MaxLength="20" />
+          <Property Name="Card_Status" Type="smallint" />
+          <Property Name="Record_Created_DateTime" Type="datetime" />
+          <Property Name="Record_Update_DateTime" Type="datetime" />
+          <Property Name="Card_Exipry_DateTime" Type="datetime" />
+          <Property Name="IsDeleted" Type="bit" Nullable="false" />
+          <Property Name="DeviceId" Type="nvarchar" MaxLength="500" />
+        </EntityType>
+        <EntityType Name="tbl_Payment_Customer_Details">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Provider_Customer_ID" Type="varchar" MaxLength="100" />
+          <Property Name="Payment_Gateway_ID" Type="int" />
+          <Property Name="Customer_Name" Type="varchar" MaxLength="100" />
+          <Property Name="Customer_Email" Type="varchar" MaxLength="50" />
+          <Property Name="Customer_Mobile_No" Type="varchar" MaxLength="20" />
+          <Property Name="Record_Created_DateTime" Type="datetime" />
+          <Property Name="Record_Update_DateTime" Type="datetime" />
+          <Property Name="Customer_Status" Type="int" />
+        </EntityType>
+        <EntityType Name="tbl_Payment_Gateway">
+          <Key>
+            <PropertyRef Name="Payment_Gateway_ID" />
+          </Key>
+          <Property Name="Payment_Gateway_ID" Type="smallint" Nullable="false" />
+          <Property Name="Payment_Gateway" Type="nvarchar" MaxLength="100" Nullable="false" />
+          <Property Name="Record_Created_DateTime" Type="datetime" Nullable="false" />
+          <Property Name="Record_Updated_DateTime" Type="datetime" Nullable="false" />
+          <Property Name="Record_Status" Type="nvarchar" MaxLength="1" Nullable="false" />
+          <Property Name="Payment_Gateway_Code" Type="nvarchar" MaxLength="3" Nullable="false" />
+        </EntityType>
+        <EntityType Name="tbl_Payment_History">
+          <Key>
+            <PropertyRef Name="Payment_Request_ID" />
+          </Key>
+          <Property Name="Payment_Request_ID" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Payment_Status_Code" Type="nvarchar(max)" />
+          <Property Name="Record_Created_DateTime" Type="datetime" Nullable="false" />
+          <Property Name="Updating_Process" Type="nvarchar(max)" Nullable="false" />
+          <Property Name="Payment_Status_ID" Type="int" Nullable="false" />
+          <Property Name="PaymentTransactionId" Type="nvarchar(max)" />
+        </EntityType>
+        <EntityType Name="tbl_Payment_Link">
+          <Key>
+            <PropertyRef Name="PaymentLink_Id" />
+          </Key>
+          <Property Name="Payment_Transaction_ID" Type="nvarchar" MaxLength="100" Nullable="false" />
+          <Property Name="Request_RefId" Type="nvarchar" MaxLength="1000" Nullable="false" />
+          <Property Name="Payment_Amount_Paise" Type="bigint" Nullable="false" />
+          <Property Name="PG_OrderId" Type="nvarchar" MaxLength="200" />
+          <Property Name="PG_PaymentId" Type="nvarchar" MaxLength="200" />
+          <Property Name="PG_InvoiceId" Type="nvarchar" MaxLength="200" />
+          <Property Name="PG_ReceiptNo" Type="nvarchar" MaxLength="200" />
+          <Property Name="PG_Ref_Data" Type="nvarchar" MaxLength="4000" />
+          <Property Name="Payment_Source" Type="int" />
+          <Property Name="Payment_Method" Type="int" />
+          <Property Name="Url" Type="nvarchar" MaxLength="500" />
+          <Property Name="Description" Type="nvarchar" MaxLength="1000" />
+          <Property Name="Contact" Type="nvarchar" MaxLength="100" />
+          <Property Name="Email" Type="nvarchar" MaxLength="200" />
+          <Property Name="Status" Type="int" Nullable="false" />
+          <Property Name="CreatedOn" Type="datetime" Nullable="false" />
+          <Property Name="LastUpdatedOn" Type="datetime" Nullable="false" />
+          <Property Name="PaymentLink_Id" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+        </EntityType>
+        <EntityType Name="tbl_Payment_Method">
+          <Key>
+            <PropertyRef Name="Payment_Method_ID" />
+          </Key>
+          <Property Name="Payment_Method_ID" Type="smallint" Nullable="false" />
+          <Property Name="Payment_Method" Type="nvarchar" MaxLength="100" Nullable="false" />
+          <Property Name="Payment_Method_Desc" Type="nvarchar" MaxLength="500" />
+          <Property Name="Record_Created_DateTime" Type="datetime" Nullable="false" />
+          <Property Name="Record_Updated_DateTime" Type="datetime" Nullable="false" />
+          <Property Name="Record_Status" Type="nvarchar" MaxLength="1" Nullable="false" />
+          <Property Name="Payment_Method_Code" Type="nvarchar" MaxLength="3" Nullable="false" />
+        </EntityType>
+        <EntityType Name="tbl_Payment_Request_Response">
+          <Key>
+            <PropertyRef Name="Payment_Request_Response_ID" />
+          </Key>
+          <Property Name="Payment_Request_Response_ID" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="PaymentIncrementId" Type="int" Nullable="false" />
+          <Property Name="Request_Key" Type="nvarchar" MaxLength="100" Nullable="false" />
+          <Property Name="Request_Value" Type="nvarchar" MaxLength="100" Nullable="false" />
+          <Property Name="Record_Call_Source" Type="nvarchar" MaxLength="100" Nullable="false" />
+          <Property Name="Record_Type" Type="nvarchar(max)" Nullable="false" />
+          <Property Name="Record_Created_DateTime" Type="datetime" Nullable="false" />
+        </EntityType>
+        <EntityType Name="tbl_Payment_Request_System">
+          <Key>
+            <PropertyRef Name="Payment_Request_System_ID" />
+          </Key>
+          <Property Name="Payment_Request_System_ID" Type="smallint" Nullable="false" />
+          <Property Name="Payment_Request_System" Type="nvarchar" MaxLength="100" Nullable="false" />
+          <Property Name="Payment_Request_System_Secret" Type="nvarchar" MaxLength="500" Nullable="false" />
+          <Property Name="Record_Created_DateTime" Type="datetime" Nullable="false" />
+          <Property Name="Record_Updated_DateTime" Type="datetime" Nullable="false" />
+          <Property Name="Record_Status" Type="nvarchar" MaxLength="1" Nullable="false" />
+          <Property Name="Payment_Request_System_Name" Type="nvarchar" MaxLength="100" Nullable="false" />
+          <Property Name="Payment_Request_System_KeyInput" Type="nvarchar" MaxLength="4000" Nullable="false" />
+          <Property Name="Payment_Request_System_Return_URL" Type="nvarchar" MaxLength="1000" Nullable="false" />
+          <Property Name="ColorCode" Type="nvarchar" MaxLength="50" />
+          <Property Name="Payment_Request_Channel_Code" Type="nvarchar" MaxLength="500" Nullable="false" />
+          <Property Name="QueueName" Type="nvarchar" MaxLength="100" />
+          <Property Name="EnableAuthToken" Type="bit" />
+          <Property Name="SPName" Type="nvarchar" MaxLength="255" />
+        </EntityType>
+        <EntityType Name="tbl_Payment_Status_Master">
+          <Key>
+            <PropertyRef Name="Payment_Status_ID" />
+          </Key>
+          <Property Name="Payment_Status_ID" Type="smallint" Nullable="false" />
+          <Property Name="Payment_Status" Type="nvarchar" MaxLength="100" Nullable="false" />
+          <Property Name="Payment_Status_Desc" Type="nvarchar" MaxLength="500" />
+          <Property Name="Record_Created_DateTime" Type="datetime" Nullable="false" />
+          <Property Name="Record_Updated_DateTime" Type="datetime" Nullable="false" />
+          <Property Name="Record_Status" Type="nvarchar" MaxLength="1" Nullable="false" />
+          <Property Name="Payment_Status_Code" Type="nvarchar" MaxLength="3" Nullable="false" />
+        </EntityType>
+        <EntityType Name="tbl_PaymentTransaction">
+          <Key>
+            <PropertyRef Name="PaymentIncrementId" />
+          </Key>
+          <Property Name="PaymentIncrementId" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Payment_Transaction_ID" Type="nvarchar" MaxLength="50" />
+          <Property Name="RequestSource" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="RequestRefValues" Type="nvarchar" MaxLength="500" />
+          <Property Name="Payment_Amount_Paise" Type="bigint" Nullable="false" />
+          <Property Name="PaymentSource" Type="int" Nullable="false" />
+          <Property Name="PaymentMethod" Type="int" Nullable="false" />
+          <Property Name="PaymentStatus" Type="int" Nullable="false" />
+          <Property Name="PaymentRefValues" Type="nvarchar" MaxLength="500" />
+          <Property Name="PaymentRefData1" Type="nvarchar" MaxLength="100" />
+          <Property Name="PaymentRefData2" Type="nvarchar" MaxLength="100" />
+          <Property Name="PaymentRefData3" Type="nvarchar" MaxLength="4000" />
+          <Property Name="CreatedOn" Type="datetime" Nullable="false" />
+          <Property Name="LastUpdatedOn" Type="datetime" Nullable="false" />
+          <Property Name="Payment_Gateway_Code" Type="nvarchar" MaxLength="3" />
+          <Property Name="Payment_Method_Code" Type="nvarchar" MaxLength="3" />
+          <Property Name="Payment_Status_Code" Type="nvarchar" MaxLength="3" />
+          <Property Name="PG_Transaction_Code" Type="nvarchar" MaxLength="100" />
+          <Property Name="RequestRefId" Type="nvarchar" MaxLength="500" />
+          <Property Name="Refund_Amount_Paise" Type="bigint" Nullable="false" />
+          <Property Name="PurchaseDescription" Type="nvarchar" MaxLength="4000" />
+          <Property Name="FullName" Type="nvarchar" MaxLength="100" />
+          <Property Name="Email" Type="nvarchar" MaxLength="100" />
+          <Property Name="Contact" Type="nvarchar" MaxLength="50" />
+          <Property Name="Payment_Reconciled" Type="bit" Nullable="false" />
+          <Property Name="Payment_Type" Type="varchar" MaxLength="20" />
+          <Property Name="DeviceId" Type="nvarchar" MaxLength="500" />
+          <Property Name="PaymentMethodRefId" Type="int" />
+          <Property Name="BusinessCategoryId" Type="int" Nullable="false" />
+          <Property Name="LastStatusOn" Type="datetime" />
+          <Property Name="PaymentResponse" Type="varchar(max)" />
+          <Property Name="AmountPaid" Type="bigint" />
+          <Property Name="AmountDue" Type="bigint" />
+          <Property Name="Currency" Type="nvarchar" MaxLength="50" />
+          <Property Name="Receipt" Type="nvarchar" MaxLength="50" />
+          <Property Name="Offer_Id" Type="nvarchar" MaxLength="50" />
+          <Property Name="Notes" Type="nvarchar(max)" />
+          <Property Name="OrderResponse" Type="nvarchar(max)" />
+        </EntityType>
+        <EntityType Name="tblCabMaster">
+          <Key>
+            <PropertyRef Name="CabID" />
+          </Key>
+          <Property Name="CabID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="CabTypeID" Type="smallint" />
+          <Property Name="CabRegistrationNo" Type="varchar" MaxLength="30" Nullable="false" />
+          <Property Name="RegistrationDate" Type="datetime" />
+          <Property Name="EngineNo" Type="varchar" MaxLength="30" />
+          <Property Name="ChasisNo" Type="varchar" MaxLength="35" />
+          <Property Name="CabYearMake" Type="varchar" MaxLength="10" />
+          <Property Name="SpeedLimit" Type="tinyint" />
+          <Property Name="OdoMeterNo" Type="varchar" MaxLength="30" />
+          <Property Name="CityID" Type="smallint" Nullable="false" />
+          <Property Name="CabModelName" Type="varchar" MaxLength="50" />
+          <Property Name="CabCompanyName" Type="varchar" MaxLength="50" />
+          <Property Name="CabDesc" Type="varchar" MaxLength="100" />
+          <Property Name="CabStatusID" Type="tinyint" Nullable="false" />
+          <Property Name="SeibelCabID" Type="varchar" MaxLength="30" />
+          <Property Name="CabLatitude" Type="real" />
+          <Property Name="CabLongitude" Type="real" />
+          <Property Name="MeterStatus" Type="tinyint" />
+          <Property Name="IgnitionStatus" Type="bit" />
+          <Property Name="CabGPSDateTime" Type="varchar" MaxLength="50" />
+          <Property Name="Speed" Type="tinyint" />
+          <Property Name="Direction" Type="smallint" />
+          <Property Name="CabLocation" Type="varchar" MaxLength="100" />
+          <Property Name="RecordUpdateTime" Type="varchar" MaxLength="50" />
+          <Property Name="OdoMeterReading" Type="float" />
+          <Property Name="OdometerUpdateUserID" Type="int" />
+          <Property Name="PreviousOdometer" Type="float" />
+          <Property Name="OdometerUpdateTime" Type="datetime" Nullable="false" />
+          <Property Name="LocalityID" Type="int" />
+          <Property Name="LocalityName" Type="varchar" MaxLength="100" />
+          <Property Name="ZoneID" Type="int" />
+          <Property Name="ZoneName" Type="varchar" MaxLength="50" />
+          <Property Name="SubLocalityID" Type="int" />
+          <Property Name="GPSFixedLocation" Type="varchar" MaxLength="100" />
+          <Property Name="GPSFixedTime" Type="datetime" />
+          <Property Name="GPSFixedLatitude" Type="real" />
+          <Property Name="GPSFixedLongitude" Type="real" />
+          <Property Name="GPSFixedTimeForDispatch" Type="datetime" />
+          <Property Name="CabModel_Actual" Type="varchar" MaxLength="50" />
+          <Property Name="BrandTypeID" Type="tinyint" />
+          <Property Name="ProductTypeID" Type="tinyint" />
+          <Property Name="SPID" Type="varchar" MaxLength="30" />
+          <Property Name="CabColor" Type="varchar" MaxLength="30" />
+          <Property Name="BusinessCategoryID" Type="tinyint" />
+          <Property Name="Vehicle_Identification_No" Type="varchar" MaxLength="20" />
+          <Property Name="PermitType" Type="varchar" MaxLength="20" />
+          <Property Name="ActualCity" Type="varchar" MaxLength="50" />
+          <Property Name="ActualState" Type="varchar" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="tblJobBooking">
+          <Key>
+            <PropertyRef Name="JobID" />
+          </Key>
+          <Property Name="JobID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="CustomerID" Type="int" />
+          <Property Name="CustomerName" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="CustomerMobileNo" Type="varchar" MaxLength="40" Nullable="false" />
+          <Property Name="CustomerContactFirsttName" Type="varchar" MaxLength="50" />
+          <Property Name="CustomerContactLastName" Type="varchar" MaxLength="50" />
+          <Property Name="CustomerContactMobileNo" Type="varchar" MaxLength="40" />
+          <Property Name="JobTypeID" Type="tinyint" Nullable="false" />
+          <Property Name="TerminalID" Type="int" />
+          <Property Name="PickUpTime" Type="smalldatetime" Nullable="false" />
+          <Property Name="CustomerPickUpAddress" Type="varchar" MaxLength="500" Nullable="false" />
+          <Property Name="Preference" Type="varchar" MaxLength="50" />
+          <Property Name="Landmark" Type="varchar" MaxLength="50" />
+          <Property Name="PickUpAddressPointID" Type="int" />
+          <Property Name="PickUpLocalityID" Type="int" />
+          <Property Name="PickUpZoneID" Type="int" />
+          <Property Name="PickUpMessage" Type="varchar" MaxLength="100" />
+          <Property Name="CabTypeID" Type="tinyint" />
+          <Property Name="CabModelName" Type="varchar" MaxLength="50" />
+          <Property Name="DestinationAddress" Type="varchar" MaxLength="250" />
+          <Property Name="DestAddressPointID" Type="int" />
+          <Property Name="DestLocalityId" Type="int" />
+          <Property Name="DestZoneID" Type="int" />
+          <Property Name="NoOfBags" Type="tinyint" />
+          <Property Name="NoOfCabs" Type="tinyint" />
+          <Property Name="ETA" Type="datetime" />
+          <Property Name="CallStartTime" Type="datetime" />
+          <Property Name="JobCreationTime" Type="datetime" Nullable="false" />
+          <Property Name="CabAssignedTime" Type="datetime" />
+          <Property Name="CallDuration" Type="smallint" />
+          <Property Name="LanguageID" Type="tinyint" />
+          <Property Name="DropTime" Type="datetime" />
+          <Property Name="CityID" Type="smallint" Nullable="false" />
+          <Property Name="AddFareID" Type="int" />
+          <Property Name="UserID" Type="int" />
+          <Property Name="MappingID" Type="int" />
+          <Property Name="ChannelID" Type="tinyint" />
+          <Property Name="SiebelJobID" Type="varchar" MaxLength="50" />
+          <Property Name="CancelId" Type="tinyint" />
+          <Property Name="CancelReason" Type="varchar" MaxLength="255" />
+          <Property Name="CabRegistrationNo" Type="varchar" MaxLength="30" />
+          <Property Name="SmsStatus" Type="bit" Nullable="false" />
+          <Property Name="SmsAlert" Type="bit" />
+          <Property Name="RejectId" Type="smallint" />
+          <Property Name="RejectRemarks" Type="varchar" MaxLength="500" />
+          <Property Name="TagAs" Type="varchar" MaxLength="50" />
+          <Property Name="Quota" Type="smallint" />
+          <Property Name="TimetoDispatch" Type="smallint" />
+          <Property Name="ModifiedUserID" Type="int" />
+          <Property Name="CancelledUserID" Type="int" />
+          <Property Name="ModifiedCallDuration" Type="smallint" />
+          <Property Name="CancelledCallDuration" Type="smallint" />
+          <Property Name="ManualDispatchedUser" Type="int" />
+          <Property Name="CalledSubscriber" Type="bit" />
+          <Property Name="InformedCustomer" Type="bit" />
+          <Property Name="IVRSChannelID" Type="nvarchar" MaxLength="50" />
+          <Property Name="JobSubscriberID" Type="int" />
+          <Property Name="AirportJob" Type="bit" />
+          <Property Name="CorporateJob" Type="bit" />
+          <Property Name="MPC" Type="bit" />
+          <Property Name="EmailAddress" Type="varchar" MaxLength="150" />
+          <Property Name="TrackMobile" Type="varchar" MaxLength="20" />
+          <Property Name="QuotaBorrowingZoneID" Type="int" />
+          <Property Name="MobileSMSStatus" Type="tinyint" />
+          <Property Name="PromoSMSStatus" Type="tinyint" />
+          <Property Name="CRDUserID" Type="int" />
+          <Property Name="CRDCount" Type="tinyint" />
+          <Property Name="DropCityID" Type="smallint" />
+          <Property Name="ReturnTrip" Type="bit" />
+          <Property Name="RetentionTime" Type="varchar" MaxLength="20" />
+          <Property Name="StateTaxStatus" Type="tinyint" />
+          <Property Name="IsGenie" Type="tinyint" />
+          <Property Name="PromoCode" Type="varchar" MaxLength="30" />
+          <Property Name="CouponAmount" Type="money" />
+          <Property Name="redeempoints" Type="int" />
+          <Property Name="RedeemAmount" Type="money" />
+          <Property Name="CabDeviceID" Type="varchar" MaxLength="30" />
+          <Property Name="PickupLat" Type="real" />
+          <Property Name="PickupLong" Type="real" />
+          <Property Name="BrandTypeID" Type="tinyint" />
+          <Property Name="CabConfSMSSenttime" Type="datetime" />
+          <Property Name="DropLat" Type="real" />
+          <Property Name="DropLong" Type="real" />
+          <Property Name="AssignedCabBrandTypeID" Type="tinyint" />
+          <Property Name="AssignedCabProductTypeID" Type="tinyint" />
+          <Property Name="IsRideShare" Type="tinyint" />
+          <Property Name="IsIxigoSent" Type="bit" />
+          <Property Name="RatePerKM" Type="float" />
+          <Property Name="AirportNotifySatus" Type="smallint" />
+          <Property Name="WalletSMSStatus" Type="int" />
+          <Property Name="RiderName" Type="varchar" MaxLength="100" />
+          <Property Name="RefusedSMSStatus" Type="int" />
+          <Property Name="FixedFareLogId" Type="int" />
+          <Property Name="ProductTypeId" Type="tinyint" />
+          <Property Name="BusinessCategoryID" Type="tinyint" />
+          <Property Name="IsTripStartSMSSent" Type="tinyint" />
+          <Property Name="IsTripEndSMSSent" Type="tinyint" />
+          <Property Name="IsInterCity" Type="bit" />
+          <Property Name="ISDriver_SMSSent_Outstation" Type="bit" />
+          <Property Name="IsAirportDrop" Type="bit" />
+          <Property Name="Driver_ReminderSMS1_Out" Type="bit" Nullable="false" />
+          <Property Name="Driver_ReminderSMS2_Out" Type="bit" Nullable="false" />
+          <Property Name="Outstation_DU_SMS_Alert" Type="bit" />
+          <Property Name="STFStaus" Type="int" />
+          <Property Name="STFDeviceID" Type="varchar" MaxLength="12" />
+          <Property Name="STFCabNo" Type="varchar" MaxLength="15" />
+          <Property Name="STFCabSentTime" Type="datetime" />
+        </EntityType>
+        <EntityType Name="tblKerbTripsCustomersData">
+          <Key>
+            <PropertyRef Name="KerbCustomerID" />
+          </Key>
+          <Property Name="KerbCustomerID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="MobileNo" Type="varchar" MaxLength="40" />
+          <Property Name="EmailID" Type="nvarchar" MaxLength="100" />
+          <Property Name="SiebelDeviceID" Type="varchar" MaxLength="30" />
+          <Property Name="TripStartTime" Type="datetime" />
+          <Property Name="CabRegistrationNo" Type="varchar" MaxLength="30" />
+          <Property Name="CustomerName" Type="varchar" MaxLength="50" />
+          <Property Name="CityID" Type="int" />
+          <Property Name="SMSStatus" Type="int" Nullable="false" />
+          <Property Name="EmailReceivedTime" Type="datetime" />
+          <Property Name="RecordedDateTime" Type="datetime" />
+          <Property Name="WalletSMSStatus" Type="int" />
+          <Property Name="TripID" Type="int" />
+          <Property Name="Feedback_SMS" Type="bit" />
+          <Property Name="Ebill_SMS" Type="bit" />
+          <Property Name="DropLatitude" Type="real" />
+          <Property Name="DropLongitude" Type="real" />
+          <Property Name="FareMultiplier_Kerb" Type="float" />
+        </EntityType>
+        <EntityType Name="tblMeruPayment">
+          <Key>
+            <PropertyRef Name="PaymentIncrementId" />
+          </Key>
+          <Property Name="PaymentIncrementId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="RequestSource" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="RequestRefValues" Type="nvarchar" MaxLength="500" />
+          <Property Name="PaymentAmount" Type="int" Nullable="false" />
+          <Property Name="PaymentSource" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="PaymentMethod" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="PaymentStatus" Type="int" Nullable="false" />
+          <Property Name="CreatedOn" Type="datetime" Nullable="false" />
+          <Property Name="LastUpdatedOn" Type="datetime" Nullable="false" />
+          <Property Name="PaymentRefValues" Type="nvarchar" MaxLength="500" />
+          <Property Name="PaymentRefData1" Type="nvarchar" MaxLength="100" />
+          <Property Name="PaymentRefData2" Type="nvarchar" MaxLength="100" />
+          <Property Name="PaymentRefData3" Type="nvarchar" MaxLength="4000" />
+          <Property Name="PaymentDetail" Type="nvarchar" MaxLength="100" Nullable="false" />
+          <Property Name="Payment_Reconciled" Type="bit" />
+        </EntityType>
+        <EntityType Name="tblTripMaster">
+          <Key>
+            <PropertyRef Name="TripID" />
+          </Key>
+          <Property Name="TripID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="TripNo" Type="varchar" MaxLength="30" />
+          <Property Name="JobID" Type="int" Nullable="false" />
+          <Property Name="TripTypeID" Type="tinyint" Nullable="false" />
+          <Property Name="MappingID" Type="int" />
+          <Property Name="TripStartID" Type="int" Nullable="false" />
+          <Property Name="TripEndID" Type="int" Nullable="false" />
+          <Property Name="TripStartTime" Type="varchar" MaxLength="30" />
+          <Property Name="TripEndTime" Type="varchar" MaxLength="30" />
+          <Property Name="DistFromLastTripToCurrTrip" Type="float" />
+          <Property Name="OnCallDistcane" Type="float" />
+          <Property Name="ScheduledTripNo" Type="varchar" MaxLength="30" />
+          <Property Name="CreditCardID" Type="varchar" MaxLength="20" />
+          <Property Name="LoginCount" Type="int" />
+          <Property Name="TripStartKilometer" Type="float" />
+          <Property Name="TripEndKilometer" Type="float" />
+          <Property Name="TotalTripFare" Type="smallmoney" />
+          <Property Name="ServiceTax" Type="varchar" MaxLength="50" />
+          <Property Name="EduCess" Type="varchar" MaxLength="50" />
+          <Property Name="SecEduCess" Type="varchar" MaxLength="50" />
+          <Property Name="PaymentMode" Type="tinyint" />
+          <Property Name="MDTKerbJobID" Type="varchar" MaxLength="50" />
+          <Property Name="SubscriberID" Type="int" />
+          <Property Name="CabRegistration" Type="varchar" MaxLength="50" />
+          <Property Name="PickupLocation" Type="varchar" MaxLength="500" />
+          <Property Name="DropLocation" Type="varchar" MaxLength="250" />
+          <Property Name="TotalRevenueDistance" Type="float" />
+          <Property Name="BookingFee" Type="smallmoney" />
+          <Property Name="FeedbackSMS" Type="bit" />
+          <Property Name="AirportCharges" Type="smallmoney" />
+          <Property Name="TripOncallWaitingTime" Type="int" />
+          <Property Name="TripOncallWaitingCharge" Type="smallmoney" />
+          <Property Name="TripWaitingChargeforCorporate" Type="smallmoney" />
+          <Property Name="TotalWaitTime" Type="int" />
+          <Property Name="WaitingFare" Type="smallmoney" />
+          <Property Name="RRNumber" Type="varchar" MaxLength="50" />
+          <Property Name="RetentionServiceStatus" Type="tinyint" />
+          <Property Name="ExpectedAmount" Type="smallmoney" />
+          <Property Name="ShadowAmount" Type="smallmoney" />
+          <Property Name="EmailSendStatus" Type="bit" />
+          <Property Name="CabLatitude_TS" Type="real" />
+          <Property Name="CabLongitude_TS" Type="real" />
+          <Property Name="ZoneID_TS" Type="int" />
+          <Property Name="CouponAmount" Type="money" />
+          <Property Name="RedeemAmount" Type="money" />
+          <Property Name="AdminEmailSendStatus" Type="int" />
+          <Property Name="BrandTypeID" Type="tinyint" />
+          <Property Name="DeviceTotalFare" Type="money" />
+          <Property Name="RunningFare" Type="money" />
+          <Property Name="EmailSentDateTime" Type="datetime" />
+          <Property Name="WalletTSStatus" Type="int" />
+          <Property Name="WalletType" Type="varchar" MaxLength="20" />
+          <Property Name="NoOfAttempts" Type="int" />
+          <Property Name="GPSValueSync" Type="varchar" MaxLength="2" />
+          <Property Name="AdditionalFare" Type="money" />
+          <Property Name="TollCharges" Type="money" />
+          <Property Name="TSReceivedTime" Type="datetime" />
+          <Property Name="TEReceivedTime" Type="datetime" />
+          <Property Name="GoogleTotalDistance" Type="float" />
+          <Property Name="GoogleCumulateDistance" Type="float" />
+          <Property Name="ProductTypeID" Type="tinyint" />
+          <Property Name="IsRideShare" Type="tinyint" />
+          <Property Name="CrossSellingFare" Type="money" />
+          <Property Name="DistanceCalStatusID" Type="int" />
+          <Property Name="CalcHiredDistance" Type="float" />
+          <Property Name="CalcFare" Type="money" />
+          <Property Name="CalcOncallDistance" Type="float" />
+          <Property Name="RideTime" Type="int" />
+          <Property Name="RideTimeFare" Type="money" />
+          <Property Name="SGST" Type="money" />
+          <Property Name="CGST" Type="money" />
+          <Property Name="IGST" Type="money" />
+          <Property Name="TSOutCallStatus" Type="tinyint" />
+          <Property Name="PWSCash" Type="money" />
+          <Property Name="AirportToll" Type="float" />
+          <Property Name="Garage_Drop_Distance" Type="tinyint" />
+        </EntityType>
+        <EntityType Name="tblTripReceiptCalculator">
+          <Key>
+            <PropertyRef Name="SeqID" />
+          </Key>
+          <Property Name="SeqID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="TripID" Type="int" Nullable="false" />
+          <Property Name="JobID" Type="int" Nullable="false" />
+          <Property Name="TripType" Type="varchar" MaxLength="20" />
+          <Property Name="CustomerID" Type="int" />
+          <Property Name="CustomerName" Type="varchar" MaxLength="100" />
+          <Property Name="CustomerMobileNo" Type="varchar" MaxLength="20" Nullable="false" />
+          <Property Name="TripStartTime" Type="datetime" />
+          <Property Name="TripEndTime" Type="datetime" />
+          <Property Name="PickupLocation" Type="varchar" MaxLength="500" />
+          <Property Name="DropLocation" Type="varchar" MaxLength="500" />
+          <Property Name="SiebelSubscriberID" Type="varchar" MaxLength="30" />
+          <Property Name="CabRegistration" Type="varchar" MaxLength="20" />
+          <Property Name="MeteredFare" Type="smallmoney" />
+          <Property Name="ParkingCharges" Type="smallmoney" />
+          <Property Name="ConvenienceCharges" Type="smallmoney" />
+          <Property Name="RedeemAmount" Type="smallmoney" />
+          <Property Name="CouponAmount" Type="smallmoney" />
+          <Property Name="ServiceTaxOnTripFare" Type="smallmoney" />
+          <Property Name="ServiceTaxOnOthers" Type="smallmoney" />
+          <Property Name="TotalServiceTax" Type="smallmoney" />
+          <Property Name="TotalTripAmount" Type="smallmoney" />
+          <Property Name="CustomerPaidAmount" Type="varchar" MaxLength="15" />
+          <Property Name="ProductType" Type="varchar" MaxLength="20" />
+          <Property Name="RecordedDate" Type="datetime" />
+          <Property Name="Status" Type="int" Nullable="false" />
+          <Property Name="LastUpdatedate" Type="datetime" />
+          <Property Name="UpdateRemarks" Type="varchar" MaxLength="200" />
+          <Property Name="TotalDiscountAmount" Type="money" />
+          <Property Name="AfterDiscountNetAmount" Type="money" />
+          <Property Name="BrandTypeName" Type="varchar" MaxLength="15" />
+          <Property Name="TollCharges" Type="money" />
+          <Property Name="Surcharges" Type="money" />
+          <Property Name="CustomerEmail" Type="varchar" MaxLength="100" />
+          <Property Name="BookingTime" Type="datetime" />
+          <Property Name="PickUpTime" Type="datetime" />
+          <Property Name="CustomerPickUpAddress" Type="varchar" MaxLength="500" />
+          <Property Name="DestinationAddress" Type="varchar" MaxLength="500" />
+          <Property Name="HiredDistance" Type="float" />
+          <Property Name="OncallDistance" Type="float" />
+          <Property Name="PaymentMode" Type="varchar" MaxLength="30" />
+          <Property Name="WaitingFare" Type="smallmoney" />
+          <Property Name="ShadowAmount" Type="float" />
+          <Property Name="JobBrand" Type="varchar" MaxLength="20" />
+          <Property Name="CabAssignedTime" Type="datetime" />
+          <Property Name="JobTypeDes" Type="varchar" MaxLength="15" />
+          <Property Name="TripTypeDes" Type="varchar" MaxLength="15" />
+          <Property Name="PragathiStatus" Type="int" />
+          <Property Name="PragathiLastUpdatedate" Type="datetime" />
+          <Property Name="PragathiUpdateRemarks" Type="varchar" MaxLength="200" />
+          <Property Name="CorporateCode" Type="varchar" MaxLength="50" />
+          <Property Name="IsRideShare" Type="tinyint" />
+          <Property Name="MatchedJobID" Type="int" />
+          <Property Name="RSTripSequence" Type="tinyint" />
+          <Property Name="Retriggered" Type="tinyint" />
+          <Property Name="CrossSellingFare" Type="money" />
+          <Property Name="DriverPartnerPayment" Type="money" />
+          <Property Name="CorporateCompanyName" Type="varchar" MaxLength="250" />
+          <Property Name="ActualRunningFare" Type="smallmoney" />
+          <Property Name="MeruShare" Type="smallmoney" />
+          <Property Name="TMPDifferenceAmount" Type="money" />
+          <Property Name="TMPNoShowCar" Type="varchar" MaxLength="20" />
+          <Property Name="TMPNoShowDriver" Type="varchar" MaxLength="20" />
+          <Property Name="TMPBookingFare" Type="money" />
+          <Property Name="TMPDispatchFare" Type="money" />
+          <Property Name="WaitingTimeInMinutes" Type="int" />
+          <Property Name="CustomerPaidInCash" Type="money" />
+          <Property Name="BookingType" Type="varchar" MaxLength="50" />
+          <Property Name="NoOfEmp" Type="int" />
+          <Property Name="TollURL" Type="varchar" MaxLength="175" />
+          <Property Name="DutySlipURL" Type="varchar" MaxLength="175" />
+          <Property Name="EmpShift" Type="varchar" MaxLength="50" />
+          <Property Name="MonroeTripType" Type="varchar" MaxLength="20" />
+        </EntityType>
+        <Function Name="USP_UpdatePostPaymentSuccess" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="MeruPaymentId" Type="nvarchar(max)" Mode="In" />
+          <Parameter Name="Amount" Type="int" Mode="In" />
+          <Parameter Name="PaymentMethod" Type="int" Mode="In" />
+          <Parameter Name="PaymentSource" Type="int" Mode="In" />
+          <Parameter Name="PaymentId" Type="nvarchar" Mode="In" />
+          <Parameter Name="Action" Type="nvarchar" Mode="In" />
+          <Parameter Name="AdditionalDetails" Type="nvarchar" Mode="In" />
+        </Function>
+        <Function Name="usp_Wallet_GetPartialAmountTransactionDetails" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+        <EntityContainer Name="CDSBusinessModelStoreContainer">
+          <EntitySet Name="Tbl_Payment_BlackListedCards" EntityType="Self.Tbl_Payment_BlackListedCards" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="tbl_Payment_Customer_Card_Details" EntityType="Self.tbl_Payment_Customer_Card_Details" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="tbl_Payment_Customer_Details" EntityType="Self.tbl_Payment_Customer_Details" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="tbl_Payment_Gateway" EntityType="Self.tbl_Payment_Gateway" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="tbl_Payment_History" EntityType="Self.tbl_Payment_History" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="tbl_Payment_Link" EntityType="Self.tbl_Payment_Link" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="tbl_Payment_Method" EntityType="Self.tbl_Payment_Method" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="tbl_Payment_Request_Response" EntityType="Self.tbl_Payment_Request_Response" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="tbl_Payment_Request_System" EntityType="Self.tbl_Payment_Request_System" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="tbl_Payment_Status_Master" EntityType="Self.tbl_Payment_Status_Master" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="tbl_PaymentTransaction" EntityType="Self.tbl_PaymentTransaction" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="tblCabMaster" EntityType="Self.tblCabMaster" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="tblJobBooking" EntityType="Self.tblJobBooking" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="tblKerbTripsCustomersData" EntityType="Self.tblKerbTripsCustomersData" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="tblMeruPayment" EntityType="Self.tblMeruPayment" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="tblTripMaster" EntityType="Self.tblTripMaster" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="tblTripReceiptCalculator" EntityType="Self.tblTripReceiptCalculator" Schema="dbo" store:Type="Tables" />
+        </EntityContainer>
+      </Schema></edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="CDSBusinessModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="tbl_Payment_Gateway">
+          <Key>
+            <PropertyRef Name="Payment_Gateway_ID" />
+          </Key>
+          <Property Name="Payment_Gateway_ID" Type="Int16" Nullable="false" />
+          <Property Name="Payment_Gateway" Type="String" MaxLength="100" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Record_Created_DateTime" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="Record_Updated_DateTime" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="Record_Status" Type="String" MaxLength="1" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Payment_Gateway_Code" Type="String" MaxLength="3" FixedLength="false" Unicode="true" Nullable="false" />
+        </EntityType>
+        <EntityType Name="tbl_Payment_History">
+          <Key>
+            <PropertyRef Name="Payment_Request_ID" />
+          </Key>
+          <Property Name="Payment_Request_ID" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Payment_Status_Code" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="Record_Created_DateTime" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="Updating_Process" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Payment_Status_ID" Type="Int32" Nullable="false" />
+          <Property Name="PaymentTransactionId" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <EntityType Name="tbl_Payment_Method">
+          <Key>
+            <PropertyRef Name="Payment_Method_ID" />
+          </Key>
+          <Property Name="Payment_Method_ID" Type="Int16" Nullable="false" />
+          <Property Name="Payment_Method" Type="String" MaxLength="100" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Payment_Method_Desc" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+          <Property Name="Record_Created_DateTime" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="Record_Updated_DateTime" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="Record_Status" Type="String" MaxLength="1" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Payment_Method_Code" Type="String" MaxLength="3" FixedLength="false" Unicode="true" Nullable="false" />
+        </EntityType>
+        <EntityType Name="tbl_Payment_Request_Response">
+          <Key>
+            <PropertyRef Name="Payment_Request_Response_ID" />
+          </Key>
+          <Property Name="Payment_Request_Response_ID" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="PaymentIncrementId" Type="Int32" Nullable="false" />
+          <Property Name="Request_Key" Type="String" MaxLength="100" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Request_Value" Type="String" MaxLength="100" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Record_Call_Source" Type="String" MaxLength="100" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Record_Type" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Record_Created_DateTime" Type="DateTime" Nullable="false" Precision="3" />
+        </EntityType>
+        <EntityType Name="tbl_Payment_Request_System">
+          <Key>
+            <PropertyRef Name="Payment_Request_System_ID" />
+          </Key>
+          <Property Name="Payment_Request_System_ID" Type="Int16" Nullable="false" />
+          <Property Name="Payment_Request_System" Type="String" MaxLength="100" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Payment_Request_System_Secret" Type="String" MaxLength="500" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Record_Created_DateTime" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="Record_Updated_DateTime" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="Record_Status" Type="String" MaxLength="1" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Payment_Request_System_Name" Type="String" MaxLength="100" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Payment_Request_System_KeyInput" Type="String" MaxLength="4000" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Payment_Request_System_Return_URL" Type="String" MaxLength="1000" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="ColorCode" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Payment_Request_Channel_Code" Type="String" MaxLength="500" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="QueueName" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="EnableAuthToken" Type="Boolean" />
+          <Property Name="SPName" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <EntityType Name="tbl_Payment_Status_Master">
+          <Key>
+            <PropertyRef Name="Payment_Status_ID" />
+          </Key>
+          <Property Name="Payment_Status_ID" Type="Int16" Nullable="false" />
+          <Property Name="Payment_Status" Type="String" MaxLength="100" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Payment_Status_Desc" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+          <Property Name="Record_Created_DateTime" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="Record_Updated_DateTime" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="Record_Status" Type="String" MaxLength="1" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Payment_Status_Code" Type="String" MaxLength="3" FixedLength="false" Unicode="true" Nullable="false" />
+        </EntityType>
+        <EntityType Name="tblMeruPayment">
+          <Key>
+            <PropertyRef Name="PaymentIncrementId" />
+          </Key>
+          <Property Name="PaymentIncrementId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="RequestSource" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="RequestRefValues" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+          <Property Name="PaymentAmount" Type="Int32" Nullable="false" />
+          <Property Name="PaymentSource" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="PaymentMethod" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="PaymentStatus" Type="Int32" Nullable="false" />
+          <Property Name="CreatedOn" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="LastUpdatedOn" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="PaymentRefValues" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+          <Property Name="PaymentRefData1" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="PaymentRefData2" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="PaymentRefData3" Type="String" MaxLength="4000" FixedLength="false" Unicode="true" />
+          <Property Name="PaymentDetail" Type="String" MaxLength="100" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Payment_Reconciled" Type="Boolean" />
+        </EntityType>
+        <EntityContainer Name="CDSBusinessEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="tbl_Payment_Gateway" EntityType="Self.tbl_Payment_Gateway" />
+          <EntitySet Name="tbl_Payment_History" EntityType="Self.tbl_Payment_History" />
+          <EntitySet Name="tbl_Payment_Method" EntityType="Self.tbl_Payment_Method" />
+          <EntitySet Name="tbl_Payment_Request_Response" EntityType="Self.tbl_Payment_Request_Response" />
+          <EntitySet Name="tbl_Payment_Request_System" EntityType="Self.tbl_Payment_Request_System" />
+          <EntitySet Name="tbl_Payment_Status_Master" EntityType="Self.tbl_Payment_Status_Master" />
+          <EntitySet Name="tblMeruPayments" EntityType="Self.tblMeruPayment" />
+          <EntitySet Name="tbl_PaymentTransaction" EntityType="CDSBusinessModel.tbl_PaymentTransaction" />
+          <EntitySet Name="tbl_Payment_Customer_Details" EntityType="CDSBusinessModel.tbl_Payment_Customer_Details" />
+          <EntitySet Name="tbl_Payment_Customer_Card_Details" EntityType="CDSBusinessModel.tbl_Payment_Customer_Card_Details" />
+          <EntitySet Name="tblTripReceiptCalculators" EntityType="CDSBusinessModel.tblTripReceiptCalculator" />
+          <EntitySet Name="tblJobBookings" EntityType="CDSBusinessModel.tblJobBooking" />
+          <EntitySet Name="tblKerbTripsCustomersDatas" EntityType="CDSBusinessModel.tblKerbTripsCustomersData" />
+          <EntitySet Name="tblTripMasters" EntityType="CDSBusinessModel.tblTripMaster" />
+          <FunctionImport Name="USP_UpdatePostPaymentSuccess" ReturnType="Collection(Int32)">
+            <Parameter Name="MeruPaymentId" Mode="In" Type="String" />
+            <Parameter Name="Amount" Mode="In" Type="Int32" />
+            <Parameter Name="PaymentMethod" Mode="In" Type="Int32" />
+            <Parameter Name="PaymentSource" Mode="In" Type="Int32" />
+            <Parameter Name="PaymentId" Mode="In" Type="String" />
+            <Parameter Name="Action" Mode="In" Type="String" />
+            <Parameter Name="AdditionalDetails" Mode="In" Type="String" />
+          </FunctionImport>
+          <EntitySet Name="tbl_Payment_Link" EntityType="CDSBusinessModel.tbl_Payment_Link" />
+          <FunctionImport Name="usp_Wallet_GetPartialAmountTransactionDetails" ReturnType="Collection(CDSBusinessModel.usp_Wallet_GetPartialAmountTransactionDetails_Result)" />
+          <EntitySet Name="Tbl_Payment_BlackListedCards" EntityType="CDSBusinessModel.Tbl_Payment_BlackListedCards" />
+          <EntitySet Name="tblCabMaster" EntityType="CDSBusinessModel.tblCabMaster" />
+        </EntityContainer>
+        <EntityType Name="tbl_PaymentTransaction">
+          <Key>
+            <PropertyRef Name="PaymentIncrementId" />
+          </Key>
+          <Property Name="PaymentIncrementId" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Payment_Transaction_ID" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="RequestSource" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="RequestRefValues" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+          <Property Name="Payment_Amount_Paise" Type="Int64" Nullable="false" />
+          <Property Name="PaymentSource" Type="Int32" Nullable="false" />
+          <Property Name="PaymentMethod" Type="Int32" Nullable="false" />
+          <Property Name="PaymentStatus" Type="Int32" Nullable="false" />
+          <Property Name="PaymentRefValues" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+          <Property Name="PaymentRefData1" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="PaymentRefData2" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="PaymentRefData3" Type="String" MaxLength="4000" FixedLength="false" Unicode="true" />
+          <Property Name="CreatedOn" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="LastUpdatedOn" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="Payment_Gateway_Code" Type="String" MaxLength="3" FixedLength="false" Unicode="true" />
+          <Property Name="Payment_Method_Code" Type="String" MaxLength="3" FixedLength="false" Unicode="true" />
+          <Property Name="Payment_Status_Code" Type="String" MaxLength="3" FixedLength="false" Unicode="true" />
+          <Property Name="PG_Transaction_Code" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="RequestRefId" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+          <Property Name="Refund_Amount_Paise" Type="Int64" Nullable="false" />
+          <Property Name="PurchaseDescription" Type="String" MaxLength="4000" FixedLength="false" Unicode="true" />
+          <Property Name="FullName" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="Email" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="Contact" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Payment_Reconciled" Type="Boolean" Nullable="false" />
+          <Property Name="Payment_Type" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="DeviceId" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+          <Property Name="PaymentMethodRefId" Type="Int32" />
+          <Property Name="BusinessCategoryId" Type="Int32" Nullable="false" />
+          <Property Name="LastStatusOn" Type="DateTime" Precision="3" />
+          <Property Name="PaymentResponse" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="AmountPaid" Type="Int64" />
+          <Property Name="AmountDue" Type="Int64" />
+          <Property Name="Currency" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Receipt" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Offer_Id" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Notes" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="OrderResponse" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <EntityType Name="tbl_Payment_Customer_Details">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Provider_Customer_ID" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="Payment_Gateway_ID" Type="Int32" />
+          <Property Name="Customer_Name" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="Customer_Email" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Customer_Mobile_No" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="Record_Created_DateTime" Type="DateTime" Precision="3" />
+          <Property Name="Record_Update_DateTime" Type="DateTime" Precision="3" />
+          <Property Name="Customer_Status" Type="Int32" />
+        </EntityType>
+        <EntityType Name="tbl_Payment_Customer_Card_Details">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Name_On_Card" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="Network_Name" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="Last_Four_Digit" Type="String" MaxLength="5" FixedLength="false" Unicode="false" />
+          <Property Name="Token_ID" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="Provider_Customer_ID" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="Is_Default" Type="Boolean" />
+          <Property Name="Card_Type" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
+          <Property Name="Card_Issuer_Code" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="Card_Status" Type="Int16" />
+          <Property Name="Record_Created_DateTime" Type="DateTime" Precision="3" />
+          <Property Name="Record_Update_DateTime" Type="DateTime" Precision="3" />
+          <Property Name="Card_Exipry_DateTime" Type="DateTime" Precision="3" />
+          <Property Name="IsDeleted" Type="Boolean" Nullable="false" />
+          <Property Name="DeviceId" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <EntityType Name="tblTripReceiptCalculator">
+          <Key>
+            <PropertyRef Name="SeqID" />
+          </Key>
+          <Property Name="SeqID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="TripID" Type="Int32" Nullable="false" />
+          <Property Name="JobID" Type="Int32" Nullable="false" />
+          <Property Name="TripType" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="CustomerID" Type="Int32" />
+          <Property Name="CustomerName" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="CustomerMobileNo" Type="String" Nullable="false" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="TripStartTime" Type="DateTime" Precision="3" />
+          <Property Name="TripEndTime" Type="DateTime" Precision="3" />
+          <Property Name="PickupLocation" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
+          <Property Name="DropLocation" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
+          <Property Name="SiebelSubscriberID" Type="String" MaxLength="30" FixedLength="false" Unicode="false" />
+          <Property Name="CabRegistration" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="MeteredFare" Type="Decimal" Precision="10" Scale="4" />
+          <Property Name="ParkingCharges" Type="Decimal" Precision="10" Scale="4" />
+          <Property Name="ConvenienceCharges" Type="Decimal" Precision="10" Scale="4" />
+          <Property Name="RedeemAmount" Type="Decimal" Precision="10" Scale="4" />
+          <Property Name="CouponAmount" Type="Decimal" Precision="10" Scale="4" />
+          <Property Name="ServiceTaxOnTripFare" Type="Decimal" Precision="10" Scale="4" />
+          <Property Name="ServiceTaxOnOthers" Type="Decimal" Precision="10" Scale="4" />
+          <Property Name="TotalServiceTax" Type="Decimal" Precision="10" Scale="4" />
+          <Property Name="TotalTripAmount" Type="Decimal" Precision="10" Scale="4" />
+          <Property Name="CustomerPaidAmount" Type="String" MaxLength="15" FixedLength="false" Unicode="false" />
+          <Property Name="ProductType" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="RecordedDate" Type="DateTime" Precision="3" />
+          <Property Name="Status" Type="Int32" Nullable="false" />
+          <Property Name="LastUpdatedate" Type="DateTime" Precision="3" />
+          <Property Name="UpdateRemarks" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+          <Property Name="TotalDiscountAmount" Type="Decimal" Precision="19" Scale="4" />
+          <Property Name="AfterDiscountNetAmount" Type="Decimal" Precision="19" Scale="4" />
+          <Property Name="BrandTypeName" Type="String" MaxLength="15" FixedLength="false" Unicode="false" />
+          <Property Name="TollCharges" Type="Decimal" Precision="19" Scale="4" />
+          <Property Name="Surcharges" Type="Decimal" Precision="19" Scale="4" />
+          <Property Name="CustomerEmail" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="BookingTime" Type="DateTime" Precision="3" />
+          <Property Name="PickUpTime" Type="DateTime" Precision="3" />
+          <Property Name="CustomerPickUpAddress" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
+          <Property Name="DestinationAddress" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
+          <Property Name="HiredDistance" Type="Double" />
+          <Property Name="OncallDistance" Type="Double" />
+          <Property Name="PaymentMode" Type="String" MaxLength="30" FixedLength="false" Unicode="false" />
+          <Property Name="WaitingFare" Type="Decimal" Precision="10" Scale="4" />
+          <Property Name="ShadowAmount" Type="Double" />
+          <Property Name="JobBrand" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="CabAssignedTime" Type="DateTime" Precision="3" />
+          <Property Name="JobTypeDes" Type="String" MaxLength="15" FixedLength="false" Unicode="false" />
+          <Property Name="TripTypeDes" Type="String" MaxLength="15" FixedLength="false" Unicode="false" />
+          <Property Name="PragathiStatus" Type="Int32" />
+          <Property Name="PragathiLastUpdatedate" Type="DateTime" Precision="3" />
+          <Property Name="PragathiUpdateRemarks" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+          <Property Name="CorporateCode" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="IsRideShare" Type="Byte" />
+          <Property Name="MatchedJobID" Type="Int32" />
+          <Property Name="RSTripSequence" Type="Byte" />
+          <Property Name="Retriggered" Type="Byte" />
+          <Property Name="CrossSellingFare" Type="Decimal" Precision="19" Scale="4" />
+          <Property Name="DriverPartnerPayment" Type="Decimal" Precision="19" Scale="4" />
+          <Property Name="CorporateCompanyName" Type="String" MaxLength="250" FixedLength="false" Unicode="false" />
+          <Property Name="ActualRunningFare" Type="Decimal" Precision="10" Scale="4" />
+          <Property Name="MeruShare" Type="Decimal" Precision="10" Scale="4" />
+          <Property Name="TMPDifferenceAmount" Type="Decimal" Precision="19" Scale="4" />
+          <Property Name="TMPNoShowCar" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="TMPNoShowDriver" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="TMPBookingFare" Type="Decimal" Precision="19" Scale="4" />
+          <Property Name="TMPDispatchFare" Type="Decimal" Precision="19" Scale="4" />
+          <Property Name="WaitingTimeInMinutes" Type="Int32" />
+          <Property Name="CustomerPaidInCash" Type="Decimal" Precision="19" Scale="4" />
+          <Property Name="BookingType" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="NoOfEmp" Type="Int32" />
+          <Property Name="TollURL" Type="String" MaxLength="175" FixedLength="false" Unicode="false" />
+          <Property Name="DutySlipURL" Type="String" MaxLength="175" FixedLength="false" Unicode="false" />
+          <Property Name="EmpShift" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="MonroeTripType" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+        </EntityType>
+        <EntityType Name="tblJobBooking">
+          <Key>
+            <PropertyRef Name="JobID" />
+          </Key>
+          <Property Name="JobID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="CustomerID" Type="Int32" />
+          <Property Name="CustomerName" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="CustomerMobileNo" Type="String" Nullable="false" MaxLength="40" FixedLength="false" Unicode="false" />
+          <Property Name="CustomerContactFirsttName" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="CustomerContactLastName" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="CustomerContactMobileNo" Type="String" MaxLength="40" FixedLength="false" Unicode="false" />
+          <Property Name="JobTypeID" Type="Byte" Nullable="false" />
+          <Property Name="TerminalID" Type="Int32" />
+          <Property Name="PickUpTime" Type="DateTime" Nullable="false" Precision="0" />
+          <Property Name="CustomerPickUpAddress" Type="String" Nullable="false" MaxLength="500" FixedLength="false" Unicode="false" />
+          <Property Name="Preference" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Landmark" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="PickUpAddressPointID" Type="Int32" />
+          <Property Name="PickUpLocalityID" Type="Int32" />
+          <Property Name="PickUpZoneID" Type="Int32" />
+          <Property Name="PickUpMessage" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="CabTypeID" Type="Byte" />
+          <Property Name="CabModelName" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="DestinationAddress" Type="String" MaxLength="250" FixedLength="false" Unicode="false" />
+          <Property Name="DestAddressPointID" Type="Int32" />
+          <Property Name="DestLocalityId" Type="Int32" />
+          <Property Name="DestZoneID" Type="Int32" />
+          <Property Name="NoOfBags" Type="Byte" />
+          <Property Name="NoOfCabs" Type="Byte" />
+          <Property Name="ETA" Type="DateTime" Precision="3" />
+          <Property Name="CallStartTime" Type="DateTime" Precision="3" />
+          <Property Name="JobCreationTime" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="CabAssignedTime" Type="DateTime" Precision="3" />
+          <Property Name="CallDuration" Type="Int16" />
+          <Property Name="LanguageID" Type="Byte" />
+          <Property Name="DropTime" Type="DateTime" Precision="3" />
+          <Property Name="CityID" Type="Int16" Nullable="false" />
+          <Property Name="AddFareID" Type="Int32" />
+          <Property Name="UserID" Type="Int32" />
+          <Property Name="MappingID" Type="Int32" />
+          <Property Name="ChannelID" Type="Byte" />
+          <Property Name="SiebelJobID" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="CancelId" Type="Byte" />
+          <Property Name="CancelReason" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="CabRegistrationNo" Type="String" MaxLength="30" FixedLength="false" Unicode="false" />
+          <Property Name="SmsStatus" Type="Boolean" Nullable="false" />
+          <Property Name="SmsAlert" Type="Boolean" />
+          <Property Name="RejectId" Type="Int16" />
+          <Property Name="RejectRemarks" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
+          <Property Name="TagAs" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Quota" Type="Int16" />
+          <Property Name="TimetoDispatch" Type="Int16" />
+          <Property Name="ModifiedUserID" Type="Int32" />
+          <Property Name="CancelledUserID" Type="Int32" />
+          <Property Name="ModifiedCallDuration" Type="Int16" />
+          <Property Name="CancelledCallDuration" Type="Int16" />
+          <Property Name="ManualDispatchedUser" Type="Int32" />
+          <Property Name="CalledSubscriber" Type="Boolean" />
+          <Property Name="InformedCustomer" Type="Boolean" />
+          <Property Name="IVRSChannelID" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="JobSubscriberID" Type="Int32" />
+          <Property Name="AirportJob" Type="Boolean" />
+          <Property Name="CorporateJob" Type="Boolean" />
+          <Property Name="MPC" Type="Boolean" />
+          <Property Name="EmailAddress" Type="String" MaxLength="150" FixedLength="false" Unicode="false" />
+          <Property Name="TrackMobile" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="QuotaBorrowingZoneID" Type="Int32" />
+          <Property Name="MobileSMSStatus" Type="Byte" />
+          <Property Name="PromoSMSStatus" Type="Byte" />
+          <Property Name="CRDUserID" Type="Int32" />
+          <Property Name="CRDCount" Type="Byte" />
+          <Property Name="DropCityID" Type="Int16" />
+          <Property Name="ReturnTrip" Type="Boolean" />
+          <Property Name="RetentionTime" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="StateTaxStatus" Type="Byte" />
+          <Property Name="IsGenie" Type="Byte" />
+          <Property Name="PromoCode" Type="String" MaxLength="30" FixedLength="false" Unicode="false" />
+          <Property Name="CouponAmount" Type="Decimal" Precision="19" Scale="4" />
+          <Property Name="redeempoints" Type="Int32" />
+          <Property Name="RedeemAmount" Type="Decimal" Precision="19" Scale="4" />
+          <Property Name="CabDeviceID" Type="String" MaxLength="30" FixedLength="false" Unicode="false" />
+          <Property Name="PickupLat" Type="Single" />
+          <Property Name="PickupLong" Type="Single" />
+          <Property Name="BrandTypeID" Type="Byte" />
+          <Property Name="CabConfSMSSenttime" Type="DateTime" Precision="3" />
+          <Property Name="DropLat" Type="Single" />
+          <Property Name="DropLong" Type="Single" />
+          <Property Name="AssignedCabBrandTypeID" Type="Byte" />
+          <Property Name="AssignedCabProductTypeID" Type="Byte" />
+          <Property Name="IsRideShare" Type="Byte" />
+          <Property Name="IsIxigoSent" Type="Boolean" />
+          <Property Name="RatePerKM" Type="Double" />
+          <Property Name="AirportNotifySatus" Type="Int16" />
+          <Property Name="WalletSMSStatus" Type="Int32" />
+          <Property Name="RiderName" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="RefusedSMSStatus" Type="Int32" />
+          <Property Name="FixedFareLogId" Type="Int32" />
+          <Property Name="ProductTypeId" Type="Byte" />
+          <Property Name="BusinessCategoryID" Type="Byte" />
+          <Property Name="IsTripStartSMSSent" Type="Byte" />
+          <Property Name="IsTripEndSMSSent" Type="Byte" />
+          <Property Name="IsInterCity" Type="Boolean" />
+          <Property Name="ISDriver_SMSSent_Outstation" Type="Boolean" />
+          <Property Name="IsAirportDrop" Type="Boolean" />
+          <Property Name="Driver_ReminderSMS1_Out" Type="Boolean" Nullable="false" />
+          <Property Name="Driver_ReminderSMS2_Out" Type="Boolean" Nullable="false" />
+          <Property Name="Outstation_DU_SMS_Alert" Type="Boolean" />
+          <Property Name="STFStaus" Type="Int32" />
+          <Property Name="STFDeviceID" Type="String" MaxLength="12" FixedLength="false" Unicode="false" />
+          <Property Name="STFCabNo" Type="String" MaxLength="15" FixedLength="false" Unicode="false" />
+          <Property Name="STFCabSentTime" Type="DateTime" Precision="3" />
+        </EntityType>
+        <EntityType Name="tblKerbTripsCustomersData">
+          <Key>
+            <PropertyRef Name="KerbCustomerID" />
+          </Key>
+          <Property Name="KerbCustomerID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="MobileNo" Type="String" MaxLength="40" FixedLength="false" Unicode="false" />
+          <Property Name="EmailID" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="SiebelDeviceID" Type="String" MaxLength="30" FixedLength="false" Unicode="false" />
+          <Property Name="TripStartTime" Type="DateTime" Precision="3" />
+          <Property Name="CabRegistrationNo" Type="String" MaxLength="30" FixedLength="false" Unicode="false" />
+          <Property Name="CustomerName" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="CityID" Type="Int32" />
+          <Property Name="SMSStatus" Type="Int32" Nullable="false" />
+          <Property Name="EmailReceivedTime" Type="DateTime" Precision="3" />
+          <Property Name="RecordedDateTime" Type="DateTime" Precision="3" />
+          <Property Name="WalletSMSStatus" Type="Int32" />
+          <Property Name="TripID" Type="Int32" />
+          <Property Name="Feedback_SMS" Type="Boolean" />
+          <Property Name="Ebill_SMS" Type="Boolean" />
+          <Property Name="DropLatitude" Type="Single" />
+          <Property Name="DropLongitude" Type="Single" />
+          <Property Name="FareMultiplier_Kerb" Type="Double" />
+        </EntityType>
+        <EntityType Name="tblTripMaster">
+          <Key>
+            <PropertyRef Name="TripID" />
+          </Key>
+          <Property Name="TripID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="TripNo" Type="String" MaxLength="30" FixedLength="false" Unicode="false" />
+          <Property Name="JobID" Type="Int32" Nullable="false" />
+          <Property Name="TripTypeID" Type="Byte" Nullable="false" />
+          <Property Name="MappingID" Type="Int32" />
+          <Property Name="TripStartID" Type="Int32" Nullable="false" />
+          <Property Name="TripEndID" Type="Int32" Nullable="false" />
+          <Property Name="TripStartTime" Type="String" MaxLength="30" FixedLength="false" Unicode="false" />
+          <Property Name="TripEndTime" Type="String" MaxLength="30" FixedLength="false" Unicode="false" />
+          <Property Name="DistFromLastTripToCurrTrip" Type="Double" />
+          <Property Name="OnCallDistcane" Type="Double" />
+          <Property Name="ScheduledTripNo" Type="String" MaxLength="30" FixedLength="false" Unicode="false" />
+          <Property Name="CreditCardID" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="LoginCount" Type="Int32" />
+          <Property Name="TripStartKilometer" Type="Double" />
+          <Property Name="TripEndKilometer" Type="Double" />
+          <Property Name="TotalTripFare" Type="Decimal" Precision="10" Scale="4" />
+          <Property Name="ServiceTax" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="EduCess" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="SecEduCess" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="PaymentMode" Type="Byte" />
+          <Property Name="MDTKerbJobID" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="SubscriberID" Type="Int32" />
+          <Property Name="CabRegistration" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="PickupLocation" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
+          <Property Name="DropLocation" Type="String" MaxLength="250" FixedLength="false" Unicode="false" />
+          <Property Name="TotalRevenueDistance" Type="Double" />
+          <Property Name="BookingFee" Type="Decimal" Precision="10" Scale="4" />
+          <Property Name="FeedbackSMS" Type="Boolean" />
+          <Property Name="AirportCharges" Type="Decimal" Precision="10" Scale="4" />
+          <Property Name="TripOncallWaitingTime" Type="Int32" />
+          <Property Name="TripOncallWaitingCharge" Type="Decimal" Precision="10" Scale="4" />
+          <Property Name="TripWaitingChargeforCorporate" Type="Decimal" Precision="10" Scale="4" />
+          <Property Name="TotalWaitTime" Type="Int32" />
+          <Property Name="WaitingFare" Type="Decimal" Precision="10" Scale="4" />
+          <Property Name="RRNumber" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="RetentionServiceStatus" Type="Byte" />
+          <Property Name="ExpectedAmount" Type="Decimal" Precision="10" Scale="4" />
+          <Property Name="ShadowAmount" Type="Decimal" Precision="10" Scale="4" />
+          <Property Name="EmailSendStatus" Type="Boolean" />
+          <Property Name="CabLatitude_TS" Type="Single" />
+          <Property Name="CabLongitude_TS" Type="Single" />
+          <Property Name="ZoneID_TS" Type="Int32" />
+          <Property Name="CouponAmount" Type="Decimal" Precision="19" Scale="4" />
+          <Property Name="RedeemAmount" Type="Decimal" Precision="19" Scale="4" />
+          <Property Name="AdminEmailSendStatus" Type="Int32" />
+          <Property Name="BrandTypeID" Type="Byte" />
+          <Property Name="DeviceTotalFare" Type="Decimal" Precision="19" Scale="4" />
+          <Property Name="RunningFare" Type="Decimal" Precision="19" Scale="4" />
+          <Property Name="EmailSentDateTime" Type="DateTime" Precision="3" />
+          <Property Name="WalletTSStatus" Type="Int32" />
+          <Property Name="WalletType" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="NoOfAttempts" Type="Int32" />
+          <Property Name="GPSValueSync" Type="String" MaxLength="2" FixedLength="false" Unicode="false" />
+          <Property Name="AdditionalFare" Type="Decimal" Precision="19" Scale="4" />
+          <Property Name="TollCharges" Type="Decimal" Precision="19" Scale="4" />
+          <Property Name="TSReceivedTime" Type="DateTime" Precision="3" />
+          <Property Name="TEReceivedTime" Type="DateTime" Precision="3" />
+          <Property Name="GoogleTotalDistance" Type="Double" />
+          <Property Name="GoogleCumulateDistance" Type="Double" />
+          <Property Name="ProductTypeID" Type="Byte" />
+          <Property Name="IsRideShare" Type="Byte" />
+          <Property Name="CrossSellingFare" Type="Decimal" Precision="19" Scale="4" />
+          <Property Name="DistanceCalStatusID" Type="Int32" />
+          <Property Name="CalcHiredDistance" Type="Double" />
+          <Property Name="CalcFare" Type="Decimal" Precision="19" Scale="4" />
+          <Property Name="CalcOncallDistance" Type="Double" />
+          <Property Name="RideTime" Type="Int32" />
+          <Property Name="RideTimeFare" Type="Decimal" Precision="19" Scale="4" />
+          <Property Name="SGST" Type="Decimal" Precision="19" Scale="4" />
+          <Property Name="CGST" Type="Decimal" Precision="19" Scale="4" />
+          <Property Name="IGST" Type="Decimal" Precision="19" Scale="4" />
+          <Property Name="TSOutCallStatus" Type="Byte" />
+          <Property Name="PWSCash" Type="Decimal" Precision="19" Scale="4" />
+          <Property Name="AirportToll" Type="Double" />
+          <Property Name="Garage_Drop_Distance" Type="Byte" />
+        </EntityType>
+        <EntityType Name="tbl_Payment_Link">
+          <Key>
+            <PropertyRef Name="PaymentLink_Id" />
+          </Key>
+          <Property Name="Payment_Transaction_ID" Type="String" Nullable="false" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="Request_RefId" Type="String" Nullable="false" MaxLength="1000" FixedLength="false" Unicode="true" />
+          <Property Name="Payment_Amount_Paise" Type="Int64" Nullable="false" />
+          <Property Name="PG_OrderId" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
+          <Property Name="PG_PaymentId" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
+          <Property Name="PG_InvoiceId" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
+          <Property Name="PG_ReceiptNo" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
+          <Property Name="PG_Ref_Data" Type="String" MaxLength="4000" FixedLength="false" Unicode="true" />
+          <Property Name="Payment_Source" Type="Int32" />
+          <Property Name="Payment_Method" Type="Int32" />
+          <Property Name="Url" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+          <Property Name="Description" Type="String" MaxLength="1000" FixedLength="false" Unicode="true" />
+          <Property Name="Contact" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="Email" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
+          <Property Name="Status" Type="Int32" Nullable="false" />
+          <Property Name="CreatedOn" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="LastUpdatedOn" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="PaymentLink_Id" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+        </EntityType>
+        <ComplexType Name="usp_Wallet_GetPartialAmountTransactionDetails_Result">
+          <Property Type="Int32" Name="JobID" Nullable="true" />
+          <Property Type="String" Name="MobileNumber" Nullable="true" MaxLength="40" />
+          <Property Type="Decimal" Name="Amount" Nullable="true" Precision="19" />
+          <Property Type="Int32" Name="ProviderID" Nullable="false" />
+          <Property Type="DateTime" Name="RecordedDateTime" Nullable="true" Precision="23" />
+          <Property Type="String" Name="OrderId" Nullable="true" MaxLength="200" />
+          <Property Type="String" Name="EmailAddress" Nullable="true" MaxLength="200" />
+          <Property Type="String" Name="AmountType" Nullable="true" MaxLength="4" />
+          <Property Type="Int32" Name="TripID" Nullable="true" />
+          <Property Type="Int32" Name="ID" Nullable="true" />
+        </ComplexType>
+        <EntityType Name="Tbl_Payment_BlackListedCards">
+          <Key>
+            <PropertyRef Name="BlackListedCardId" />
+          </Key>
+          <Property Name="BlackListedCardId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="IssuerCode" Type="String" MaxLength="255" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="NetworkName" Type="String" MaxLength="255" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="CardType" Type="String" MaxLength="255" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="IsActive" Type="Boolean" Nullable="false" />
+          <Property Name="CreatedOn" Type="DateTime" Precision="3" Nullable="false" />
+          <Property Name="UpdatedOn" Type="DateTime" Precision="3" Nullable="false" />
+        </EntityType>
+        <EntityType Name="tblCabMaster">
+          <Key>
+            <PropertyRef Name="CabID" />
+          </Key>
+          <Property Name="CabID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="CabTypeID" Type="Int16" />
+          <Property Name="CabRegistrationNo" Type="String" Nullable="false" MaxLength="30" FixedLength="false" Unicode="false" />
+          <Property Name="RegistrationDate" Type="DateTime" Precision="3" />
+          <Property Name="EngineNo" Type="String" MaxLength="30" FixedLength="false" Unicode="false" />
+          <Property Name="ChasisNo" Type="String" MaxLength="35" FixedLength="false" Unicode="false" />
+          <Property Name="CabYearMake" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
+          <Property Name="SpeedLimit" Type="Byte" />
+          <Property Name="OdoMeterNo" Type="String" MaxLength="30" FixedLength="false" Unicode="false" />
+          <Property Name="CityID" Type="Int16" Nullable="false" />
+          <Property Name="CabModelName" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="CabCompanyName" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="CabDesc" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="CabStatusID" Type="Byte" Nullable="false" />
+          <Property Name="SeibelCabID" Type="String" MaxLength="30" FixedLength="false" Unicode="false" />
+          <Property Name="CabLatitude" Type="Single" />
+          <Property Name="CabLongitude" Type="Single" />
+          <Property Name="MeterStatus" Type="Byte" />
+          <Property Name="IgnitionStatus" Type="Boolean" />
+          <Property Name="CabGPSDateTime" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Speed" Type="Byte" />
+          <Property Name="Direction" Type="Int16" />
+          <Property Name="CabLocation" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="RecordUpdateTime" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="OdoMeterReading" Type="Double" />
+          <Property Name="OdometerUpdateUserID" Type="Int32" />
+          <Property Name="PreviousOdometer" Type="Double" />
+          <Property Name="OdometerUpdateTime" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="LocalityID" Type="Int32" />
+          <Property Name="LocalityName" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="ZoneID" Type="Int32" />
+          <Property Name="ZoneName" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="SubLocalityID" Type="Int32" />
+          <Property Name="GPSFixedLocation" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="GPSFixedTime" Type="DateTime" Precision="3" />
+          <Property Name="GPSFixedLatitude" Type="Single" />
+          <Property Name="GPSFixedLongitude" Type="Single" />
+          <Property Name="GPSFixedTimeForDispatch" Type="DateTime" Precision="3" />
+          <Property Name="CabModel_Actual" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="BrandTypeID" Type="Byte" />
+          <Property Name="ProductTypeID" Type="Byte" />
+          <Property Name="SPID" Type="String" MaxLength="30" FixedLength="false" Unicode="false" />
+          <Property Name="CabColor" Type="String" MaxLength="30" FixedLength="false" Unicode="false" />
+          <Property Name="BusinessCategoryID" Type="Byte" />
+          <Property Name="Vehicle_Identification_No" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="PermitType" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="ActualCity" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="ActualState" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+        </EntityType>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="CDSBusinessModelStoreContainer" CdmEntityContainer="CDSBusinessEntities">
+          <EntitySetMapping Name="tbl_Payment_Gateway">
+            <EntityTypeMapping TypeName="CDSBusinessModel.tbl_Payment_Gateway">
+              <MappingFragment StoreEntitySet="tbl_Payment_Gateway">
+                <ScalarProperty Name="Payment_Gateway_ID" ColumnName="Payment_Gateway_ID" />
+                <ScalarProperty Name="Payment_Gateway" ColumnName="Payment_Gateway" />
+                <ScalarProperty Name="Record_Created_DateTime" ColumnName="Record_Created_DateTime" />
+                <ScalarProperty Name="Record_Updated_DateTime" ColumnName="Record_Updated_DateTime" />
+                <ScalarProperty Name="Record_Status" ColumnName="Record_Status" />
+                <ScalarProperty Name="Payment_Gateway_Code" ColumnName="Payment_Gateway_Code" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tbl_Payment_History">
+            <EntityTypeMapping TypeName="CDSBusinessModel.tbl_Payment_History">
+              <MappingFragment StoreEntitySet="tbl_Payment_History">
+                <ScalarProperty Name="Payment_Request_ID" ColumnName="Payment_Request_ID" />
+                <ScalarProperty Name="Payment_Status_Code" ColumnName="Payment_Status_Code" />
+                <ScalarProperty Name="Record_Created_DateTime" ColumnName="Record_Created_DateTime" />
+                <ScalarProperty Name="Updating_Process" ColumnName="Updating_Process" />
+                <ScalarProperty Name="Payment_Status_ID" ColumnName="Payment_Status_ID" />
+                <ScalarProperty Name="PaymentTransactionId" ColumnName="PaymentTransactionId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tbl_Payment_Method">
+            <EntityTypeMapping TypeName="CDSBusinessModel.tbl_Payment_Method">
+              <MappingFragment StoreEntitySet="tbl_Payment_Method">
+                <ScalarProperty Name="Payment_Method_ID" ColumnName="Payment_Method_ID" />
+                <ScalarProperty Name="Payment_Method" ColumnName="Payment_Method" />
+                <ScalarProperty Name="Payment_Method_Desc" ColumnName="Payment_Method_Desc" />
+                <ScalarProperty Name="Record_Created_DateTime" ColumnName="Record_Created_DateTime" />
+                <ScalarProperty Name="Record_Updated_DateTime" ColumnName="Record_Updated_DateTime" />
+                <ScalarProperty Name="Record_Status" ColumnName="Record_Status" />
+                <ScalarProperty Name="Payment_Method_Code" ColumnName="Payment_Method_Code" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tbl_Payment_Request_Response">
+            <EntityTypeMapping TypeName="CDSBusinessModel.tbl_Payment_Request_Response">
+              <MappingFragment StoreEntitySet="tbl_Payment_Request_Response">
+                <ScalarProperty Name="Payment_Request_Response_ID" ColumnName="Payment_Request_Response_ID" />
+                <ScalarProperty Name="PaymentIncrementId" ColumnName="PaymentIncrementId" />
+                <ScalarProperty Name="Request_Key" ColumnName="Request_Key" />
+                <ScalarProperty Name="Request_Value" ColumnName="Request_Value" />
+                <ScalarProperty Name="Record_Call_Source" ColumnName="Record_Call_Source" />
+                <ScalarProperty Name="Record_Type" ColumnName="Record_Type" />
+                <ScalarProperty Name="Record_Created_DateTime" ColumnName="Record_Created_DateTime" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tbl_Payment_Request_System">
+            <EntityTypeMapping TypeName="CDSBusinessModel.tbl_Payment_Request_System">
+              <MappingFragment StoreEntitySet="tbl_Payment_Request_System">
+                <ScalarProperty Name="SPName" ColumnName="SPName" />
+                <ScalarProperty Name="EnableAuthToken" ColumnName="EnableAuthToken" />
+                <ScalarProperty Name="Payment_Request_System_ID" ColumnName="Payment_Request_System_ID" />
+                <ScalarProperty Name="Payment_Request_System" ColumnName="Payment_Request_System" />
+                <ScalarProperty Name="Payment_Request_System_Secret" ColumnName="Payment_Request_System_Secret" />
+                <ScalarProperty Name="Record_Created_DateTime" ColumnName="Record_Created_DateTime" />
+                <ScalarProperty Name="Record_Updated_DateTime" ColumnName="Record_Updated_DateTime" />
+                <ScalarProperty Name="Record_Status" ColumnName="Record_Status" />
+                <ScalarProperty Name="Payment_Request_System_Name" ColumnName="Payment_Request_System_Name" />
+                <ScalarProperty Name="Payment_Request_System_KeyInput" ColumnName="Payment_Request_System_KeyInput" />
+                <ScalarProperty Name="Payment_Request_System_Return_URL" ColumnName="Payment_Request_System_Return_URL" />
+                <ScalarProperty Name="ColorCode" ColumnName="ColorCode" />
+                <ScalarProperty Name="Payment_Request_Channel_Code" ColumnName="Payment_Request_Channel_Code" />
+                <ScalarProperty Name="QueueName" ColumnName="QueueName" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tbl_Payment_Status_Master">
+            <EntityTypeMapping TypeName="CDSBusinessModel.tbl_Payment_Status_Master">
+              <MappingFragment StoreEntitySet="tbl_Payment_Status_Master">
+                <ScalarProperty Name="Payment_Status_ID" ColumnName="Payment_Status_ID" />
+                <ScalarProperty Name="Payment_Status" ColumnName="Payment_Status" />
+                <ScalarProperty Name="Payment_Status_Desc" ColumnName="Payment_Status_Desc" />
+                <ScalarProperty Name="Record_Created_DateTime" ColumnName="Record_Created_DateTime" />
+                <ScalarProperty Name="Record_Updated_DateTime" ColumnName="Record_Updated_DateTime" />
+                <ScalarProperty Name="Record_Status" ColumnName="Record_Status" />
+                <ScalarProperty Name="Payment_Status_Code" ColumnName="Payment_Status_Code" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tblMeruPayments">
+            <EntityTypeMapping TypeName="CDSBusinessModel.tblMeruPayment">
+              <MappingFragment StoreEntitySet="tblMeruPayment">
+                <ScalarProperty Name="PaymentIncrementId" ColumnName="PaymentIncrementId" />
+                <ScalarProperty Name="RequestSource" ColumnName="RequestSource" />
+                <ScalarProperty Name="RequestRefValues" ColumnName="RequestRefValues" />
+                <ScalarProperty Name="PaymentAmount" ColumnName="PaymentAmount" />
+                <ScalarProperty Name="PaymentSource" ColumnName="PaymentSource" />
+                <ScalarProperty Name="PaymentMethod" ColumnName="PaymentMethod" />
+                <ScalarProperty Name="PaymentStatus" ColumnName="PaymentStatus" />
+                <ScalarProperty Name="CreatedOn" ColumnName="CreatedOn" />
+                <ScalarProperty Name="LastUpdatedOn" ColumnName="LastUpdatedOn" />
+                <ScalarProperty Name="PaymentRefValues" ColumnName="PaymentRefValues" />
+                <ScalarProperty Name="PaymentRefData1" ColumnName="PaymentRefData1" />
+                <ScalarProperty Name="PaymentRefData2" ColumnName="PaymentRefData2" />
+                <ScalarProperty Name="PaymentRefData3" ColumnName="PaymentRefData3" />
+                <ScalarProperty Name="PaymentDetail" ColumnName="PaymentDetail" />
+                <ScalarProperty Name="Payment_Reconciled" ColumnName="Payment_Reconciled" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tbl_PaymentTransaction">
+            <EntityTypeMapping TypeName="CDSBusinessModel.tbl_PaymentTransaction">
+              <MappingFragment StoreEntitySet="tbl_PaymentTransaction">
+                <ScalarProperty Name="OrderResponse" ColumnName="OrderResponse" />
+                <ScalarProperty Name="Notes" ColumnName="Notes" />
+                <ScalarProperty Name="Offer_Id" ColumnName="Offer_Id" />
+                <ScalarProperty Name="Receipt" ColumnName="Receipt" />
+                <ScalarProperty Name="Currency" ColumnName="Currency" />
+                <ScalarProperty Name="AmountDue" ColumnName="AmountDue" />
+                <ScalarProperty Name="AmountPaid" ColumnName="AmountPaid" />
+                <ScalarProperty Name="PaymentResponse" ColumnName="PaymentResponse" />
+                <ScalarProperty Name="LastStatusOn" ColumnName="LastStatusOn" />
+                <ScalarProperty Name="BusinessCategoryId" ColumnName="BusinessCategoryId" />
+                <ScalarProperty Name="PaymentMethodRefId" ColumnName="PaymentMethodRefId" />
+                <ScalarProperty Name="DeviceId" ColumnName="DeviceId" />
+                <ScalarProperty Name="Payment_Type" ColumnName="Payment_Type" />
+                <ScalarProperty Name="Payment_Reconciled" ColumnName="Payment_Reconciled" />
+                <ScalarProperty Name="Contact" ColumnName="Contact" />
+                <ScalarProperty Name="Email" ColumnName="Email" />
+                <ScalarProperty Name="FullName" ColumnName="FullName" />
+                <ScalarProperty Name="PurchaseDescription" ColumnName="PurchaseDescription" />
+                <ScalarProperty Name="Refund_Amount_Paise" ColumnName="Refund_Amount_Paise" />
+                <ScalarProperty Name="RequestRefId" ColumnName="RequestRefId" />
+                <ScalarProperty Name="PG_Transaction_Code" ColumnName="PG_Transaction_Code" />
+                <ScalarProperty Name="Payment_Status_Code" ColumnName="Payment_Status_Code" />
+                <ScalarProperty Name="Payment_Method_Code" ColumnName="Payment_Method_Code" />
+                <ScalarProperty Name="Payment_Gateway_Code" ColumnName="Payment_Gateway_Code" />
+                <ScalarProperty Name="LastUpdatedOn" ColumnName="LastUpdatedOn" />
+                <ScalarProperty Name="CreatedOn" ColumnName="CreatedOn" />
+                <ScalarProperty Name="PaymentRefData3" ColumnName="PaymentRefData3" />
+                <ScalarProperty Name="PaymentRefData2" ColumnName="PaymentRefData2" />
+                <ScalarProperty Name="PaymentRefData1" ColumnName="PaymentRefData1" />
+                <ScalarProperty Name="PaymentRefValues" ColumnName="PaymentRefValues" />
+                <ScalarProperty Name="PaymentStatus" ColumnName="PaymentStatus" />
+                <ScalarProperty Name="PaymentMethod" ColumnName="PaymentMethod" />
+                <ScalarProperty Name="PaymentSource" ColumnName="PaymentSource" />
+                <ScalarProperty Name="Payment_Amount_Paise" ColumnName="Payment_Amount_Paise" />
+                <ScalarProperty Name="RequestRefValues" ColumnName="RequestRefValues" />
+                <ScalarProperty Name="RequestSource" ColumnName="RequestSource" />
+                <ScalarProperty Name="Payment_Transaction_ID" ColumnName="Payment_Transaction_ID" />
+                <ScalarProperty Name="PaymentIncrementId" ColumnName="PaymentIncrementId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tbl_Payment_Customer_Details">
+            <EntityTypeMapping TypeName="CDSBusinessModel.tbl_Payment_Customer_Details">
+              <MappingFragment StoreEntitySet="tbl_Payment_Customer_Details">
+                <ScalarProperty Name="Customer_Status" ColumnName="Customer_Status" />
+                <ScalarProperty Name="Record_Update_DateTime" ColumnName="Record_Update_DateTime" />
+                <ScalarProperty Name="Record_Created_DateTime" ColumnName="Record_Created_DateTime" />
+                <ScalarProperty Name="Customer_Mobile_No" ColumnName="Customer_Mobile_No" />
+                <ScalarProperty Name="Customer_Email" ColumnName="Customer_Email" />
+                <ScalarProperty Name="Customer_Name" ColumnName="Customer_Name" />
+                <ScalarProperty Name="Payment_Gateway_ID" ColumnName="Payment_Gateway_ID" />
+                <ScalarProperty Name="Provider_Customer_ID" ColumnName="Provider_Customer_ID" />
+                <ScalarProperty Name="ID" ColumnName="ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tbl_Payment_Customer_Card_Details">
+            <EntityTypeMapping TypeName="CDSBusinessModel.tbl_Payment_Customer_Card_Details">
+              <MappingFragment StoreEntitySet="tbl_Payment_Customer_Card_Details">
+                <ScalarProperty Name="DeviceId" ColumnName="DeviceId" />
+                <ScalarProperty Name="IsDeleted" ColumnName="IsDeleted" />
+                <ScalarProperty Name="Card_Exipry_DateTime" ColumnName="Card_Exipry_DateTime" />
+                <ScalarProperty Name="Record_Update_DateTime" ColumnName="Record_Update_DateTime" />
+                <ScalarProperty Name="Record_Created_DateTime" ColumnName="Record_Created_DateTime" />
+                <ScalarProperty Name="Card_Status" ColumnName="Card_Status" />
+                <ScalarProperty Name="Card_Issuer_Code" ColumnName="Card_Issuer_Code" />
+                <ScalarProperty Name="Card_Type" ColumnName="Card_Type" />
+                <ScalarProperty Name="Is_Default" ColumnName="Is_Default" />
+                <ScalarProperty Name="Provider_Customer_ID" ColumnName="Provider_Customer_ID" />
+                <ScalarProperty Name="Token_ID" ColumnName="Token_ID" />
+                <ScalarProperty Name="Last_Four_Digit" ColumnName="Last_Four_Digit" />
+                <ScalarProperty Name="Network_Name" ColumnName="Network_Name" />
+                <ScalarProperty Name="Name_On_Card" ColumnName="Name_On_Card" />
+                <ScalarProperty Name="ID" ColumnName="ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tblTripReceiptCalculators">
+            <EntityTypeMapping TypeName="CDSBusinessModel.tblTripReceiptCalculator">
+              <MappingFragment StoreEntitySet="tblTripReceiptCalculator">
+                <ScalarProperty Name="MonroeTripType" ColumnName="MonroeTripType" />
+                <ScalarProperty Name="EmpShift" ColumnName="EmpShift" />
+                <ScalarProperty Name="DutySlipURL" ColumnName="DutySlipURL" />
+                <ScalarProperty Name="TollURL" ColumnName="TollURL" />
+                <ScalarProperty Name="NoOfEmp" ColumnName="NoOfEmp" />
+                <ScalarProperty Name="BookingType" ColumnName="BookingType" />
+                <ScalarProperty Name="CustomerPaidInCash" ColumnName="CustomerPaidInCash" />
+                <ScalarProperty Name="WaitingTimeInMinutes" ColumnName="WaitingTimeInMinutes" />
+                <ScalarProperty Name="TMPDispatchFare" ColumnName="TMPDispatchFare" />
+                <ScalarProperty Name="TMPBookingFare" ColumnName="TMPBookingFare" />
+                <ScalarProperty Name="TMPNoShowDriver" ColumnName="TMPNoShowDriver" />
+                <ScalarProperty Name="TMPNoShowCar" ColumnName="TMPNoShowCar" />
+                <ScalarProperty Name="TMPDifferenceAmount" ColumnName="TMPDifferenceAmount" />
+                <ScalarProperty Name="MeruShare" ColumnName="MeruShare" />
+                <ScalarProperty Name="ActualRunningFare" ColumnName="ActualRunningFare" />
+                <ScalarProperty Name="CorporateCompanyName" ColumnName="CorporateCompanyName" />
+                <ScalarProperty Name="DriverPartnerPayment" ColumnName="DriverPartnerPayment" />
+                <ScalarProperty Name="CrossSellingFare" ColumnName="CrossSellingFare" />
+                <ScalarProperty Name="Retriggered" ColumnName="Retriggered" />
+                <ScalarProperty Name="RSTripSequence" ColumnName="RSTripSequence" />
+                <ScalarProperty Name="MatchedJobID" ColumnName="MatchedJobID" />
+                <ScalarProperty Name="IsRideShare" ColumnName="IsRideShare" />
+                <ScalarProperty Name="CorporateCode" ColumnName="CorporateCode" />
+                <ScalarProperty Name="PragathiUpdateRemarks" ColumnName="PragathiUpdateRemarks" />
+                <ScalarProperty Name="PragathiLastUpdatedate" ColumnName="PragathiLastUpdatedate" />
+                <ScalarProperty Name="PragathiStatus" ColumnName="PragathiStatus" />
+                <ScalarProperty Name="TripTypeDes" ColumnName="TripTypeDes" />
+                <ScalarProperty Name="JobTypeDes" ColumnName="JobTypeDes" />
+                <ScalarProperty Name="CabAssignedTime" ColumnName="CabAssignedTime" />
+                <ScalarProperty Name="JobBrand" ColumnName="JobBrand" />
+                <ScalarProperty Name="ShadowAmount" ColumnName="ShadowAmount" />
+                <ScalarProperty Name="WaitingFare" ColumnName="WaitingFare" />
+                <ScalarProperty Name="PaymentMode" ColumnName="PaymentMode" />
+                <ScalarProperty Name="OncallDistance" ColumnName="OncallDistance" />
+                <ScalarProperty Name="HiredDistance" ColumnName="HiredDistance" />
+                <ScalarProperty Name="DestinationAddress" ColumnName="DestinationAddress" />
+                <ScalarProperty Name="CustomerPickUpAddress" ColumnName="CustomerPickUpAddress" />
+                <ScalarProperty Name="PickUpTime" ColumnName="PickUpTime" />
+                <ScalarProperty Name="BookingTime" ColumnName="BookingTime" />
+                <ScalarProperty Name="CustomerEmail" ColumnName="CustomerEmail" />
+                <ScalarProperty Name="Surcharges" ColumnName="Surcharges" />
+                <ScalarProperty Name="TollCharges" ColumnName="TollCharges" />
+                <ScalarProperty Name="BrandTypeName" ColumnName="BrandTypeName" />
+                <ScalarProperty Name="AfterDiscountNetAmount" ColumnName="AfterDiscountNetAmount" />
+                <ScalarProperty Name="TotalDiscountAmount" ColumnName="TotalDiscountAmount" />
+                <ScalarProperty Name="UpdateRemarks" ColumnName="UpdateRemarks" />
+                <ScalarProperty Name="LastUpdatedate" ColumnName="LastUpdatedate" />
+                <ScalarProperty Name="Status" ColumnName="Status" />
+                <ScalarProperty Name="RecordedDate" ColumnName="RecordedDate" />
+                <ScalarProperty Name="ProductType" ColumnName="ProductType" />
+                <ScalarProperty Name="CustomerPaidAmount" ColumnName="CustomerPaidAmount" />
+                <ScalarProperty Name="TotalTripAmount" ColumnName="TotalTripAmount" />
+                <ScalarProperty Name="TotalServiceTax" ColumnName="TotalServiceTax" />
+                <ScalarProperty Name="ServiceTaxOnOthers" ColumnName="ServiceTaxOnOthers" />
+                <ScalarProperty Name="ServiceTaxOnTripFare" ColumnName="ServiceTaxOnTripFare" />
+                <ScalarProperty Name="CouponAmount" ColumnName="CouponAmount" />
+                <ScalarProperty Name="RedeemAmount" ColumnName="RedeemAmount" />
+                <ScalarProperty Name="ConvenienceCharges" ColumnName="ConvenienceCharges" />
+                <ScalarProperty Name="ParkingCharges" ColumnName="ParkingCharges" />
+                <ScalarProperty Name="MeteredFare" ColumnName="MeteredFare" />
+                <ScalarProperty Name="CabRegistration" ColumnName="CabRegistration" />
+                <ScalarProperty Name="SiebelSubscriberID" ColumnName="SiebelSubscriberID" />
+                <ScalarProperty Name="DropLocation" ColumnName="DropLocation" />
+                <ScalarProperty Name="PickupLocation" ColumnName="PickupLocation" />
+                <ScalarProperty Name="TripEndTime" ColumnName="TripEndTime" />
+                <ScalarProperty Name="TripStartTime" ColumnName="TripStartTime" />
+                <ScalarProperty Name="CustomerMobileNo" ColumnName="CustomerMobileNo" />
+                <ScalarProperty Name="CustomerName" ColumnName="CustomerName" />
+                <ScalarProperty Name="CustomerID" ColumnName="CustomerID" />
+                <ScalarProperty Name="TripType" ColumnName="TripType" />
+                <ScalarProperty Name="JobID" ColumnName="JobID" />
+                <ScalarProperty Name="TripID" ColumnName="TripID" />
+                <ScalarProperty Name="SeqID" ColumnName="SeqID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tblJobBookings">
+            <EntityTypeMapping TypeName="CDSBusinessModel.tblJobBooking">
+              <MappingFragment StoreEntitySet="tblJobBooking">
+                <ScalarProperty Name="STFCabSentTime" ColumnName="STFCabSentTime" />
+                <ScalarProperty Name="STFCabNo" ColumnName="STFCabNo" />
+                <ScalarProperty Name="STFDeviceID" ColumnName="STFDeviceID" />
+                <ScalarProperty Name="STFStaus" ColumnName="STFStaus" />
+                <ScalarProperty Name="Outstation_DU_SMS_Alert" ColumnName="Outstation_DU_SMS_Alert" />
+                <ScalarProperty Name="Driver_ReminderSMS2_Out" ColumnName="Driver_ReminderSMS2_Out" />
+                <ScalarProperty Name="Driver_ReminderSMS1_Out" ColumnName="Driver_ReminderSMS1_Out" />
+                <ScalarProperty Name="IsAirportDrop" ColumnName="IsAirportDrop" />
+                <ScalarProperty Name="ISDriver_SMSSent_Outstation" ColumnName="ISDriver_SMSSent_Outstation" />
+                <ScalarProperty Name="IsInterCity" ColumnName="IsInterCity" />
+                <ScalarProperty Name="IsTripEndSMSSent" ColumnName="IsTripEndSMSSent" />
+                <ScalarProperty Name="IsTripStartSMSSent" ColumnName="IsTripStartSMSSent" />
+                <ScalarProperty Name="BusinessCategoryID" ColumnName="BusinessCategoryID" />
+                <ScalarProperty Name="ProductTypeId" ColumnName="ProductTypeId" />
+                <ScalarProperty Name="FixedFareLogId" ColumnName="FixedFareLogId" />
+                <ScalarProperty Name="RefusedSMSStatus" ColumnName="RefusedSMSStatus" />
+                <ScalarProperty Name="RiderName" ColumnName="RiderName" />
+                <ScalarProperty Name="WalletSMSStatus" ColumnName="WalletSMSStatus" />
+                <ScalarProperty Name="AirportNotifySatus" ColumnName="AirportNotifySatus" />
+                <ScalarProperty Name="RatePerKM" ColumnName="RatePerKM" />
+                <ScalarProperty Name="IsIxigoSent" ColumnName="IsIxigoSent" />
+                <ScalarProperty Name="IsRideShare" ColumnName="IsRideShare" />
+                <ScalarProperty Name="AssignedCabProductTypeID" ColumnName="AssignedCabProductTypeID" />
+                <ScalarProperty Name="AssignedCabBrandTypeID" ColumnName="AssignedCabBrandTypeID" />
+                <ScalarProperty Name="DropLong" ColumnName="DropLong" />
+                <ScalarProperty Name="DropLat" ColumnName="DropLat" />
+                <ScalarProperty Name="CabConfSMSSenttime" ColumnName="CabConfSMSSenttime" />
+                <ScalarProperty Name="BrandTypeID" ColumnName="BrandTypeID" />
+                <ScalarProperty Name="PickupLong" ColumnName="PickupLong" />
+                <ScalarProperty Name="PickupLat" ColumnName="PickupLat" />
+                <ScalarProperty Name="CabDeviceID" ColumnName="CabDeviceID" />
+                <ScalarProperty Name="RedeemAmount" ColumnName="RedeemAmount" />
+                <ScalarProperty Name="redeempoints" ColumnName="redeempoints" />
+                <ScalarProperty Name="CouponAmount" ColumnName="CouponAmount" />
+                <ScalarProperty Name="PromoCode" ColumnName="PromoCode" />
+                <ScalarProperty Name="IsGenie" ColumnName="IsGenie" />
+                <ScalarProperty Name="StateTaxStatus" ColumnName="StateTaxStatus" />
+                <ScalarProperty Name="RetentionTime" ColumnName="RetentionTime" />
+                <ScalarProperty Name="ReturnTrip" ColumnName="ReturnTrip" />
+                <ScalarProperty Name="DropCityID" ColumnName="DropCityID" />
+                <ScalarProperty Name="CRDCount" ColumnName="CRDCount" />
+                <ScalarProperty Name="CRDUserID" ColumnName="CRDUserID" />
+                <ScalarProperty Name="PromoSMSStatus" ColumnName="PromoSMSStatus" />
+                <ScalarProperty Name="MobileSMSStatus" ColumnName="MobileSMSStatus" />
+                <ScalarProperty Name="QuotaBorrowingZoneID" ColumnName="QuotaBorrowingZoneID" />
+                <ScalarProperty Name="TrackMobile" ColumnName="TrackMobile" />
+                <ScalarProperty Name="EmailAddress" ColumnName="EmailAddress" />
+                <ScalarProperty Name="MPC" ColumnName="MPC" />
+                <ScalarProperty Name="CorporateJob" ColumnName="CorporateJob" />
+                <ScalarProperty Name="AirportJob" ColumnName="AirportJob" />
+                <ScalarProperty Name="JobSubscriberID" ColumnName="JobSubscriberID" />
+                <ScalarProperty Name="IVRSChannelID" ColumnName="IVRSChannelID" />
+                <ScalarProperty Name="InformedCustomer" ColumnName="InformedCustomer" />
+                <ScalarProperty Name="CalledSubscriber" ColumnName="CalledSubscriber" />
+                <ScalarProperty Name="ManualDispatchedUser" ColumnName="ManualDispatchedUser" />
+                <ScalarProperty Name="CancelledCallDuration" ColumnName="CancelledCallDuration" />
+                <ScalarProperty Name="ModifiedCallDuration" ColumnName="ModifiedCallDuration" />
+                <ScalarProperty Name="CancelledUserID" ColumnName="CancelledUserID" />
+                <ScalarProperty Name="ModifiedUserID" ColumnName="ModifiedUserID" />
+                <ScalarProperty Name="TimetoDispatch" ColumnName="TimetoDispatch" />
+                <ScalarProperty Name="Quota" ColumnName="Quota" />
+                <ScalarProperty Name="TagAs" ColumnName="TagAs" />
+                <ScalarProperty Name="RejectRemarks" ColumnName="RejectRemarks" />
+                <ScalarProperty Name="RejectId" ColumnName="RejectId" />
+                <ScalarProperty Name="SmsAlert" ColumnName="SmsAlert" />
+                <ScalarProperty Name="SmsStatus" ColumnName="SmsStatus" />
+                <ScalarProperty Name="CabRegistrationNo" ColumnName="CabRegistrationNo" />
+                <ScalarProperty Name="CancelReason" ColumnName="CancelReason" />
+                <ScalarProperty Name="CancelId" ColumnName="CancelId" />
+                <ScalarProperty Name="SiebelJobID" ColumnName="SiebelJobID" />
+                <ScalarProperty Name="ChannelID" ColumnName="ChannelID" />
+                <ScalarProperty Name="MappingID" ColumnName="MappingID" />
+                <ScalarProperty Name="UserID" ColumnName="UserID" />
+                <ScalarProperty Name="AddFareID" ColumnName="AddFareID" />
+                <ScalarProperty Name="CityID" ColumnName="CityID" />
+                <ScalarProperty Name="DropTime" ColumnName="DropTime" />
+                <ScalarProperty Name="LanguageID" ColumnName="LanguageID" />
+                <ScalarProperty Name="CallDuration" ColumnName="CallDuration" />
+                <ScalarProperty Name="CabAssignedTime" ColumnName="CabAssignedTime" />
+                <ScalarProperty Name="JobCreationTime" ColumnName="JobCreationTime" />
+                <ScalarProperty Name="CallStartTime" ColumnName="CallStartTime" />
+                <ScalarProperty Name="ETA" ColumnName="ETA" />
+                <ScalarProperty Name="NoOfCabs" ColumnName="NoOfCabs" />
+                <ScalarProperty Name="NoOfBags" ColumnName="NoOfBags" />
+                <ScalarProperty Name="DestZoneID" ColumnName="DestZoneID" />
+                <ScalarProperty Name="DestLocalityId" ColumnName="DestLocalityId" />
+                <ScalarProperty Name="DestAddressPointID" ColumnName="DestAddressPointID" />
+                <ScalarProperty Name="DestinationAddress" ColumnName="DestinationAddress" />
+                <ScalarProperty Name="CabModelName" ColumnName="CabModelName" />
+                <ScalarProperty Name="CabTypeID" ColumnName="CabTypeID" />
+                <ScalarProperty Name="PickUpMessage" ColumnName="PickUpMessage" />
+                <ScalarProperty Name="PickUpZoneID" ColumnName="PickUpZoneID" />
+                <ScalarProperty Name="PickUpLocalityID" ColumnName="PickUpLocalityID" />
+                <ScalarProperty Name="PickUpAddressPointID" ColumnName="PickUpAddressPointID" />
+                <ScalarProperty Name="Landmark" ColumnName="Landmark" />
+                <ScalarProperty Name="Preference" ColumnName="Preference" />
+                <ScalarProperty Name="CustomerPickUpAddress" ColumnName="CustomerPickUpAddress" />
+                <ScalarProperty Name="PickUpTime" ColumnName="PickUpTime" />
+                <ScalarProperty Name="TerminalID" ColumnName="TerminalID" />
+                <ScalarProperty Name="JobTypeID" ColumnName="JobTypeID" />
+                <ScalarProperty Name="CustomerContactMobileNo" ColumnName="CustomerContactMobileNo" />
+                <ScalarProperty Name="CustomerContactLastName" ColumnName="CustomerContactLastName" />
+                <ScalarProperty Name="CustomerContactFirsttName" ColumnName="CustomerContactFirsttName" />
+                <ScalarProperty Name="CustomerMobileNo" ColumnName="CustomerMobileNo" />
+                <ScalarProperty Name="CustomerName" ColumnName="CustomerName" />
+                <ScalarProperty Name="CustomerID" ColumnName="CustomerID" />
+                <ScalarProperty Name="JobID" ColumnName="JobID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tblKerbTripsCustomersDatas">
+            <EntityTypeMapping TypeName="CDSBusinessModel.tblKerbTripsCustomersData">
+              <MappingFragment StoreEntitySet="tblKerbTripsCustomersData">
+                <ScalarProperty Name="FareMultiplier_Kerb" ColumnName="FareMultiplier_Kerb" />
+                <ScalarProperty Name="DropLongitude" ColumnName="DropLongitude" />
+                <ScalarProperty Name="DropLatitude" ColumnName="DropLatitude" />
+                <ScalarProperty Name="Ebill_SMS" ColumnName="Ebill_SMS" />
+                <ScalarProperty Name="Feedback_SMS" ColumnName="Feedback_SMS" />
+                <ScalarProperty Name="TripID" ColumnName="TripID" />
+                <ScalarProperty Name="WalletSMSStatus" ColumnName="WalletSMSStatus" />
+                <ScalarProperty Name="RecordedDateTime" ColumnName="RecordedDateTime" />
+                <ScalarProperty Name="EmailReceivedTime" ColumnName="EmailReceivedTime" />
+                <ScalarProperty Name="SMSStatus" ColumnName="SMSStatus" />
+                <ScalarProperty Name="CityID" ColumnName="CityID" />
+                <ScalarProperty Name="CustomerName" ColumnName="CustomerName" />
+                <ScalarProperty Name="CabRegistrationNo" ColumnName="CabRegistrationNo" />
+                <ScalarProperty Name="TripStartTime" ColumnName="TripStartTime" />
+                <ScalarProperty Name="SiebelDeviceID" ColumnName="SiebelDeviceID" />
+                <ScalarProperty Name="EmailID" ColumnName="EmailID" />
+                <ScalarProperty Name="MobileNo" ColumnName="MobileNo" />
+                <ScalarProperty Name="KerbCustomerID" ColumnName="KerbCustomerID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tblTripMasters">
+            <EntityTypeMapping TypeName="CDSBusinessModel.tblTripMaster">
+              <MappingFragment StoreEntitySet="tblTripMaster">
+                <ScalarProperty Name="Garage_Drop_Distance" ColumnName="Garage_Drop_Distance" />
+                <ScalarProperty Name="AirportToll" ColumnName="AirportToll" />
+                <ScalarProperty Name="PWSCash" ColumnName="PWSCash" />
+                <ScalarProperty Name="TSOutCallStatus" ColumnName="TSOutCallStatus" />
+                <ScalarProperty Name="IGST" ColumnName="IGST" />
+                <ScalarProperty Name="CGST" ColumnName="CGST" />
+                <ScalarProperty Name="SGST" ColumnName="SGST" />
+                <ScalarProperty Name="RideTimeFare" ColumnName="RideTimeFare" />
+                <ScalarProperty Name="RideTime" ColumnName="RideTime" />
+                <ScalarProperty Name="CalcOncallDistance" ColumnName="CalcOncallDistance" />
+                <ScalarProperty Name="CalcFare" ColumnName="CalcFare" />
+                <ScalarProperty Name="CalcHiredDistance" ColumnName="CalcHiredDistance" />
+                <ScalarProperty Name="DistanceCalStatusID" ColumnName="DistanceCalStatusID" />
+                <ScalarProperty Name="CrossSellingFare" ColumnName="CrossSellingFare" />
+                <ScalarProperty Name="IsRideShare" ColumnName="IsRideShare" />
+                <ScalarProperty Name="ProductTypeID" ColumnName="ProductTypeID" />
+                <ScalarProperty Name="GoogleCumulateDistance" ColumnName="GoogleCumulateDistance" />
+                <ScalarProperty Name="GoogleTotalDistance" ColumnName="GoogleTotalDistance" />
+                <ScalarProperty Name="TEReceivedTime" ColumnName="TEReceivedTime" />
+                <ScalarProperty Name="TSReceivedTime" ColumnName="TSReceivedTime" />
+                <ScalarProperty Name="TollCharges" ColumnName="TollCharges" />
+                <ScalarProperty Name="AdditionalFare" ColumnName="AdditionalFare" />
+                <ScalarProperty Name="GPSValueSync" ColumnName="GPSValueSync" />
+                <ScalarProperty Name="NoOfAttempts" ColumnName="NoOfAttempts" />
+                <ScalarProperty Name="WalletType" ColumnName="WalletType" />
+                <ScalarProperty Name="WalletTSStatus" ColumnName="WalletTSStatus" />
+                <ScalarProperty Name="EmailSentDateTime" ColumnName="EmailSentDateTime" />
+                <ScalarProperty Name="RunningFare" ColumnName="RunningFare" />
+                <ScalarProperty Name="DeviceTotalFare" ColumnName="DeviceTotalFare" />
+                <ScalarProperty Name="BrandTypeID" ColumnName="BrandTypeID" />
+                <ScalarProperty Name="AdminEmailSendStatus" ColumnName="AdminEmailSendStatus" />
+                <ScalarProperty Name="RedeemAmount" ColumnName="RedeemAmount" />
+                <ScalarProperty Name="CouponAmount" ColumnName="CouponAmount" />
+                <ScalarProperty Name="ZoneID_TS" ColumnName="ZoneID_TS" />
+                <ScalarProperty Name="CabLongitude_TS" ColumnName="CabLongitude_TS" />
+                <ScalarProperty Name="CabLatitude_TS" ColumnName="CabLatitude_TS" />
+                <ScalarProperty Name="EmailSendStatus" ColumnName="EmailSendStatus" />
+                <ScalarProperty Name="ShadowAmount" ColumnName="ShadowAmount" />
+                <ScalarProperty Name="ExpectedAmount" ColumnName="ExpectedAmount" />
+                <ScalarProperty Name="RetentionServiceStatus" ColumnName="RetentionServiceStatus" />
+                <ScalarProperty Name="RRNumber" ColumnName="RRNumber" />
+                <ScalarProperty Name="WaitingFare" ColumnName="WaitingFare" />
+                <ScalarProperty Name="TotalWaitTime" ColumnName="TotalWaitTime" />
+                <ScalarProperty Name="TripWaitingChargeforCorporate" ColumnName="TripWaitingChargeforCorporate" />
+                <ScalarProperty Name="TripOncallWaitingCharge" ColumnName="TripOncallWaitingCharge" />
+                <ScalarProperty Name="TripOncallWaitingTime" ColumnName="TripOncallWaitingTime" />
+                <ScalarProperty Name="AirportCharges" ColumnName="AirportCharges" />
+                <ScalarProperty Name="FeedbackSMS" ColumnName="FeedbackSMS" />
+                <ScalarProperty Name="BookingFee" ColumnName="BookingFee" />
+                <ScalarProperty Name="TotalRevenueDistance" ColumnName="TotalRevenueDistance" />
+                <ScalarProperty Name="DropLocation" ColumnName="DropLocation" />
+                <ScalarProperty Name="PickupLocation" ColumnName="PickupLocation" />
+                <ScalarProperty Name="CabRegistration" ColumnName="CabRegistration" />
+                <ScalarProperty Name="SubscriberID" ColumnName="SubscriberID" />
+                <ScalarProperty Name="MDTKerbJobID" ColumnName="MDTKerbJobID" />
+                <ScalarProperty Name="PaymentMode" ColumnName="PaymentMode" />
+                <ScalarProperty Name="SecEduCess" ColumnName="SecEduCess" />
+                <ScalarProperty Name="EduCess" ColumnName="EduCess" />
+                <ScalarProperty Name="ServiceTax" ColumnName="ServiceTax" />
+                <ScalarProperty Name="TotalTripFare" ColumnName="TotalTripFare" />
+                <ScalarProperty Name="TripEndKilometer" ColumnName="TripEndKilometer" />
+                <ScalarProperty Name="TripStartKilometer" ColumnName="TripStartKilometer" />
+                <ScalarProperty Name="LoginCount" ColumnName="LoginCount" />
+                <ScalarProperty Name="CreditCardID" ColumnName="CreditCardID" />
+                <ScalarProperty Name="ScheduledTripNo" ColumnName="ScheduledTripNo" />
+                <ScalarProperty Name="OnCallDistcane" ColumnName="OnCallDistcane" />
+                <ScalarProperty Name="DistFromLastTripToCurrTrip" ColumnName="DistFromLastTripToCurrTrip" />
+                <ScalarProperty Name="TripEndTime" ColumnName="TripEndTime" />
+                <ScalarProperty Name="TripStartTime" ColumnName="TripStartTime" />
+                <ScalarProperty Name="TripEndID" ColumnName="TripEndID" />
+                <ScalarProperty Name="TripStartID" ColumnName="TripStartID" />
+                <ScalarProperty Name="MappingID" ColumnName="MappingID" />
+                <ScalarProperty Name="TripTypeID" ColumnName="TripTypeID" />
+                <ScalarProperty Name="JobID" ColumnName="JobID" />
+                <ScalarProperty Name="TripNo" ColumnName="TripNo" />
+                <ScalarProperty Name="TripID" ColumnName="TripID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <FunctionImportMapping FunctionImportName="USP_UpdatePostPaymentSuccess" FunctionName="CDSBusinessModel.Store.USP_UpdatePostPaymentSuccess" />
+          <EntitySetMapping Name="tbl_Payment_Link">
+            <EntityTypeMapping TypeName="CDSBusinessModel.tbl_Payment_Link">
+              <MappingFragment StoreEntitySet="tbl_Payment_Link">
+                <ScalarProperty Name="PaymentLink_Id" ColumnName="PaymentLink_Id" />
+                <ScalarProperty Name="LastUpdatedOn" ColumnName="LastUpdatedOn" />
+                <ScalarProperty Name="CreatedOn" ColumnName="CreatedOn" />
+                <ScalarProperty Name="Status" ColumnName="Status" />
+                <ScalarProperty Name="Email" ColumnName="Email" />
+                <ScalarProperty Name="Contact" ColumnName="Contact" />
+                <ScalarProperty Name="Description" ColumnName="Description" />
+                <ScalarProperty Name="Url" ColumnName="Url" />
+                <ScalarProperty Name="Payment_Method" ColumnName="Payment_Method" />
+                <ScalarProperty Name="Payment_Source" ColumnName="Payment_Source" />
+                <ScalarProperty Name="PG_Ref_Data" ColumnName="PG_Ref_Data" />
+                <ScalarProperty Name="PG_ReceiptNo" ColumnName="PG_ReceiptNo" />
+                <ScalarProperty Name="PG_InvoiceId" ColumnName="PG_InvoiceId" />
+                <ScalarProperty Name="PG_PaymentId" ColumnName="PG_PaymentId" />
+                <ScalarProperty Name="PG_OrderId" ColumnName="PG_OrderId" />
+                <ScalarProperty Name="Payment_Amount_Paise" ColumnName="Payment_Amount_Paise" />
+                <ScalarProperty Name="Request_RefId" ColumnName="Request_RefId" />
+                <ScalarProperty Name="Payment_Transaction_ID" ColumnName="Payment_Transaction_ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <FunctionImportMapping FunctionImportName="usp_Wallet_GetPartialAmountTransactionDetails" FunctionName="CDSBusinessModel.Store.usp_Wallet_GetPartialAmountTransactionDetails">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="CDSBusinessModel.usp_Wallet_GetPartialAmountTransactionDetails_Result">
+                <ScalarProperty Name="JobID" ColumnName="JobID" />
+                <ScalarProperty Name="MobileNumber" ColumnName="MobileNumber" />
+                <ScalarProperty Name="Amount" ColumnName="Amount" />
+                <ScalarProperty Name="ProviderID" ColumnName="ProviderID" />
+                <ScalarProperty Name="RecordedDateTime" ColumnName="RecordedDateTime" />
+                <ScalarProperty Name="OrderId" ColumnName="OrderId" />
+                <ScalarProperty Name="EmailAddress" ColumnName="EmailAddress" />
+                <ScalarProperty Name="AmountType" ColumnName="AmountType" />
+                <ScalarProperty Name="TripID" ColumnName="TripID" />
+                <ScalarProperty Name="ID" ColumnName="ID" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <EntitySetMapping Name="Tbl_Payment_BlackListedCards">
+            <EntityTypeMapping TypeName="CDSBusinessModel.Tbl_Payment_BlackListedCards">
+              <MappingFragment StoreEntitySet="Tbl_Payment_BlackListedCards">
+                <ScalarProperty Name="UpdatedOn" ColumnName="UpdatedOn" />
+                <ScalarProperty Name="CreatedOn" ColumnName="CreatedOn" />
+                <ScalarProperty Name="IsActive" ColumnName="IsActive" />
+                <ScalarProperty Name="CardType" ColumnName="CardType" />
+                <ScalarProperty Name="NetworkName" ColumnName="NetworkName" />
+                <ScalarProperty Name="IssuerCode" ColumnName="IssuerCode" />
+                <ScalarProperty Name="BlackListedCardId" ColumnName="BlackListedCardId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tblCabMaster">
+            <EntityTypeMapping TypeName="CDSBusinessModel.tblCabMaster">
+              <MappingFragment StoreEntitySet="tblCabMaster">
+                <ScalarProperty Name="ActualState" ColumnName="ActualState" />
+                <ScalarProperty Name="ActualCity" ColumnName="ActualCity" />
+                <ScalarProperty Name="PermitType" ColumnName="PermitType" />
+                <ScalarProperty Name="Vehicle_Identification_No" ColumnName="Vehicle_Identification_No" />
+                <ScalarProperty Name="BusinessCategoryID" ColumnName="BusinessCategoryID" />
+                <ScalarProperty Name="CabColor" ColumnName="CabColor" />
+                <ScalarProperty Name="SPID" ColumnName="SPID" />
+                <ScalarProperty Name="ProductTypeID" ColumnName="ProductTypeID" />
+                <ScalarProperty Name="BrandTypeID" ColumnName="BrandTypeID" />
+                <ScalarProperty Name="CabModel_Actual" ColumnName="CabModel_Actual" />
+                <ScalarProperty Name="GPSFixedTimeForDispatch" ColumnName="GPSFixedTimeForDispatch" />
+                <ScalarProperty Name="GPSFixedLongitude" ColumnName="GPSFixedLongitude" />
+                <ScalarProperty Name="GPSFixedLatitude" ColumnName="GPSFixedLatitude" />
+                <ScalarProperty Name="GPSFixedTime" ColumnName="GPSFixedTime" />
+                <ScalarProperty Name="GPSFixedLocation" ColumnName="GPSFixedLocation" />
+                <ScalarProperty Name="SubLocalityID" ColumnName="SubLocalityID" />
+                <ScalarProperty Name="ZoneName" ColumnName="ZoneName" />
+                <ScalarProperty Name="ZoneID" ColumnName="ZoneID" />
+                <ScalarProperty Name="LocalityName" ColumnName="LocalityName" />
+                <ScalarProperty Name="LocalityID" ColumnName="LocalityID" />
+                <ScalarProperty Name="OdometerUpdateTime" ColumnName="OdometerUpdateTime" />
+                <ScalarProperty Name="PreviousOdometer" ColumnName="PreviousOdometer" />
+                <ScalarProperty Name="OdometerUpdateUserID" ColumnName="OdometerUpdateUserID" />
+                <ScalarProperty Name="OdoMeterReading" ColumnName="OdoMeterReading" />
+                <ScalarProperty Name="RecordUpdateTime" ColumnName="RecordUpdateTime" />
+                <ScalarProperty Name="CabLocation" ColumnName="CabLocation" />
+                <ScalarProperty Name="Direction" ColumnName="Direction" />
+                <ScalarProperty Name="Speed" ColumnName="Speed" />
+                <ScalarProperty Name="CabGPSDateTime" ColumnName="CabGPSDateTime" />
+                <ScalarProperty Name="IgnitionStatus" ColumnName="IgnitionStatus" />
+                <ScalarProperty Name="MeterStatus" ColumnName="MeterStatus" />
+                <ScalarProperty Name="CabLongitude" ColumnName="CabLongitude" />
+                <ScalarProperty Name="CabLatitude" ColumnName="CabLatitude" />
+                <ScalarProperty Name="SeibelCabID" ColumnName="SeibelCabID" />
+                <ScalarProperty Name="CabStatusID" ColumnName="CabStatusID" />
+                <ScalarProperty Name="CabDesc" ColumnName="CabDesc" />
+                <ScalarProperty Name="CabCompanyName" ColumnName="CabCompanyName" />
+                <ScalarProperty Name="CabModelName" ColumnName="CabModelName" />
+                <ScalarProperty Name="CityID" ColumnName="CityID" />
+                <ScalarProperty Name="OdoMeterNo" ColumnName="OdoMeterNo" />
+                <ScalarProperty Name="SpeedLimit" ColumnName="SpeedLimit" />
+                <ScalarProperty Name="CabYearMake" ColumnName="CabYearMake" />
+                <ScalarProperty Name="ChasisNo" ColumnName="ChasisNo" />
+                <ScalarProperty Name="EngineNo" ColumnName="EngineNo" />
+                <ScalarProperty Name="RegistrationDate" ColumnName="RegistrationDate" />
+                <ScalarProperty Name="CabRegistrationNo" ColumnName="CabRegistrationNo" />
+                <ScalarProperty Name="CabTypeID" ColumnName="CabTypeID" />
+                <ScalarProperty Name="CabID" ColumnName="CabID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="False" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>

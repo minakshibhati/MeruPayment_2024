@@ -1,0 +1,56 @@
+﻿@model MeruPaymentBO.CardAuthCheckoutBO
+
+@{
+    ViewBag.Title = "Card Authorization Request";
+}
+
+<p>
+    @ViewBag.Message
+</p>
+
+@if (ViewBag.Message == null || ViewBag.Message.Length == 0)
+{
+    <script src="https://checkout.razorpay.com/v1/checkout.js"></script>
+    <script>
+            var host = "@System.Configuration.ConfigurationManager.AppSettings["MeruPayment_Host"]";
+
+            var options = {
+                "key": "@System.Configuration.ConfigurationManager.AppSettings["Razor_Key_Id"]",
+                "amount": "@Model.Amount", // 2000 paise = INR 20
+                "name": "@System.Configuration.ConfigurationManager.AppSettings["MerchantName"]",
+                "description": "@Model.Desc",
+                "order_id": "@Model.PGOrderId", // order ID generated from backend
+                "customer_id": "@Model.PGCustomerId",
+                "recurring": "1",
+                "image": host + "@System.Configuration.ConfigurationManager.AppSettings["MerchantLogo"]",
+                "redirect": "true",  //for callback
+                "callback_url": host + "/RazorAddCardResponse?mpid=@Model.PaymentId",
+                "prefill": {
+                    "name": "@Model.FullName",
+                    "email": "@Model.Email",
+                    "contact": "@Model.Contact",
+                    "method": "card"
+                },
+                "modal": {
+                    "escape": false,
+                    "ondismiss": function () {
+                        window.location = host + "/RazorAddCardResponse?msg=cancelled&mpid=@Model.PaymentId";
+                    }
+                },
+                "notes": {
+                    "Meru_PaymentId": "@Model.PaymentId",
+                    "PurchaseDescription": "@Model.Desc"
+                },
+                "theme": {
+                    "color": "@Model.AppColorCode",
+                    "hide_topbar": true
+                }
+            };
+
+            var rzp1 = new Razorpay(options);
+            rzp1.open();
+
+    </script>
+}
+
+

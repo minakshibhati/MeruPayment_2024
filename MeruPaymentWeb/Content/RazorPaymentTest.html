@@ -1,0 +1,71 @@
+﻿<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <title>Razor Payment Test</title>
+</head>
+<body>
+
+    <h1>LOCAL</h1>
+    <form action="http://localhost:55324/RazorPayment" method="post">
+        SP Id: <!--<input type="text" name="SPId" value="1001">--><br>
+        Amount: <input type="text" name="Amount" value="2000"><br>
+        Purchase Description: <input type="text" name="PurchaseDescription" value="Cab Registraiton"><br>
+        Name: <input type="text" name="Name" value="Muthu"><br>
+        Email: <input type="text" name="Email" value="muthu.nadar@meru.in"><br>
+        Contact: <input type="text" name="Contact" value="9833240124"><br>
+        Payment Method: <select name="PaymentMethod" value="9833240124">
+            <option value="">Unknown</option>
+            <option value="card">Card</option>
+            <option value="netbanking">Net Banking</option>
+            <option value="wallet">Wallet</option>
+            <option value="upi">UPI</option>
+        </select> <br>
+        CarNo: <!--<input type="text" name="CarNo" value="MH17Y1515">--><br>
+        Source: <input type="text" name="Source" value="com.meru.merumobile"><br>
+        ReferenceId: <input type="text" name="ReferenceId" value="123"><br><!--any reference number for tracing-->
+        Checksum: <input type="text" name="Checksum" value="dsfkjahgdfjlkuyiuqywvchgiuy"><br> <!--replaced key Meru-Signature with checksum-->
+        <input type="submit" value="Submit">
+    </form>
+
+
+    <h1>DEV</h1>
+    <form action="https://manthandev.merucabs.com/MeruPaymentWeb/RazorPayment" method="post">
+        Amount: <input type="text" name="Amount" value="100"><br>
+        Purchase Description: <input type="text" name="PurchaseDescription" value="Outstation Payment"><br>
+        Name: <input type="text" name="Name" value="Vaibhav"><br>
+        Email: <input type="text" name="Email" value="vmakwana28@gmail.com"><br>
+        Contact: <input type="text" name="Contact" value="9821354464"><br>
+        Payment Method: <select name="PaymentMethod" value="">
+            <option value="card">Card</option>
+            <option value="netbanking">Net Banking</option>
+            <option value="wallet">Wallet</option>
+            <option value="upi">UPI</option>
+        </select> <br>
+        Source: <input type="text" name="Source" value="com.merucabs.dis"><br>
+        ReferenceId: <input type="text" name="ReferenceId" value="891"><br><!--any reference number for tracing-->
+        Checksum: <input type="text" name="Checksum" value="c60dd0d64860a5ae69e4a25496f02158582e750d068906522611cdd1d9215e78"><br> <!--replaced key Meru-Signature with checksum-->
+        <input type="submit" value="Submit">
+    </form>
+
+    <h1>PRODUCTION</h1>
+    <form action="https://mobileapp.merucabs.com/MeruPaymentWeb/RazorPayment" method="post">
+        <!--<form action="http://localhost:55324/RazorPayment" method="post">-->
+        Amount: <input type="text" name="Amount" value="100"><br>
+        Purchase Description: <input type="text" name="PurchaseDescription" value="Outstation Payment"><br>
+        Name: <input type="text" name="Name" value="Vaibhav"><br>
+        Email: <input type="text" name="Email" value="vmakwana28@gmail.com"><br>
+        Contact: <input type="text" name="Contact" value="9821354464"><br>
+        Payment Method: <select name="PaymentMethod" value="">
+            <option value="card">Card</option>
+            <option value="netbanking">Net Banking</option>
+            <option value="wallet">Wallet</option>
+            <option value="upi">UPI</option>
+        </select> <br>
+        Source: <input type="text" name="Source" value="outstationweb"><br>
+        ReferenceId: <input type="text" name="ReferenceId" value="891"><br><!--any reference number for tracing-->
+        Checksum: <input type="text" name="Checksum" value="442b44e1b17ee07d6bc2e0653cfd5da9fd52190617b689a9c81ab9098250f975"><br> <!--replaced key Meru-Signature with checksum-->
+        <input type="submit" value="Submit">
+    </form>
+
+</body>
+</html>

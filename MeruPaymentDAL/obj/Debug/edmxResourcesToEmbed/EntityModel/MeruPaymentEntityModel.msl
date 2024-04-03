@@ -1,0 +1,595 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="CDSBusinessModelStoreContainer" CdmEntityContainer="CDSBusinessEntities">
+    <EntitySetMapping Name="tbl_Payment_Gateway">
+      <EntityTypeMapping TypeName="CDSBusinessModel.tbl_Payment_Gateway">
+        <MappingFragment StoreEntitySet="tbl_Payment_Gateway">
+          <ScalarProperty Name="Payment_Gateway_ID" ColumnName="Payment_Gateway_ID" />
+          <ScalarProperty Name="Payment_Gateway" ColumnName="Payment_Gateway" />
+          <ScalarProperty Name="Record_Created_DateTime" ColumnName="Record_Created_DateTime" />
+          <ScalarProperty Name="Record_Updated_DateTime" ColumnName="Record_Updated_DateTime" />
+          <ScalarProperty Name="Record_Status" ColumnName="Record_Status" />
+          <ScalarProperty Name="Payment_Gateway_Code" ColumnName="Payment_Gateway_Code" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="tbl_Payment_History">
+      <EntityTypeMapping TypeName="CDSBusinessModel.tbl_Payment_History">
+        <MappingFragment StoreEntitySet="tbl_Payment_History">
+          <ScalarProperty Name="Payment_Request_ID" ColumnName="Payment_Request_ID" />
+          <ScalarProperty Name="Payment_Status_Code" ColumnName="Payment_Status_Code" />
+          <ScalarProperty Name="Record_Created_DateTime" ColumnName="Record_Created_DateTime" />
+          <ScalarProperty Name="Updating_Process" ColumnName="Updating_Process" />
+          <ScalarProperty Name="Payment_Status_ID" ColumnName="Payment_Status_ID" />
+          <ScalarProperty Name="PaymentTransactionId" ColumnName="PaymentTransactionId" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="tbl_Payment_Method">
+      <EntityTypeMapping TypeName="CDSBusinessModel.tbl_Payment_Method">
+        <MappingFragment StoreEntitySet="tbl_Payment_Method">
+          <ScalarProperty Name="Payment_Method_ID" ColumnName="Payment_Method_ID" />
+          <ScalarProperty Name="Payment_Method" ColumnName="Payment_Method" />
+          <ScalarProperty Name="Payment_Method_Desc" ColumnName="Payment_Method_Desc" />
+          <ScalarProperty Name="Record_Created_DateTime" ColumnName="Record_Created_DateTime" />
+          <ScalarProperty Name="Record_Updated_DateTime" ColumnName="Record_Updated_DateTime" />
+          <ScalarProperty Name="Record_Status" ColumnName="Record_Status" />
+          <ScalarProperty Name="Payment_Method_Code" ColumnName="Payment_Method_Code" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="tbl_Payment_Request_Response">
+      <EntityTypeMapping TypeName="CDSBusinessModel.tbl_Payment_Request_Response">
+        <MappingFragment StoreEntitySet="tbl_Payment_Request_Response">
+          <ScalarProperty Name="Payment_Request_Response_ID" ColumnName="Payment_Request_Response_ID" />
+          <ScalarProperty Name="PaymentIncrementId" ColumnName="PaymentIncrementId" />
+          <ScalarProperty Name="Request_Key" ColumnName="Request_Key" />
+          <ScalarProperty Name="Request_Value" ColumnName="Request_Value" />
+          <ScalarProperty Name="Record_Call_Source" ColumnName="Record_Call_Source" />
+          <ScalarProperty Name="Record_Type" ColumnName="Record_Type" />
+          <ScalarProperty Name="Record_Created_DateTime" ColumnName="Record_Created_DateTime" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="tbl_Payment_Request_System">
+      <EntityTypeMapping TypeName="CDSBusinessModel.tbl_Payment_Request_System">
+        <MappingFragment StoreEntitySet="tbl_Payment_Request_System">
+          <ScalarProperty Name="SPName" ColumnName="SPName" />
+          <ScalarProperty Name="EnableAuthToken" ColumnName="EnableAuthToken" />
+          <ScalarProperty Name="Payment_Request_System_ID" ColumnName="Payment_Request_System_ID" />
+          <ScalarProperty Name="Payment_Request_System" ColumnName="Payment_Request_System" />
+          <ScalarProperty Name="Payment_Request_System_Secret" ColumnName="Payment_Request_System_Secret" />
+          <ScalarProperty Name="Record_Created_DateTime" ColumnName="Record_Created_DateTime" />
+          <ScalarProperty Name="Record_Updated_DateTime" ColumnName="Record_Updated_DateTime" />
+          <ScalarProperty Name="Record_Status" ColumnName="Record_Status" />
+          <ScalarProperty Name="Payment_Request_System_Name" ColumnName="Payment_Request_System_Name" />
+          <ScalarProperty Name="Payment_Request_System_KeyInput" ColumnName="Payment_Request_System_KeyInput" />
+          <ScalarProperty Name="Payment_Request_System_Return_URL" ColumnName="Payment_Request_System_Return_URL" />
+          <ScalarProperty Name="ColorCode" ColumnName="ColorCode" />
+          <ScalarProperty Name="Payment_Request_Channel_Code" ColumnName="Payment_Request_Channel_Code" />
+          <ScalarProperty Name="QueueName" ColumnName="QueueName" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="tbl_Payment_Status_Master">
+      <EntityTypeMapping TypeName="CDSBusinessModel.tbl_Payment_Status_Master">
+        <MappingFragment StoreEntitySet="tbl_Payment_Status_Master">
+          <ScalarProperty Name="Payment_Status_ID" ColumnName="Payment_Status_ID" />
+          <ScalarProperty Name="Payment_Status" ColumnName="Payment_Status" />
+          <ScalarProperty Name="Payment_Status_Desc" ColumnName="Payment_Status_Desc" />
+          <ScalarProperty Name="Record_Created_DateTime" ColumnName="Record_Created_DateTime" />
+          <ScalarProperty Name="Record_Updated_DateTime" ColumnName="Record_Updated_DateTime" />
+          <ScalarProperty Name="Record_Status" ColumnName="Record_Status" />
+          <ScalarProperty Name="Payment_Status_Code" ColumnName="Payment_Status_Code" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="tblMeruPayments">
+      <EntityTypeMapping TypeName="CDSBusinessModel.tblMeruPayment">
+        <MappingFragment StoreEntitySet="tblMeruPayment">
+          <ScalarProperty Name="PaymentIncrementId" ColumnName="PaymentIncrementId" />
+          <ScalarProperty Name="RequestSource" ColumnName="RequestSource" />
+          <ScalarProperty Name="RequestRefValues" ColumnName="RequestRefValues" />
+          <ScalarProperty Name="PaymentAmount" ColumnName="PaymentAmount" />
+          <ScalarProperty Name="PaymentSource" ColumnName="PaymentSource" />
+          <ScalarProperty Name="PaymentMethod" ColumnName="PaymentMethod" />
+          <ScalarProperty Name="PaymentStatus" ColumnName="PaymentStatus" />
+          <ScalarProperty Name="CreatedOn" ColumnName="CreatedOn" />
+          <ScalarProperty Name="LastUpdatedOn" ColumnName="LastUpdatedOn" />
+          <ScalarProperty Name="PaymentRefValues" ColumnName="PaymentRefValues" />
+          <ScalarProperty Name="PaymentRefData1" ColumnName="PaymentRefData1" />
+          <ScalarProperty Name="PaymentRefData2" ColumnName="PaymentRefData2" />
+          <ScalarProperty Name="PaymentRefData3" ColumnName="PaymentRefData3" />
+          <ScalarProperty Name="PaymentDetail" ColumnName="PaymentDetail" />
+          <ScalarProperty Name="Payment_Reconciled" ColumnName="Payment_Reconciled" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="tbl_PaymentTransaction">
+      <EntityTypeMapping TypeName="CDSBusinessModel.tbl_PaymentTransaction">
+        <MappingFragment StoreEntitySet="tbl_PaymentTransaction">
+          <ScalarProperty Name="OrderResponse" ColumnName="OrderResponse" />
+          <ScalarProperty Name="Notes" ColumnName="Notes" />
+          <ScalarProperty Name="Offer_Id" ColumnName="Offer_Id" />
+          <ScalarProperty Name="Receipt" ColumnName="Receipt" />
+          <ScalarProperty Name="Currency" ColumnName="Currency" />
+          <ScalarProperty Name="AmountDue" ColumnName="AmountDue" />
+          <ScalarProperty Name="AmountPaid" ColumnName="AmountPaid" />
+          <ScalarProperty Name="PaymentResponse" ColumnName="PaymentResponse" />
+          <ScalarProperty Name="LastStatusOn" ColumnName="LastStatusOn" />
+          <ScalarProperty Name="BusinessCategoryId" ColumnName="BusinessCategoryId" />
+          <ScalarProperty Name="PaymentMethodRefId" ColumnName="PaymentMethodRefId" />
+          <ScalarProperty Name="DeviceId" ColumnName="DeviceId" />
+          <ScalarProperty Name="Payment_Type" ColumnName="Payment_Type" />
+          <ScalarProperty Name="Payment_Reconciled" ColumnName="Payment_Reconciled" />
+          <ScalarProperty Name="Contact" ColumnName="Contact" />
+          <ScalarProperty Name="Email" ColumnName="Email" />
+          <ScalarProperty Name="FullName" ColumnName="FullName" />
+          <ScalarProperty Name="PurchaseDescription" ColumnName="PurchaseDescription" />
+          <ScalarProperty Name="Refund_Amount_Paise" ColumnName="Refund_Amount_Paise" />
+          <ScalarProperty Name="RequestRefId" ColumnName="RequestRefId" />
+          <ScalarProperty Name="PG_Transaction_Code" ColumnName="PG_Transaction_Code" />
+          <ScalarProperty Name="Payment_Status_Code" ColumnName="Payment_Status_Code" />
+          <ScalarProperty Name="Payment_Method_Code" ColumnName="Payment_Method_Code" />
+          <ScalarProperty Name="Payment_Gateway_Code" ColumnName="Payment_Gateway_Code" />
+          <ScalarProperty Name="LastUpdatedOn" ColumnName="LastUpdatedOn" />
+          <ScalarProperty Name="CreatedOn" ColumnName="CreatedOn" />
+          <ScalarProperty Name="PaymentRefData3" ColumnName="PaymentRefData3" />
+          <ScalarProperty Name="PaymentRefData2" ColumnName="PaymentRefData2" />
+          <ScalarProperty Name="PaymentRefData1" ColumnName="PaymentRefData1" />
+          <ScalarProperty Name="PaymentRefValues" ColumnName="PaymentRefValues" />
+          <ScalarProperty Name="PaymentStatus" ColumnName="PaymentStatus" />
+          <ScalarProperty Name="PaymentMethod" ColumnName="PaymentMethod" />
+          <ScalarProperty Name="PaymentSource" ColumnName="PaymentSource" />
+          <ScalarProperty Name="Payment_Amount_Paise" ColumnName="Payment_Amount_Paise" />
+          <ScalarProperty Name="RequestRefValues" ColumnName="RequestRefValues" />
+          <ScalarProperty Name="RequestSource" ColumnName="RequestSource" />
+          <ScalarProperty Name="Payment_Transaction_ID" ColumnName="Payment_Transaction_ID" />
+          <ScalarProperty Name="PaymentIncrementId" ColumnName="PaymentIncrementId" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="tbl_Payment_Customer_Details">
+      <EntityTypeMapping TypeName="CDSBusinessModel.tbl_Payment_Customer_Details">
+        <MappingFragment StoreEntitySet="tbl_Payment_Customer_Details">
+          <ScalarProperty Name="Customer_Status" ColumnName="Customer_Status" />
+          <ScalarProperty Name="Record_Update_DateTime" ColumnName="Record_Update_DateTime" />
+          <ScalarProperty Name="Record_Created_DateTime" ColumnName="Record_Created_DateTime" />
+          <ScalarProperty Name="Customer_Mobile_No" ColumnName="Customer_Mobile_No" />
+          <ScalarProperty Name="Customer_Email" ColumnName="Customer_Email" />
+          <ScalarProperty Name="Customer_Name" ColumnName="Customer_Name" />
+          <ScalarProperty Name="Payment_Gateway_ID" ColumnName="Payment_Gateway_ID" />
+          <ScalarProperty Name="Provider_Customer_ID" ColumnName="Provider_Customer_ID" />
+          <ScalarProperty Name="ID" ColumnName="ID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="tbl_Payment_Customer_Card_Details">
+      <EntityTypeMapping TypeName="CDSBusinessModel.tbl_Payment_Customer_Card_Details">
+        <MappingFragment StoreEntitySet="tbl_Payment_Customer_Card_Details">
+          <ScalarProperty Name="DeviceId" ColumnName="DeviceId" />
+          <ScalarProperty Name="IsDeleted" ColumnName="IsDeleted" />
+          <ScalarProperty Name="Card_Exipry_DateTime" ColumnName="Card_Exipry_DateTime" />
+          <ScalarProperty Name="Record_Update_DateTime" ColumnName="Record_Update_DateTime" />
+          <ScalarProperty Name="Record_Created_DateTime" ColumnName="Record_Created_DateTime" />
+          <ScalarProperty Name="Card_Status" ColumnName="Card_Status" />
+          <ScalarProperty Name="Card_Issuer_Code" ColumnName="Card_Issuer_Code" />
+          <ScalarProperty Name="Card_Type" ColumnName="Card_Type" />
+          <ScalarProperty Name="Is_Default" ColumnName="Is_Default" />
+          <ScalarProperty Name="Provider_Customer_ID" ColumnName="Provider_Customer_ID" />
+          <ScalarProperty Name="Token_ID" ColumnName="Token_ID" />
+          <ScalarProperty Name="Last_Four_Digit" ColumnName="Last_Four_Digit" />
+          <ScalarProperty Name="Network_Name" ColumnName="Network_Name" />
+          <ScalarProperty Name="Name_On_Card" ColumnName="Name_On_Card" />
+          <ScalarProperty Name="ID" ColumnName="ID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="tblTripReceiptCalculators">
+      <EntityTypeMapping TypeName="CDSBusinessModel.tblTripReceiptCalculator">
+        <MappingFragment StoreEntitySet="tblTripReceiptCalculator">
+          <ScalarProperty Name="MonroeTripType" ColumnName="MonroeTripType" />
+          <ScalarProperty Name="EmpShift" ColumnName="EmpShift" />
+          <ScalarProperty Name="DutySlipURL" ColumnName="DutySlipURL" />
+          <ScalarProperty Name="TollURL" ColumnName="TollURL" />
+          <ScalarProperty Name="NoOfEmp" ColumnName="NoOfEmp" />
+          <ScalarProperty Name="BookingType" ColumnName="BookingType" />
+          <ScalarProperty Name="CustomerPaidInCash" ColumnName="CustomerPaidInCash" />
+          <ScalarProperty Name="WaitingTimeInMinutes" ColumnName="WaitingTimeInMinutes" />
+          <ScalarProperty Name="TMPDispatchFare" ColumnName="TMPDispatchFare" />
+          <ScalarProperty Name="TMPBookingFare" ColumnName="TMPBookingFare" />
+          <ScalarProperty Name="TMPNoShowDriver" ColumnName="TMPNoShowDriver" />
+          <ScalarProperty Name="TMPNoShowCar" ColumnName="TMPNoShowCar" />
+          <ScalarProperty Name="TMPDifferenceAmount" ColumnName="TMPDifferenceAmount" />
+          <ScalarProperty Name="MeruShare" ColumnName="MeruShare" />
+          <ScalarProperty Name="ActualRunningFare" ColumnName="ActualRunningFare" />
+          <ScalarProperty Name="CorporateCompanyName" ColumnName="CorporateCompanyName" />
+          <ScalarProperty Name="DriverPartnerPayment" ColumnName="DriverPartnerPayment" />
+          <ScalarProperty Name="CrossSellingFare" ColumnName="CrossSellingFare" />
+          <ScalarProperty Name="Retriggered" ColumnName="Retriggered" />
+          <ScalarProperty Name="RSTripSequence" ColumnName="RSTripSequence" />
+          <ScalarProperty Name="MatchedJobID" ColumnName="MatchedJobID" />
+          <ScalarProperty Name="IsRideShare" ColumnName="IsRideShare" />
+          <ScalarProperty Name="CorporateCode" ColumnName="CorporateCode" />
+          <ScalarProperty Name="PragathiUpdateRemarks" ColumnName="PragathiUpdateRemarks" />
+          <ScalarProperty Name="PragathiLastUpdatedate" ColumnName="PragathiLastUpdatedate" />
+          <ScalarProperty Name="PragathiStatus" ColumnName="PragathiStatus" />
+          <ScalarProperty Name="TripTypeDes" ColumnName="TripTypeDes" />
+          <ScalarProperty Name="JobTypeDes" ColumnName="JobTypeDes" />
+          <ScalarProperty Name="CabAssignedTime" ColumnName="CabAssignedTime" />
+          <ScalarProperty Name="JobBrand" ColumnName="JobBrand" />
+          <ScalarProperty Name="ShadowAmount" ColumnName="ShadowAmount" />
+          <ScalarProperty Name="WaitingFare" ColumnName="WaitingFare" />
+          <ScalarProperty Name="PaymentMode" ColumnName="PaymentMode" />
+          <ScalarProperty Name="OncallDistance" ColumnName="OncallDistance" />
+          <ScalarProperty Name="HiredDistance" ColumnName="HiredDistance" />
+          <ScalarProperty Name="DestinationAddress" ColumnName="DestinationAddress" />
+          <ScalarProperty Name="CustomerPickUpAddress" ColumnName="CustomerPickUpAddress" />
+          <ScalarProperty Name="PickUpTime" ColumnName="PickUpTime" />
+          <ScalarProperty Name="BookingTime" ColumnName="BookingTime" />
+          <ScalarProperty Name="CustomerEmail" ColumnName="CustomerEmail" />
+          <ScalarProperty Name="Surcharges" ColumnName="Surcharges" />
+          <ScalarProperty Name="TollCharges" ColumnName="TollCharges" />
+          <ScalarProperty Name="BrandTypeName" ColumnName="BrandTypeName" />
+          <ScalarProperty Name="AfterDiscountNetAmount" ColumnName="AfterDiscountNetAmount" />
+          <ScalarProperty Name="TotalDiscountAmount" ColumnName="TotalDiscountAmount" />
+          <ScalarProperty Name="UpdateRemarks" ColumnName="UpdateRemarks" />
+          <ScalarProperty Name="LastUpdatedate" ColumnName="LastUpdatedate" />
+          <ScalarProperty Name="Status" ColumnName="Status" />
+          <ScalarProperty Name="RecordedDate" ColumnName="RecordedDate" />
+          <ScalarProperty Name="ProductType" ColumnName="ProductType" />
+          <ScalarProperty Name="CustomerPaidAmount" ColumnName="CustomerPaidAmount" />
+          <ScalarProperty Name="TotalTripAmount" ColumnName="TotalTripAmount" />
+          <ScalarProperty Name="TotalServiceTax" ColumnName="TotalServiceTax" />
+          <ScalarProperty Name="ServiceTaxOnOthers" ColumnName="ServiceTaxOnOthers" />
+          <ScalarProperty Name="ServiceTaxOnTripFare" ColumnName="ServiceTaxOnTripFare" />
+          <ScalarProperty Name="CouponAmount" ColumnName="CouponAmount" />
+          <ScalarProperty Name="RedeemAmount" ColumnName="RedeemAmount" />
+          <ScalarProperty Name="ConvenienceCharges" ColumnName="ConvenienceCharges" />
+          <ScalarProperty Name="ParkingCharges" ColumnName="ParkingCharges" />
+          <ScalarProperty Name="MeteredFare" ColumnName="MeteredFare" />
+          <ScalarProperty Name="CabRegistration" ColumnName="CabRegistration" />
+          <ScalarProperty Name="SiebelSubscriberID" ColumnName="SiebelSubscriberID" />
+          <ScalarProperty Name="DropLocation" ColumnName="DropLocation" />
+          <ScalarProperty Name="PickupLocation" ColumnName="PickupLocation" />
+          <ScalarProperty Name="TripEndTime" ColumnName="TripEndTime" />
+          <ScalarProperty Name="TripStartTime" ColumnName="TripStartTime" />
+          <ScalarProperty Name="CustomerMobileNo" ColumnName="CustomerMobileNo" />
+          <ScalarProperty Name="CustomerName" ColumnName="CustomerName" />
+          <ScalarProperty Name="CustomerID" ColumnName="CustomerID" />
+          <ScalarProperty Name="TripType" ColumnName="TripType" />
+          <ScalarProperty Name="JobID" ColumnName="JobID" />
+          <ScalarProperty Name="TripID" ColumnName="TripID" />
+          <ScalarProperty Name="SeqID" ColumnName="SeqID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="tblJobBookings">
+      <EntityTypeMapping TypeName="CDSBusinessModel.tblJobBooking">
+        <MappingFragment StoreEntitySet="tblJobBooking">
+          <ScalarProperty Name="STFCabSentTime" ColumnName="STFCabSentTime" />
+          <ScalarProperty Name="STFCabNo" ColumnName="STFCabNo" />
+          <ScalarProperty Name="STFDeviceID" ColumnName="STFDeviceID" />
+          <ScalarProperty Name="STFStaus" ColumnName="STFStaus" />
+          <ScalarProperty Name="Outstation_DU_SMS_Alert" ColumnName="Outstation_DU_SMS_Alert" />
+          <ScalarProperty Name="Driver_ReminderSMS2_Out" ColumnName="Driver_ReminderSMS2_Out" />
+          <ScalarProperty Name="Driver_ReminderSMS1_Out" ColumnName="Driver_ReminderSMS1_Out" />
+          <ScalarProperty Name="IsAirportDrop" ColumnName="IsAirportDrop" />
+          <ScalarProperty Name="ISDriver_SMSSent_Outstation" ColumnName="ISDriver_SMSSent_Outstation" />
+          <ScalarProperty Name="IsInterCity" ColumnName="IsInterCity" />
+          <ScalarProperty Name="IsTripEndSMSSent" ColumnName="IsTripEndSMSSent" />
+          <ScalarProperty Name="IsTripStartSMSSent" ColumnName="IsTripStartSMSSent" />
+          <ScalarProperty Name="BusinessCategoryID" ColumnName="BusinessCategoryID" />
+          <ScalarProperty Name="ProductTypeId" ColumnName="ProductTypeId" />
+          <ScalarProperty Name="FixedFareLogId" ColumnName="FixedFareLogId" />
+          <ScalarProperty Name="RefusedSMSStatus" ColumnName="RefusedSMSStatus" />
+          <ScalarProperty Name="RiderName" ColumnName="RiderName" />
+          <ScalarProperty Name="WalletSMSStatus" ColumnName="WalletSMSStatus" />
+          <ScalarProperty Name="AirportNotifySatus" ColumnName="AirportNotifySatus" />
+          <ScalarProperty Name="RatePerKM" ColumnName="RatePerKM" />
+          <ScalarProperty Name="IsIxigoSent" ColumnName="IsIxigoSent" />
+          <ScalarProperty Name="IsRideShare" ColumnName="IsRideShare" />
+          <ScalarProperty Name="AssignedCabProductTypeID" ColumnName="AssignedCabProductTypeID" />
+          <ScalarProperty Name="AssignedCabBrandTypeID" ColumnName="AssignedCabBrandTypeID" />
+          <ScalarProperty Name="DropLong" ColumnName="DropLong" />
+          <ScalarProperty Name="DropLat" ColumnName="DropLat" />
+          <ScalarProperty Name="CabConfSMSSenttime" ColumnName="CabConfSMSSenttime" />
+          <ScalarProperty Name="BrandTypeID" ColumnName="BrandTypeID" />
+          <ScalarProperty Name="PickupLong" ColumnName="PickupLong" />
+          <ScalarProperty Name="PickupLat" ColumnName="PickupLat" />
+          <ScalarProperty Name="CabDeviceID" ColumnName="CabDeviceID" />
+          <ScalarProperty Name="RedeemAmount" ColumnName="RedeemAmount" />
+          <ScalarProperty Name="redeempoints" ColumnName="redeempoints" />
+          <ScalarProperty Name="CouponAmount" ColumnName="CouponAmount" />
+          <ScalarProperty Name="PromoCode" ColumnName="PromoCode" />
+          <ScalarProperty Name="IsGenie" ColumnName="IsGenie" />
+          <ScalarProperty Name="StateTaxStatus" ColumnName="StateTaxStatus" />
+          <ScalarProperty Name="RetentionTime" ColumnName="RetentionTime" />
+          <ScalarProperty Name="ReturnTrip" ColumnName="ReturnTrip" />
+          <ScalarProperty Name="DropCityID" ColumnName="DropCityID" />
+          <ScalarProperty Name="CRDCount" ColumnName="CRDCount" />
+          <ScalarProperty Name="CRDUserID" ColumnName="CRDUserID" />
+          <ScalarProperty Name="PromoSMSStatus" ColumnName="PromoSMSStatus" />
+          <ScalarProperty Name="MobileSMSStatus" ColumnName="MobileSMSStatus" />
+          <ScalarProperty Name="QuotaBorrowingZoneID" ColumnName="QuotaBorrowingZoneID" />
+          <ScalarProperty Name="TrackMobile" ColumnName="TrackMobile" />
+          <ScalarProperty Name="EmailAddress" ColumnName="EmailAddress" />
+          <ScalarProperty Name="MPC" ColumnName="MPC" />
+          <ScalarProperty Name="CorporateJob" ColumnName="CorporateJob" />
+          <ScalarProperty Name="AirportJob" ColumnName="AirportJob" />
+          <ScalarProperty Name="JobSubscriberID" ColumnName="JobSubscriberID" />
+          <ScalarProperty Name="IVRSChannelID" ColumnName="IVRSChannelID" />
+          <ScalarProperty Name="InformedCustomer" ColumnName="InformedCustomer" />
+          <ScalarProperty Name="CalledSubscriber" ColumnName="CalledSubscriber" />
+          <ScalarProperty Name="ManualDispatchedUser" ColumnName="ManualDispatchedUser" />
+          <ScalarProperty Name="CancelledCallDuration" ColumnName="CancelledCallDuration" />
+          <ScalarProperty Name="ModifiedCallDuration" ColumnName="ModifiedCallDuration" />
+          <ScalarProperty Name="CancelledUserID" ColumnName="CancelledUserID" />
+          <ScalarProperty Name="ModifiedUserID" ColumnName="ModifiedUserID" />
+          <ScalarProperty Name="TimetoDispatch" ColumnName="TimetoDispatch" />
+          <ScalarProperty Name="Quota" ColumnName="Quota" />
+          <ScalarProperty Name="TagAs" ColumnName="TagAs" />
+          <ScalarProperty Name="RejectRemarks" ColumnName="RejectRemarks" />
+          <ScalarProperty Name="RejectId" ColumnName="RejectId" />
+          <ScalarProperty Name="SmsAlert" ColumnName="SmsAlert" />
+          <ScalarProperty Name="SmsStatus" ColumnName="SmsStatus" />
+          <ScalarProperty Name="CabRegistrationNo" ColumnName="CabRegistrationNo" />
+          <ScalarProperty Name="CancelReason" ColumnName="CancelReason" />
+          <ScalarProperty Name="CancelId" ColumnName="CancelId" />
+          <ScalarProperty Name="SiebelJobID" ColumnName="SiebelJobID" />
+          <ScalarProperty Name="ChannelID" ColumnName="ChannelID" />
+          <ScalarProperty Name="MappingID" ColumnName="MappingID" />
+          <ScalarProperty Name="UserID" ColumnName="UserID" />
+          <ScalarProperty Name="AddFareID" ColumnName="AddFareID" />
+          <ScalarProperty Name="CityID" ColumnName="CityID" />
+          <ScalarProperty Name="DropTime" ColumnName="DropTime" />
+          <ScalarProperty Name="LanguageID" ColumnName="LanguageID" />
+          <ScalarProperty Name="CallDuration" ColumnName="CallDuration" />
+          <ScalarProperty Name="CabAssignedTime" ColumnName="CabAssignedTime" />
+          <ScalarProperty Name="JobCreationTime" ColumnName="JobCreationTime" />
+          <ScalarProperty Name="CallStartTime" ColumnName="CallStartTime" />
+          <ScalarProperty Name="ETA" ColumnName="ETA" />
+          <ScalarProperty Name="NoOfCabs" ColumnName="NoOfCabs" />
+          <ScalarProperty Name="NoOfBags" ColumnName="NoOfBags" />
+          <ScalarProperty Name="DestZoneID" ColumnName="DestZoneID" />
+          <ScalarProperty Name="DestLocalityId" ColumnName="DestLocalityId" />
+          <ScalarProperty Name="DestAddressPointID" ColumnName="DestAddressPointID" />
+          <ScalarProperty Name="DestinationAddress" ColumnName="DestinationAddress" />
+          <ScalarProperty Name="CabModelName" ColumnName="CabModelName" />
+          <ScalarProperty Name="CabTypeID" ColumnName="CabTypeID" />
+          <ScalarProperty Name="PickUpMessage" ColumnName="PickUpMessage" />
+          <ScalarProperty Name="PickUpZoneID" ColumnName="PickUpZoneID" />
+          <ScalarProperty Name="PickUpLocalityID" ColumnName="PickUpLocalityID" />
+          <ScalarProperty Name="PickUpAddressPointID" ColumnName="PickUpAddressPointID" />
+          <ScalarProperty Name="Landmark" ColumnName="Landmark" />
+          <ScalarProperty Name="Preference" ColumnName="Preference" />
+          <ScalarProperty Name="CustomerPickUpAddress" ColumnName="CustomerPickUpAddress" />
+          <ScalarProperty Name="PickUpTime" ColumnName="PickUpTime" />
+          <ScalarProperty Name="TerminalID" ColumnName="TerminalID" />
+          <ScalarProperty Name="JobTypeID" ColumnName="JobTypeID" />
+          <ScalarProperty Name="CustomerContactMobileNo" ColumnName="CustomerContactMobileNo" />
+          <ScalarProperty Name="CustomerContactLastName" ColumnName="CustomerContactLastName" />
+          <ScalarProperty Name="CustomerContactFirsttName" ColumnName="CustomerContactFirsttName" />
+          <ScalarProperty Name="CustomerMobileNo" ColumnName="CustomerMobileNo" />
+          <ScalarProperty Name="CustomerName" ColumnName="CustomerName" />
+          <ScalarProperty Name="CustomerID" ColumnName="CustomerID" />
+          <ScalarProperty Name="JobID" ColumnName="JobID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="tblKerbTripsCustomersDatas">
+      <EntityTypeMapping TypeName="CDSBusinessModel.tblKerbTripsCustomersData">
+        <MappingFragment StoreEntitySet="tblKerbTripsCustomersData">
+          <ScalarProperty Name="FareMultiplier_Kerb" ColumnName="FareMultiplier_Kerb" />
+          <ScalarProperty Name="DropLongitude" ColumnName="DropLongitude" />
+          <ScalarProperty Name="DropLatitude" ColumnName="DropLatitude" />
+          <ScalarProperty Name="Ebill_SMS" ColumnName="Ebill_SMS" />
+          <ScalarProperty Name="Feedback_SMS" ColumnName="Feedback_SMS" />
+          <ScalarProperty Name="TripID" ColumnName="TripID" />
+          <ScalarProperty Name="WalletSMSStatus" ColumnName="WalletSMSStatus" />
+          <ScalarProperty Name="RecordedDateTime" ColumnName="RecordedDateTime" />
+          <ScalarProperty Name="EmailReceivedTime" ColumnName="EmailReceivedTime" />
+          <ScalarProperty Name="SMSStatus" ColumnName="SMSStatus" />
+          <ScalarProperty Name="CityID" ColumnName="CityID" />
+          <ScalarProperty Name="CustomerName" ColumnName="CustomerName" />
+          <ScalarProperty Name="CabRegistrationNo" ColumnName="CabRegistrationNo" />
+          <ScalarProperty Name="TripStartTime" ColumnName="TripStartTime" />
+          <ScalarProperty Name="SiebelDeviceID" ColumnName="SiebelDeviceID" />
+          <ScalarProperty Name="EmailID" ColumnName="EmailID" />
+          <ScalarProperty Name="MobileNo" ColumnName="MobileNo" />
+          <ScalarProperty Name="KerbCustomerID" ColumnName="KerbCustomerID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="tblTripMasters">
+      <EntityTypeMapping TypeName="CDSBusinessModel.tblTripMaster">
+        <MappingFragment StoreEntitySet="tblTripMaster">
+          <ScalarProperty Name="Garage_Drop_Distance" ColumnName="Garage_Drop_Distance" />
+          <ScalarProperty Name="AirportToll" ColumnName="AirportToll" />
+          <ScalarProperty Name="PWSCash" ColumnName="PWSCash" />
+          <ScalarProperty Name="TSOutCallStatus" ColumnName="TSOutCallStatus" />
+          <ScalarProperty Name="IGST" ColumnName="IGST" />
+          <ScalarProperty Name="CGST" ColumnName="CGST" />
+          <ScalarProperty Name="SGST" ColumnName="SGST" />
+          <ScalarProperty Name="RideTimeFare" ColumnName="RideTimeFare" />
+          <ScalarProperty Name="RideTime" ColumnName="RideTime" />
+          <ScalarProperty Name="CalcOncallDistance" ColumnName="CalcOncallDistance" />
+          <ScalarProperty Name="CalcFare" ColumnName="CalcFare" />
+          <ScalarProperty Name="CalcHiredDistance" ColumnName="CalcHiredDistance" />
+          <ScalarProperty Name="DistanceCalStatusID" ColumnName="DistanceCalStatusID" />
+          <ScalarProperty Name="CrossSellingFare" ColumnName="CrossSellingFare" />
+          <ScalarProperty Name="IsRideShare" ColumnName="IsRideShare" />
+          <ScalarProperty Name="ProductTypeID" ColumnName="ProductTypeID" />
+          <ScalarProperty Name="GoogleCumulateDistance" ColumnName="GoogleCumulateDistance" />
+          <ScalarProperty Name="GoogleTotalDistance" ColumnName="GoogleTotalDistance" />
+          <ScalarProperty Name="TEReceivedTime" ColumnName="TEReceivedTime" />
+          <ScalarProperty Name="TSReceivedTime" ColumnName="TSReceivedTime" />
+          <ScalarProperty Name="TollCharges" ColumnName="TollCharges" />
+          <ScalarProperty Name="AdditionalFare" ColumnName="AdditionalFare" />
+          <ScalarProperty Name="GPSValueSync" ColumnName="GPSValueSync" />
+          <ScalarProperty Name="NoOfAttempts" ColumnName="NoOfAttempts" />
+          <ScalarProperty Name="WalletType" ColumnName="WalletType" />
+          <ScalarProperty Name="WalletTSStatus" ColumnName="WalletTSStatus" />
+          <ScalarProperty Name="EmailSentDateTime" ColumnName="EmailSentDateTime" />
+          <ScalarProperty Name="RunningFare" ColumnName="RunningFare" />
+          <ScalarProperty Name="DeviceTotalFare" ColumnName="DeviceTotalFare" />
+          <ScalarProperty Name="BrandTypeID" ColumnName="BrandTypeID" />
+          <ScalarProperty Name="AdminEmailSendStatus" ColumnName="AdminEmailSendStatus" />
+          <ScalarProperty Name="RedeemAmount" ColumnName="RedeemAmount" />
+          <ScalarProperty Name="CouponAmount" ColumnName="CouponAmount" />
+          <ScalarProperty Name="ZoneID_TS" ColumnName="ZoneID_TS" />
+          <ScalarProperty Name="CabLongitude_TS" ColumnName="CabLongitude_TS" />
+          <ScalarProperty Name="CabLatitude_TS" ColumnName="CabLatitude_TS" />
+          <ScalarProperty Name="EmailSendStatus" ColumnName="EmailSendStatus" />
+          <ScalarProperty Name="ShadowAmount" ColumnName="ShadowAmount" />
+          <ScalarProperty Name="ExpectedAmount" ColumnName="ExpectedAmount" />
+          <ScalarProperty Name="RetentionServiceStatus" ColumnName="RetentionServiceStatus" />
+          <ScalarProperty Name="RRNumber" ColumnName="RRNumber" />
+          <ScalarProperty Name="WaitingFare" ColumnName="WaitingFare" />
+          <ScalarProperty Name="TotalWaitTime" ColumnName="TotalWaitTime" />
+          <ScalarProperty Name="TripWaitingChargeforCorporate" ColumnName="TripWaitingChargeforCorporate" />
+          <ScalarProperty Name="TripOncallWaitingCharge" ColumnName="TripOncallWaitingCharge" />
+          <ScalarProperty Name="TripOncallWaitingTime" ColumnName="TripOncallWaitingTime" />
+          <ScalarProperty Name="AirportCharges" ColumnName="AirportCharges" />
+          <ScalarProperty Name="FeedbackSMS" ColumnName="FeedbackSMS" />
+          <ScalarProperty Name="BookingFee" ColumnName="BookingFee" />
+          <ScalarProperty Name="TotalRevenueDistance" ColumnName="TotalRevenueDistance" />
+          <ScalarProperty Name="DropLocation" ColumnName="DropLocation" />
+          <ScalarProperty Name="PickupLocation" ColumnName="PickupLocation" />
+          <ScalarProperty Name="CabRegistration" ColumnName="CabRegistration" />
+          <ScalarProperty Name="SubscriberID" ColumnName="SubscriberID" />
+          <ScalarProperty Name="MDTKerbJobID" ColumnName="MDTKerbJobID" />
+          <ScalarProperty Name="PaymentMode" ColumnName="PaymentMode" />
+          <ScalarProperty Name="SecEduCess" ColumnName="SecEduCess" />
+          <ScalarProperty Name="EduCess" ColumnName="EduCess" />
+          <ScalarProperty Name="ServiceTax" ColumnName="ServiceTax" />
+          <ScalarProperty Name="TotalTripFare" ColumnName="TotalTripFare" />
+          <ScalarProperty Name="TripEndKilometer" ColumnName="TripEndKilometer" />
+          <ScalarProperty Name="TripStartKilometer" ColumnName="TripStartKilometer" />
+          <ScalarProperty Name="LoginCount" ColumnName="LoginCount" />
+          <ScalarProperty Name="CreditCardID" ColumnName="CreditCardID" />
+          <ScalarProperty Name="ScheduledTripNo" ColumnName="ScheduledTripNo" />
+          <ScalarProperty Name="OnCallDistcane" ColumnName="OnCallDistcane" />
+          <ScalarProperty Name="DistFromLastTripToCurrTrip" ColumnName="DistFromLastTripToCurrTrip" />
+          <ScalarProperty Name="TripEndTime" ColumnName="TripEndTime" />
+          <ScalarProperty Name="TripStartTime" ColumnName="TripStartTime" />
+          <ScalarProperty Name="TripEndID" ColumnName="TripEndID" />
+          <ScalarProperty Name="TripStartID" ColumnName="TripStartID" />
+          <ScalarProperty Name="MappingID" ColumnName="MappingID" />
+          <ScalarProperty Name="TripTypeID" ColumnName="TripTypeID" />
+          <ScalarProperty Name="JobID" ColumnName="JobID" />
+          <ScalarProperty Name="TripNo" ColumnName="TripNo" />
+          <ScalarProperty Name="TripID" ColumnName="TripID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <FunctionImportMapping FunctionImportName="USP_UpdatePostPaymentSuccess" FunctionName="CDSBusinessModel.Store.USP_UpdatePostPaymentSuccess" />
+    <EntitySetMapping Name="tbl_Payment_Link">
+      <EntityTypeMapping TypeName="CDSBusinessModel.tbl_Payment_Link">
+        <MappingFragment StoreEntitySet="tbl_Payment_Link">
+          <ScalarProperty Name="PaymentLink_Id" ColumnName="PaymentLink_Id" />
+          <ScalarProperty Name="LastUpdatedOn" ColumnName="LastUpdatedOn" />
+          <ScalarProperty Name="CreatedOn" ColumnName="CreatedOn" />
+          <ScalarProperty Name="Status" ColumnName="Status" />
+          <ScalarProperty Name="Email" ColumnName="Email" />
+          <ScalarProperty Name="Contact" ColumnName="Contact" />
+          <ScalarProperty Name="Description" ColumnName="Description" />
+          <ScalarProperty Name="Url" ColumnName="Url" />
+          <ScalarProperty Name="Payment_Method" ColumnName="Payment_Method" />
+          <ScalarProperty Name="Payment_Source" ColumnName="Payment_Source" />
+          <ScalarProperty Name="PG_Ref_Data" ColumnName="PG_Ref_Data" />
+          <ScalarProperty Name="PG_ReceiptNo" ColumnName="PG_ReceiptNo" />
+          <ScalarProperty Name="PG_InvoiceId" ColumnName="PG_InvoiceId" />
+          <ScalarProperty Name="PG_PaymentId" ColumnName="PG_PaymentId" />
+          <ScalarProperty Name="PG_OrderId" ColumnName="PG_OrderId" />
+          <ScalarProperty Name="Payment_Amount_Paise" ColumnName="Payment_Amount_Paise" />
+          <ScalarProperty Name="Request_RefId" ColumnName="Request_RefId" />
+          <ScalarProperty Name="Payment_Transaction_ID" ColumnName="Payment_Transaction_ID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <FunctionImportMapping FunctionImportName="usp_Wallet_GetPartialAmountTransactionDetails" FunctionName="CDSBusinessModel.Store.usp_Wallet_GetPartialAmountTransactionDetails">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="CDSBusinessModel.usp_Wallet_GetPartialAmountTransactionDetails_Result">
+          <ScalarProperty Name="JobID" ColumnName="JobID" />
+          <ScalarProperty Name="MobileNumber" ColumnName="MobileNumber" />
+          <ScalarProperty Name="Amount" ColumnName="Amount" />
+          <ScalarProperty Name="ProviderID" ColumnName="ProviderID" />
+          <ScalarProperty Name="RecordedDateTime" ColumnName="RecordedDateTime" />
+          <ScalarProperty Name="OrderId" ColumnName="OrderId" />
+          <ScalarProperty Name="EmailAddress" ColumnName="EmailAddress" />
+          <ScalarProperty Name="AmountType" ColumnName="AmountType" />
+          <ScalarProperty Name="TripID" ColumnName="TripID" />
+          <ScalarProperty Name="ID" ColumnName="ID" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <EntitySetMapping Name="Tbl_Payment_BlackListedCards">
+      <EntityTypeMapping TypeName="CDSBusinessModel.Tbl_Payment_BlackListedCards">
+        <MappingFragment StoreEntitySet="Tbl_Payment_BlackListedCards">
+          <ScalarProperty Name="UpdatedOn" ColumnName="UpdatedOn" />
+          <ScalarProperty Name="CreatedOn" ColumnName="CreatedOn" />
+          <ScalarProperty Name="IsActive" ColumnName="IsActive" />
+          <ScalarProperty Name="CardType" ColumnName="CardType" />
+          <ScalarProperty Name="NetworkName" ColumnName="NetworkName" />
+          <ScalarProperty Name="IssuerCode" ColumnName="IssuerCode" />
+          <ScalarProperty Name="BlackListedCardId" ColumnName="BlackListedCardId" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="tblCabMaster">
+      <EntityTypeMapping TypeName="CDSBusinessModel.tblCabMaster">
+        <MappingFragment StoreEntitySet="tblCabMaster">
+          <ScalarProperty Name="ActualState" ColumnName="ActualState" />
+          <ScalarProperty Name="ActualCity" ColumnName="ActualCity" />
+          <ScalarProperty Name="PermitType" ColumnName="PermitType" />
+          <ScalarProperty Name="Vehicle_Identification_No" ColumnName="Vehicle_Identification_No" />
+          <ScalarProperty Name="BusinessCategoryID" ColumnName="BusinessCategoryID" />
+          <ScalarProperty Name="CabColor" ColumnName="CabColor" />
+          <ScalarProperty Name="SPID" ColumnName="SPID" />
+          <ScalarProperty Name="ProductTypeID" ColumnName="ProductTypeID" />
+          <ScalarProperty Name="BrandTypeID" ColumnName="BrandTypeID" />
+          <ScalarProperty Name="CabModel_Actual" ColumnName="CabModel_Actual" />
+          <ScalarProperty Name="GPSFixedTimeForDispatch" ColumnName="GPSFixedTimeForDispatch" />
+          <ScalarProperty Name="GPSFixedLongitude" ColumnName="GPSFixedLongitude" />
+          <ScalarProperty Name="GPSFixedLatitude" ColumnName="GPSFixedLatitude" />
+          <ScalarProperty Name="GPSFixedTime" ColumnName="GPSFixedTime" />
+          <ScalarProperty Name="GPSFixedLocation" ColumnName="GPSFixedLocation" />
+          <ScalarProperty Name="SubLocalityID" ColumnName="SubLocalityID" />
+          <ScalarProperty Name="ZoneName" ColumnName="ZoneName" />
+          <ScalarProperty Name="ZoneID" ColumnName="ZoneID" />
+          <ScalarProperty Name="LocalityName" ColumnName="LocalityName" />
+          <ScalarProperty Name="LocalityID" ColumnName="LocalityID" />
+          <ScalarProperty Name="OdometerUpdateTime" ColumnName="OdometerUpdateTime" />
+          <ScalarProperty Name="PreviousOdometer" ColumnName="PreviousOdometer" />
+          <ScalarProperty Name="OdometerUpdateUserID" ColumnName="OdometerUpdateUserID" />
+          <ScalarProperty Name="OdoMeterReading" ColumnName="OdoMeterReading" />
+          <ScalarProperty Name="RecordUpdateTime" ColumnName="RecordUpdateTime" />
+          <ScalarProperty Name="CabLocation" ColumnName="CabLocation" />
+          <ScalarProperty Name="Direction" ColumnName="Direction" />
+          <ScalarProperty Name="Speed" ColumnName="Speed" />
+          <ScalarProperty Name="CabGPSDateTime" ColumnName="CabGPSDateTime" />
+          <ScalarProperty Name="IgnitionStatus" ColumnName="IgnitionStatus" />
+          <ScalarProperty Name="MeterStatus" ColumnName="MeterStatus" />
+          <ScalarProperty Name="CabLongitude" ColumnName="CabLongitude" />
+          <ScalarProperty Name="CabLatitude" ColumnName="CabLatitude" />
+          <ScalarProperty Name="SeibelCabID" ColumnName="SeibelCabID" />
+          <ScalarProperty Name="CabStatusID" ColumnName="CabStatusID" />
+          <ScalarProperty Name="CabDesc" ColumnName="CabDesc" />
+          <ScalarProperty Name="CabCompanyName" ColumnName="CabCompanyName" />
+          <ScalarProperty Name="CabModelName" ColumnName="CabModelName" />
+          <ScalarProperty Name="CityID" ColumnName="CityID" />
+          <ScalarProperty Name="OdoMeterNo" ColumnName="OdoMeterNo" />
+          <ScalarProperty Name="SpeedLimit" ColumnName="SpeedLimit" />
+          <ScalarProperty Name="CabYearMake" ColumnName="CabYearMake" />
+          <ScalarProperty Name="ChasisNo" ColumnName="ChasisNo" />
+          <ScalarProperty Name="EngineNo" ColumnName="EngineNo" />
+          <ScalarProperty Name="RegistrationDate" ColumnName="RegistrationDate" />
+          <ScalarProperty Name="CabRegistrationNo" ColumnName="CabRegistrationNo" />
+          <ScalarProperty Name="CabTypeID" ColumnName="CabTypeID" />
+          <ScalarProperty Name="CabID" ColumnName="CabID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+  </EntityContainerMapping>
+</Mapping>

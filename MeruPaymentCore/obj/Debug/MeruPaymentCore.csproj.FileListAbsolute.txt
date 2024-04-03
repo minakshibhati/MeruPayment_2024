@@ -1,0 +1,17 @@
+D:\Payment\MeruPaymentCore\bin\Debug\MeruPaymentCore.dll.config
+D:\Payment\MeruPaymentCore\bin\Debug\MeruPaymentCore.dll
+D:\Payment\MeruPaymentCore\bin\Debug\MeruPaymentCore.pdb
+D:\Payment\MeruPaymentCore\bin\Debug\MeruCommonLibrary.dll
+D:\Payment\MeruPaymentCore\bin\Debug\MeruPaymentBO.dll
+D:\Payment\MeruPaymentCore\bin\Debug\Newtonsoft.Json.dll
+D:\Payment\MeruPaymentCore\bin\Debug\NLog.dll
+D:\Payment\MeruPaymentCore\bin\Debug\paytm.dll
+D:\Payment\MeruPaymentCore\bin\Debug\Razorpay.dll
+D:\Payment\MeruPaymentCore\bin\Debug\MeruPaymentBO.pdb
+D:\Payment\MeruPaymentCore\bin\Debug\Newtonsoft.Json.xml
+D:\Payment\MeruPaymentCore\bin\Debug\NLog.xml
+D:\Payment\MeruPaymentCore\obj\Debug\MeruPaymentCore.csproj.AssemblyReference.cache
+D:\Payment\MeruPaymentCore\obj\Debug\MeruPaymentCore.csproj.CoreCompileInputs.cache
+D:\Payment\MeruPaymentCore\obj\Debug\MeruPaymentCore.csproj.CopyComplete
+D:\Payment\MeruPaymentCore\obj\Debug\MeruPaymentCore.dll
+D:\Payment\MeruPaymentCore\obj\Debug\MeruPaymentCore.pdb

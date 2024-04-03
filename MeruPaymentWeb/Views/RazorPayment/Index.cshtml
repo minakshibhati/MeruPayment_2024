@@ -1,0 +1,110 @@
+﻿@model MeruPaymentBO.Checkout
+
+@{
+    ViewBag.Title = "Checkout";
+}
+
+<p>
+    @ViewBag.Message
+</p>
+
+@if (ViewBag.Message == null || ViewBag.Message.Length == 0)
+{
+    if (Model.ShowPayTM)
+    {
+        <script src="https://checkout.razorpay.com/v1/checkout.js"></script>
+        <script>
+            var host = "@Model.HostURl";
+            var options = {
+                "key": "@Model.Razor_Key_Id",
+                "amount": "@Model.Amount", // 2000 paise = INR 20
+                "name": "@Model.MerchantName",
+                "description": "@Model.PurchaseDescription",
+                "image": host + "@Model.LogoPath",// "./Content/app_icon.png",
+                "order_id": "@Model.OrderId", // order ID generated from backend
+                "redirect": "true",  //for callback
+                "callback_url": host + "/RazorPaymentResponse?mpid=@Model.MeruPaymentId",
+                "prefill": {
+                    "name": "@Model.Name",
+                    "email": "@Model.Email",
+                    "contact": "@Model.Contact",
+                    "method": "@Model.PaymentMethod"
+                },
+                "modal": {
+                    "escape": false,
+                    "ondismiss": function () {
+                        window.location = host + "/RazorPaymentResponse?msg=cancelled&mpid=@Model.MeruPaymentId";
+                    }
+                },
+                "notes": {
+                    "SPId": "@Model.SPId",
+                    "CarNo": "@Model.CarNo",
+                    "Razor_OrderId": "@Model.OrderId",
+                    "Meru_PaymentId": "@Model.MeruPaymentId",
+                    "PurchaseDescription": "@Model.PurchaseDescription"
+                },
+                "theme": {
+                    "color": "@Model.ColorCode",//"#09f",
+                    "hide_topbar": true
+                },
+                "external": {
+                    "wallets": ['paytm'],
+                    "handler": function (data) {
+                        window.location.href = "@Model.PayTMURL?mpid=@Model.MeruPaymentId";
+                    }
+                }
+            };
+
+            var rzp1 = new Razorpay(options);
+            rzp1.open();
+
+        </script>
+    }
+    else
+    {
+        <script src="https://checkout.razorpay.com/v1/checkout.js"></script>
+        <script>
+            var host = "@Model.HostURl";
+
+            var options = {
+                "key": "@Model.Razor_Key_Id",
+                "amount": "@Model.Amount", // 2000 paise = INR 20
+                "name": "@Model.MerchantName",
+                "description": "@Model.PurchaseDescription",
+                "image": host + "@Model.LogoPath",// "./Content/app_icon.png",
+                "order_id": "@Model.OrderId", // order ID generated from backend
+                "redirect": "true",  //for callback
+                "callback_url": host + "/RazorPaymentResponse?mpid=@Model.MeruPaymentId",
+                "prefill": {
+                    "name": "@Model.Name",
+                    "email": "@Model.Email",
+                    "contact": "@Model.Contact",
+                    "method": "@Model.PaymentMethod"
+                },
+                "modal": {
+                    "escape": false,
+                    "ondismiss": function () {
+                        window.location = host + "/RazorPaymentResponse?msg=cancelled&mpid=@Model.MeruPaymentId";
+                    }
+                },
+                "notes": {
+                    "SPId": "@Model.SPId",
+                    "CarNo": "@Model.CarNo",
+                    "Razor_OrderId": "@Model.OrderId",
+                    "Meru_PaymentId": "@Model.MeruPaymentId",
+                    "PurchaseDescription": "@Model.PurchaseDescription"
+                },
+                "theme": {
+                    "color": "@Model.ColorCode"
+                }
+            };
+
+            var rzp1 = new Razorpay(options);
+            rzp1.open();
+
+        </script>
+    }
+}
+
+
+

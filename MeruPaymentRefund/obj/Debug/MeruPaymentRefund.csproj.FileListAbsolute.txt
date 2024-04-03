@@ -1,0 +1,4 @@
+D:\Payment\MeruPaymentRefund\obj\Debug\MeruPaymentRefund.csproj.AssemblyReference.cache
+D:\Payment\MeruPaymentRefund\obj\Debug\MeruPaymentRefund.ProjectInstaller.resources
+D:\Payment\MeruPaymentRefund\obj\Debug\MeruPaymentRefund.csproj.GenerateResource.cache
+D:\Payment\MeruPaymentRefund\obj\Debug\MeruPaymentRefund.csproj.CoreCompileInputs.cache

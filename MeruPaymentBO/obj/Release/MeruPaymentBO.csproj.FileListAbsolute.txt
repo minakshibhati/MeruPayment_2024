@@ -1,0 +1,8 @@
+D:\Payment\MeruPaymentBO\bin\Release\MeruPaymentBO.dll
+D:\Payment\MeruPaymentBO\bin\Release\MeruPaymentBO.pdb
+D:\Payment\MeruPaymentBO\bin\Release\Newtonsoft.Json.dll
+D:\Payment\MeruPaymentBO\bin\Release\Newtonsoft.Json.xml
+D:\Payment\MeruPaymentBO\obj\Release\MeruPaymentBO.csproj.CoreCompileInputs.cache
+D:\Payment\MeruPaymentBO\obj\Release\MeruPaymentBO.csproj.CopyComplete
+D:\Payment\MeruPaymentBO\obj\Release\MeruPaymentBO.dll
+D:\Payment\MeruPaymentBO\obj\Release\MeruPaymentBO.pdb

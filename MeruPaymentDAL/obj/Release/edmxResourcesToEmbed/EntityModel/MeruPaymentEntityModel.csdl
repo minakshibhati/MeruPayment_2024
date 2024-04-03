@@ -1,0 +1,600 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="CDSBusinessModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+  <EntityType Name="tbl_Payment_Gateway">
+    <Key>
+      <PropertyRef Name="Payment_Gateway_ID" />
+    </Key>
+    <Property Name="Payment_Gateway_ID" Type="Int16" Nullable="false" />
+    <Property Name="Payment_Gateway" Type="String" MaxLength="100" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="Record_Created_DateTime" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="Record_Updated_DateTime" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="Record_Status" Type="String" MaxLength="1" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="Payment_Gateway_Code" Type="String" MaxLength="3" FixedLength="false" Unicode="true" Nullable="false" />
+  </EntityType>
+  <EntityType Name="tbl_Payment_History">
+    <Key>
+      <PropertyRef Name="Payment_Request_ID" />
+    </Key>
+    <Property Name="Payment_Request_ID" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Payment_Status_Code" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="Record_Created_DateTime" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="Updating_Process" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="Payment_Status_ID" Type="Int32" Nullable="false" />
+    <Property Name="PaymentTransactionId" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+  </EntityType>
+  <EntityType Name="tbl_Payment_Method">
+    <Key>
+      <PropertyRef Name="Payment_Method_ID" />
+    </Key>
+    <Property Name="Payment_Method_ID" Type="Int16" Nullable="false" />
+    <Property Name="Payment_Method" Type="String" MaxLength="100" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="Payment_Method_Desc" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+    <Property Name="Record_Created_DateTime" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="Record_Updated_DateTime" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="Record_Status" Type="String" MaxLength="1" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="Payment_Method_Code" Type="String" MaxLength="3" FixedLength="false" Unicode="true" Nullable="false" />
+  </EntityType>
+  <EntityType Name="tbl_Payment_Request_Response">
+    <Key>
+      <PropertyRef Name="Payment_Request_Response_ID" />
+    </Key>
+    <Property Name="Payment_Request_Response_ID" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="PaymentIncrementId" Type="Int32" Nullable="false" />
+    <Property Name="Request_Key" Type="String" MaxLength="100" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="Request_Value" Type="String" MaxLength="100" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="Record_Call_Source" Type="String" MaxLength="100" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="Record_Type" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="Record_Created_DateTime" Type="DateTime" Nullable="false" Precision="3" />
+  </EntityType>
+  <EntityType Name="tbl_Payment_Request_System">
+    <Key>
+      <PropertyRef Name="Payment_Request_System_ID" />
+    </Key>
+    <Property Name="Payment_Request_System_ID" Type="Int16" Nullable="false" />
+    <Property Name="Payment_Request_System" Type="String" MaxLength="100" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="Payment_Request_System_Secret" Type="String" MaxLength="500" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="Record_Created_DateTime" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="Record_Updated_DateTime" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="Record_Status" Type="String" MaxLength="1" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="Payment_Request_System_Name" Type="String" MaxLength="100" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="Payment_Request_System_KeyInput" Type="String" MaxLength="4000" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="Payment_Request_System_Return_URL" Type="String" MaxLength="1000" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="ColorCode" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="Payment_Request_Channel_Code" Type="String" MaxLength="500" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="QueueName" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+    <Property Name="EnableAuthToken" Type="Boolean" />
+    <Property Name="SPName" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+  </EntityType>
+  <EntityType Name="tbl_Payment_Status_Master">
+    <Key>
+      <PropertyRef Name="Payment_Status_ID" />
+    </Key>
+    <Property Name="Payment_Status_ID" Type="Int16" Nullable="false" />
+    <Property Name="Payment_Status" Type="String" MaxLength="100" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="Payment_Status_Desc" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+    <Property Name="Record_Created_DateTime" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="Record_Updated_DateTime" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="Record_Status" Type="String" MaxLength="1" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="Payment_Status_Code" Type="String" MaxLength="3" FixedLength="false" Unicode="true" Nullable="false" />
+  </EntityType>
+  <EntityType Name="tblMeruPayment">
+    <Key>
+      <PropertyRef Name="PaymentIncrementId" />
+    </Key>
+    <Property Name="PaymentIncrementId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="RequestSource" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="RequestRefValues" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+    <Property Name="PaymentAmount" Type="Int32" Nullable="false" />
+    <Property Name="PaymentSource" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="PaymentMethod" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="PaymentStatus" Type="Int32" Nullable="false" />
+    <Property Name="CreatedOn" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="LastUpdatedOn" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="PaymentRefValues" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+    <Property Name="PaymentRefData1" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+    <Property Name="PaymentRefData2" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+    <Property Name="PaymentRefData3" Type="String" MaxLength="4000" FixedLength="false" Unicode="true" />
+    <Property Name="PaymentDetail" Type="String" MaxLength="100" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="Payment_Reconciled" Type="Boolean" />
+  </EntityType>
+  <EntityContainer Name="CDSBusinessEntities" annotation:LazyLoadingEnabled="true">
+    <EntitySet Name="tbl_Payment_Gateway" EntityType="Self.tbl_Payment_Gateway" />
+    <EntitySet Name="tbl_Payment_History" EntityType="Self.tbl_Payment_History" />
+    <EntitySet Name="tbl_Payment_Method" EntityType="Self.tbl_Payment_Method" />
+    <EntitySet Name="tbl_Payment_Request_Response" EntityType="Self.tbl_Payment_Request_Response" />
+    <EntitySet Name="tbl_Payment_Request_System" EntityType="Self.tbl_Payment_Request_System" />
+    <EntitySet Name="tbl_Payment_Status_Master" EntityType="Self.tbl_Payment_Status_Master" />
+    <EntitySet Name="tblMeruPayments" EntityType="Self.tblMeruPayment" />
+    <EntitySet Name="tbl_PaymentTransaction" EntityType="CDSBusinessModel.tbl_PaymentTransaction" />
+    <EntitySet Name="tbl_Payment_Customer_Details" EntityType="CDSBusinessModel.tbl_Payment_Customer_Details" />
+    <EntitySet Name="tbl_Payment_Customer_Card_Details" EntityType="CDSBusinessModel.tbl_Payment_Customer_Card_Details" />
+    <EntitySet Name="tblTripReceiptCalculators" EntityType="CDSBusinessModel.tblTripReceiptCalculator" />
+    <EntitySet Name="tblJobBookings" EntityType="CDSBusinessModel.tblJobBooking" />
+    <EntitySet Name="tblKerbTripsCustomersDatas" EntityType="CDSBusinessModel.tblKerbTripsCustomersData" />
+    <EntitySet Name="tblTripMasters" EntityType="CDSBusinessModel.tblTripMaster" />
+    <FunctionImport Name="USP_UpdatePostPaymentSuccess" ReturnType="Collection(Int32)">
+      <Parameter Name="MeruPaymentId" Mode="In" Type="String" />
+      <Parameter Name="Amount" Mode="In" Type="Int32" />
+      <Parameter Name="PaymentMethod" Mode="In" Type="Int32" />
+      <Parameter Name="PaymentSource" Mode="In" Type="Int32" />
+      <Parameter Name="PaymentId" Mode="In" Type="String" />
+      <Parameter Name="Action" Mode="In" Type="String" />
+      <Parameter Name="AdditionalDetails" Mode="In" Type="String" />
+    </FunctionImport>
+    <EntitySet Name="tbl_Payment_Link" EntityType="CDSBusinessModel.tbl_Payment_Link" />
+    <FunctionImport Name="usp_Wallet_GetPartialAmountTransactionDetails" ReturnType="Collection(CDSBusinessModel.usp_Wallet_GetPartialAmountTransactionDetails_Result)" />
+    <EntitySet Name="Tbl_Payment_BlackListedCards" EntityType="CDSBusinessModel.Tbl_Payment_BlackListedCards" />
+    <EntitySet Name="tblCabMaster" EntityType="CDSBusinessModel.tblCabMaster" />
+  </EntityContainer>
+  <EntityType Name="tbl_PaymentTransaction">
+    <Key>
+      <PropertyRef Name="PaymentIncrementId" />
+    </Key>
+    <Property Name="PaymentIncrementId" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Payment_Transaction_ID" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="RequestSource" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="RequestRefValues" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+    <Property Name="Payment_Amount_Paise" Type="Int64" Nullable="false" />
+    <Property Name="PaymentSource" Type="Int32" Nullable="false" />
+    <Property Name="PaymentMethod" Type="Int32" Nullable="false" />
+    <Property Name="PaymentStatus" Type="Int32" Nullable="false" />
+    <Property Name="PaymentRefValues" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+    <Property Name="PaymentRefData1" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+    <Property Name="PaymentRefData2" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+    <Property Name="PaymentRefData3" Type="String" MaxLength="4000" FixedLength="false" Unicode="true" />
+    <Property Name="CreatedOn" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="LastUpdatedOn" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="Payment_Gateway_Code" Type="String" MaxLength="3" FixedLength="false" Unicode="true" />
+    <Property Name="Payment_Method_Code" Type="String" MaxLength="3" FixedLength="false" Unicode="true" />
+    <Property Name="Payment_Status_Code" Type="String" MaxLength="3" FixedLength="false" Unicode="true" />
+    <Property Name="PG_Transaction_Code" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+    <Property Name="RequestRefId" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+    <Property Name="Refund_Amount_Paise" Type="Int64" Nullable="false" />
+    <Property Name="PurchaseDescription" Type="String" MaxLength="4000" FixedLength="false" Unicode="true" />
+    <Property Name="FullName" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+    <Property Name="Email" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+    <Property Name="Contact" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="Payment_Reconciled" Type="Boolean" Nullable="false" />
+    <Property Name="Payment_Type" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+    <Property Name="DeviceId" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+    <Property Name="PaymentMethodRefId" Type="Int32" />
+    <Property Name="BusinessCategoryId" Type="Int32" Nullable="false" />
+    <Property Name="LastStatusOn" Type="DateTime" Precision="3" />
+    <Property Name="PaymentResponse" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+    <Property Name="AmountPaid" Type="Int64" />
+    <Property Name="AmountDue" Type="Int64" />
+    <Property Name="Currency" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="Receipt" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="Offer_Id" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="Notes" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="OrderResponse" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+  </EntityType>
+  <EntityType Name="tbl_Payment_Customer_Details">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Provider_Customer_ID" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+    <Property Name="Payment_Gateway_ID" Type="Int32" />
+    <Property Name="Customer_Name" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+    <Property Name="Customer_Email" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="Customer_Mobile_No" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+    <Property Name="Record_Created_DateTime" Type="DateTime" Precision="3" />
+    <Property Name="Record_Update_DateTime" Type="DateTime" Precision="3" />
+    <Property Name="Customer_Status" Type="Int32" />
+  </EntityType>
+  <EntityType Name="tbl_Payment_Customer_Card_Details">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Name_On_Card" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+    <Property Name="Network_Name" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+    <Property Name="Last_Four_Digit" Type="String" MaxLength="5" FixedLength="false" Unicode="false" />
+    <Property Name="Token_ID" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+    <Property Name="Provider_Customer_ID" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+    <Property Name="Is_Default" Type="Boolean" />
+    <Property Name="Card_Type" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
+    <Property Name="Card_Issuer_Code" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+    <Property Name="Card_Status" Type="Int16" />
+    <Property Name="Record_Created_DateTime" Type="DateTime" Precision="3" />
+    <Property Name="Record_Update_DateTime" Type="DateTime" Precision="3" />
+    <Property Name="Card_Exipry_DateTime" Type="DateTime" Precision="3" />
+    <Property Name="IsDeleted" Type="Boolean" Nullable="false" />
+    <Property Name="DeviceId" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+  </EntityType>
+  <EntityType Name="tblTripReceiptCalculator">
+    <Key>
+      <PropertyRef Name="SeqID" />
+    </Key>
+    <Property Name="SeqID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="TripID" Type="Int32" Nullable="false" />
+    <Property Name="JobID" Type="Int32" Nullable="false" />
+    <Property Name="TripType" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+    <Property Name="CustomerID" Type="Int32" />
+    <Property Name="CustomerName" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+    <Property Name="CustomerMobileNo" Type="String" Nullable="false" MaxLength="20" FixedLength="false" Unicode="false" />
+    <Property Name="TripStartTime" Type="DateTime" Precision="3" />
+    <Property Name="TripEndTime" Type="DateTime" Precision="3" />
+    <Property Name="PickupLocation" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
+    <Property Name="DropLocation" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
+    <Property Name="SiebelSubscriberID" Type="String" MaxLength="30" FixedLength="false" Unicode="false" />
+    <Property Name="CabRegistration" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+    <Property Name="MeteredFare" Type="Decimal" Precision="10" Scale="4" />
+    <Property Name="ParkingCharges" Type="Decimal" Precision="10" Scale="4" />
+    <Property Name="ConvenienceCharges" Type="Decimal" Precision="10" Scale="4" />
+    <Property Name="RedeemAmount" Type="Decimal" Precision="10" Scale="4" />
+    <Property Name="CouponAmount" Type="Decimal" Precision="10" Scale="4" />
+    <Property Name="ServiceTaxOnTripFare" Type="Decimal" Precision="10" Scale="4" />
+    <Property Name="ServiceTaxOnOthers" Type="Decimal" Precision="10" Scale="4" />
+    <Property Name="TotalServiceTax" Type="Decimal" Precision="10" Scale="4" />
+    <Property Name="TotalTripAmount" Type="Decimal" Precision="10" Scale="4" />
+    <Property Name="CustomerPaidAmount" Type="String" MaxLength="15" FixedLength="false" Unicode="false" />
+    <Property Name="ProductType" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+    <Property Name="RecordedDate" Type="DateTime" Precision="3" />
+    <Property Name="Status" Type="Int32" Nullable="false" />
+    <Property Name="LastUpdatedate" Type="DateTime" Precision="3" />
+    <Property Name="UpdateRemarks" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+    <Property Name="TotalDiscountAmount" Type="Decimal" Precision="19" Scale="4" />
+    <Property Name="AfterDiscountNetAmount" Type="Decimal" Precision="19" Scale="4" />
+    <Property Name="BrandTypeName" Type="String" MaxLength="15" FixedLength="false" Unicode="false" />
+    <Property Name="TollCharges" Type="Decimal" Precision="19" Scale="4" />
+    <Property Name="Surcharges" Type="Decimal" Precision="19" Scale="4" />
+    <Property Name="CustomerEmail" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+    <Property Name="BookingTime" Type="DateTime" Precision="3" />
+    <Property Name="PickUpTime" Type="DateTime" Precision="3" />
+    <Property Name="CustomerPickUpAddress" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
+    <Property Name="DestinationAddress" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
+    <Property Name="HiredDistance" Type="Double" />
+    <Property Name="OncallDistance" Type="Double" />
+    <Property Name="PaymentMode" Type="String" MaxLength="30" FixedLength="false" Unicode="false" />
+    <Property Name="WaitingFare" Type="Decimal" Precision="10" Scale="4" />
+    <Property Name="ShadowAmount" Type="Double" />
+    <Property Name="JobBrand" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+    <Property Name="CabAssignedTime" Type="DateTime" Precision="3" />
+    <Property Name="JobTypeDes" Type="String" MaxLength="15" FixedLength="false" Unicode="false" />
+    <Property Name="TripTypeDes" Type="String" MaxLength="15" FixedLength="false" Unicode="false" />
+    <Property Name="PragathiStatus" Type="Int32" />
+    <Property Name="PragathiLastUpdatedate" Type="DateTime" Precision="3" />
+    <Property Name="PragathiUpdateRemarks" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+    <Property Name="CorporateCode" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="IsRideShare" Type="Byte" />
+    <Property Name="MatchedJobID" Type="Int32" />
+    <Property Name="RSTripSequence" Type="Byte" />
+    <Property Name="Retriggered" Type="Byte" />
+    <Property Name="CrossSellingFare" Type="Decimal" Precision="19" Scale="4" />
+    <Property Name="DriverPartnerPayment" Type="Decimal" Precision="19" Scale="4" />
+    <Property Name="CorporateCompanyName" Type="String" MaxLength="250" FixedLength="false" Unicode="false" />
+    <Property Name="ActualRunningFare" Type="Decimal" Precision="10" Scale="4" />
+    <Property Name="MeruShare" Type="Decimal" Precision="10" Scale="4" />
+    <Property Name="TMPDifferenceAmount" Type="Decimal" Precision="19" Scale="4" />
+    <Property Name="TMPNoShowCar" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+    <Property Name="TMPNoShowDriver" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+    <Property Name="TMPBookingFare" Type="Decimal" Precision="19" Scale="4" />
+    <Property Name="TMPDispatchFare" Type="Decimal" Precision="19" Scale="4" />
+    <Property Name="WaitingTimeInMinutes" Type="Int32" />
+    <Property Name="CustomerPaidInCash" Type="Decimal" Precision="19" Scale="4" />
+    <Property Name="BookingType" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="NoOfEmp" Type="Int32" />
+    <Property Name="TollURL" Type="String" MaxLength="175" FixedLength="false" Unicode="false" />
+    <Property Name="DutySlipURL" Type="String" MaxLength="175" FixedLength="false" Unicode="false" />
+    <Property Name="EmpShift" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="MonroeTripType" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+  </EntityType>
+  <EntityType Name="tblJobBooking">
+    <Key>
+      <PropertyRef Name="JobID" />
+    </Key>
+    <Property Name="JobID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="CustomerID" Type="Int32" />
+    <Property Name="CustomerName" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="CustomerMobileNo" Type="String" Nullable="false" MaxLength="40" FixedLength="false" Unicode="false" />
+    <Property Name="CustomerContactFirsttName" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="CustomerContactLastName" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="CustomerContactMobileNo" Type="String" MaxLength="40" FixedLength="false" Unicode="false" />
+    <Property Name="JobTypeID" Type="Byte" Nullable="false" />
+    <Property Name="TerminalID" Type="Int32" />
+    <Property Name="PickUpTime" Type="DateTime" Nullable="false" Precision="0" />
+    <Property Name="CustomerPickUpAddress" Type="String" Nullable="false" MaxLength="500" FixedLength="false" Unicode="false" />
+    <Property Name="Preference" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="Landmark" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="PickUpAddressPointID" Type="Int32" />
+    <Property Name="PickUpLocalityID" Type="Int32" />
+    <Property Name="PickUpZoneID" Type="Int32" />
+    <Property Name="PickUpMessage" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+    <Property Name="CabTypeID" Type="Byte" />
+    <Property Name="CabModelName" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="DestinationAddress" Type="String" MaxLength="250" FixedLength="false" Unicode="false" />
+    <Property Name="DestAddressPointID" Type="Int32" />
+    <Property Name="DestLocalityId" Type="Int32" />
+    <Property Name="DestZoneID" Type="Int32" />
+    <Property Name="NoOfBags" Type="Byte" />
+    <Property Name="NoOfCabs" Type="Byte" />
+    <Property Name="ETA" Type="DateTime" Precision="3" />
+    <Property Name="CallStartTime" Type="DateTime" Precision="3" />
+    <Property Name="JobCreationTime" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="CabAssignedTime" Type="DateTime" Precision="3" />
+    <Property Name="CallDuration" Type="Int16" />
+    <Property Name="LanguageID" Type="Byte" />
+    <Property Name="DropTime" Type="DateTime" Precision="3" />
+    <Property Name="CityID" Type="Int16" Nullable="false" />
+    <Property Name="AddFareID" Type="Int32" />
+    <Property Name="UserID" Type="Int32" />
+    <Property Name="MappingID" Type="Int32" />
+    <Property Name="ChannelID" Type="Byte" />
+    <Property Name="SiebelJobID" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="CancelId" Type="Byte" />
+    <Property Name="CancelReason" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+    <Property Name="CabRegistrationNo" Type="String" MaxLength="30" FixedLength="false" Unicode="false" />
+    <Property Name="SmsStatus" Type="Boolean" Nullable="false" />
+    <Property Name="SmsAlert" Type="Boolean" />
+    <Property Name="RejectId" Type="Int16" />
+    <Property Name="RejectRemarks" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
+    <Property Name="TagAs" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="Quota" Type="Int16" />
+    <Property Name="TimetoDispatch" Type="Int16" />
+    <Property Name="ModifiedUserID" Type="Int32" />
+    <Property Name="CancelledUserID" Type="Int32" />
+    <Property Name="ModifiedCallDuration" Type="Int16" />
+    <Property Name="CancelledCallDuration" Type="Int16" />
+    <Property Name="ManualDispatchedUser" Type="Int32" />
+    <Property Name="CalledSubscriber" Type="Boolean" />
+    <Property Name="InformedCustomer" Type="Boolean" />
+    <Property Name="IVRSChannelID" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="JobSubscriberID" Type="Int32" />
+    <Property Name="AirportJob" Type="Boolean" />
+    <Property Name="CorporateJob" Type="Boolean" />
+    <Property Name="MPC" Type="Boolean" />
+    <Property Name="EmailAddress" Type="String" MaxLength="150" FixedLength="false" Unicode="false" />
+    <Property Name="TrackMobile" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+    <Property Name="QuotaBorrowingZoneID" Type="Int32" />
+    <Property Name="MobileSMSStatus" Type="Byte" />
+    <Property Name="PromoSMSStatus" Type="Byte" />
+    <Property Name="CRDUserID" Type="Int32" />
+    <Property Name="CRDCount" Type="Byte" />
+    <Property Name="DropCityID" Type="Int16" />
+    <Property Name="ReturnTrip" Type="Boolean" />
+    <Property Name="RetentionTime" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+    <Property Name="StateTaxStatus" Type="Byte" />
+    <Property Name="IsGenie" Type="Byte" />
+    <Property Name="PromoCode" Type="String" MaxLength="30" FixedLength="false" Unicode="false" />
+    <Property Name="CouponAmount" Type="Decimal" Precision="19" Scale="4" />
+    <Property Name="redeempoints" Type="Int32" />
+    <Property Name="RedeemAmount" Type="Decimal" Precision="19" Scale="4" />
+    <Property Name="CabDeviceID" Type="String" MaxLength="30" FixedLength="false" Unicode="false" />
+    <Property Name="PickupLat" Type="Single" />
+    <Property Name="PickupLong" Type="Single" />
+    <Property Name="BrandTypeID" Type="Byte" />
+    <Property Name="CabConfSMSSenttime" Type="DateTime" Precision="3" />
+    <Property Name="DropLat" Type="Single" />
+    <Property Name="DropLong" Type="Single" />
+    <Property Name="AssignedCabBrandTypeID" Type="Byte" />
+    <Property Name="AssignedCabProductTypeID" Type="Byte" />
+    <Property Name="IsRideShare" Type="Byte" />
+    <Property Name="IsIxigoSent" Type="Boolean" />
+    <Property Name="RatePerKM" Type="Double" />
+    <Property Name="AirportNotifySatus" Type="Int16" />
+    <Property Name="WalletSMSStatus" Type="Int32" />
+    <Property Name="RiderName" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+    <Property Name="RefusedSMSStatus" Type="Int32" />
+    <Property Name="FixedFareLogId" Type="Int32" />
+    <Property Name="ProductTypeId" Type="Byte" />
+    <Property Name="BusinessCategoryID" Type="Byte" />
+    <Property Name="IsTripStartSMSSent" Type="Byte" />
+    <Property Name="IsTripEndSMSSent" Type="Byte" />
+    <Property Name="IsInterCity" Type="Boolean" />
+    <Property Name="ISDriver_SMSSent_Outstation" Type="Boolean" />
+    <Property Name="IsAirportDrop" Type="Boolean" />
+    <Property Name="Driver_ReminderSMS1_Out" Type="Boolean" Nullable="false" />
+    <Property Name="Driver_ReminderSMS2_Out" Type="Boolean" Nullable="false" />
+    <Property Name="Outstation_DU_SMS_Alert" Type="Boolean" />
+    <Property Name="STFStaus" Type="Int32" />
+    <Property Name="STFDeviceID" Type="String" MaxLength="12" FixedLength="false" Unicode="false" />
+    <Property Name="STFCabNo" Type="String" MaxLength="15" FixedLength="false" Unicode="false" />
+    <Property Name="STFCabSentTime" Type="DateTime" Precision="3" />
+  </EntityType>
+  <EntityType Name="tblKerbTripsCustomersData">
+    <Key>
+      <PropertyRef Name="KerbCustomerID" />
+    </Key>
+    <Property Name="KerbCustomerID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="MobileNo" Type="String" MaxLength="40" FixedLength="false" Unicode="false" />
+    <Property Name="EmailID" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+    <Property Name="SiebelDeviceID" Type="String" MaxLength="30" FixedLength="false" Unicode="false" />
+    <Property Name="TripStartTime" Type="DateTime" Precision="3" />
+    <Property Name="CabRegistrationNo" Type="String" MaxLength="30" FixedLength="false" Unicode="false" />
+    <Property Name="CustomerName" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="CityID" Type="Int32" />
+    <Property Name="SMSStatus" Type="Int32" Nullable="false" />
+    <Property Name="EmailReceivedTime" Type="DateTime" Precision="3" />
+    <Property Name="RecordedDateTime" Type="DateTime" Precision="3" />
+    <Property Name="WalletSMSStatus" Type="Int32" />
+    <Property Name="TripID" Type="Int32" />
+    <Property Name="Feedback_SMS" Type="Boolean" />
+    <Property Name="Ebill_SMS" Type="Boolean" />
+    <Property Name="DropLatitude" Type="Single" />
+    <Property Name="DropLongitude" Type="Single" />
+    <Property Name="FareMultiplier_Kerb" Type="Double" />
+  </EntityType>
+  <EntityType Name="tblTripMaster">
+    <Key>
+      <PropertyRef Name="TripID" />
+    </Key>
+    <Property Name="TripID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="TripNo" Type="String" MaxLength="30" FixedLength="false" Unicode="false" />
+    <Property Name="JobID" Type="Int32" Nullable="false" />
+    <Property Name="TripTypeID" Type="Byte" Nullable="false" />
+    <Property Name="MappingID" Type="Int32" />
+    <Property Name="TripStartID" Type="Int32" Nullable="false" />
+    <Property Name="TripEndID" Type="Int32" Nullable="false" />
+    <Property Name="TripStartTime" Type="String" MaxLength="30" FixedLength="false" Unicode="false" />
+    <Property Name="TripEndTime" Type="String" MaxLength="30" FixedLength="false" Unicode="false" />
+    <Property Name="DistFromLastTripToCurrTrip" Type="Double" />
+    <Property Name="OnCallDistcane" Type="Double" />
+    <Property Name="ScheduledTripNo" Type="String" MaxLength="30" FixedLength="false" Unicode="false" />
+    <Property Name="CreditCardID" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+    <Property Name="LoginCount" Type="Int32" />
+    <Property Name="TripStartKilometer" Type="Double" />
+    <Property Name="TripEndKilometer" Type="Double" />
+    <Property Name="TotalTripFare" Type="Decimal" Precision="10" Scale="4" />
+    <Property Name="ServiceTax" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="EduCess" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="SecEduCess" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="PaymentMode" Type="Byte" />
+    <Property Name="MDTKerbJobID" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="SubscriberID" Type="Int32" />
+    <Property Name="CabRegistration" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="PickupLocation" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
+    <Property Name="DropLocation" Type="String" MaxLength="250" FixedLength="false" Unicode="false" />
+    <Property Name="TotalRevenueDistance" Type="Double" />
+    <Property Name="BookingFee" Type="Decimal" Precision="10" Scale="4" />
+    <Property Name="FeedbackSMS" Type="Boolean" />
+    <Property Name="AirportCharges" Type="Decimal" Precision="10" Scale="4" />
+    <Property Name="TripOncallWaitingTime" Type="Int32" />
+    <Property Name="TripOncallWaitingCharge" Type="Decimal" Precision="10" Scale="4" />
+    <Property Name="TripWaitingChargeforCorporate" Type="Decimal" Precision="10" Scale="4" />
+    <Property Name="TotalWaitTime" Type="Int32" />
+    <Property Name="WaitingFare" Type="Decimal" Precision="10" Scale="4" />
+    <Property Name="RRNumber" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="RetentionServiceStatus" Type="Byte" />
+    <Property Name="ExpectedAmount" Type="Decimal" Precision="10" Scale="4" />
+    <Property Name="ShadowAmount" Type="Decimal" Precision="10" Scale="4" />
+    <Property Name="EmailSendStatus" Type="Boolean" />
+    <Property Name="CabLatitude_TS" Type="Single" />
+    <Property Name="CabLongitude_TS" Type="Single" />
+    <Property Name="ZoneID_TS" Type="Int32" />
+    <Property Name="CouponAmount" Type="Decimal" Precision="19" Scale="4" />
+    <Property Name="RedeemAmount" Type="Decimal" Precision="19" Scale="4" />
+    <Property Name="AdminEmailSendStatus" Type="Int32" />
+    <Property Name="BrandTypeID" Type="Byte" />
+    <Property Name="DeviceTotalFare" Type="Decimal" Precision="19" Scale="4" />
+    <Property Name="RunningFare" Type="Decimal" Precision="19" Scale="4" />
+    <Property Name="EmailSentDateTime" Type="DateTime" Precision="3" />
+    <Property Name="WalletTSStatus" Type="Int32" />
+    <Property Name="WalletType" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+    <Property Name="NoOfAttempts" Type="Int32" />
+    <Property Name="GPSValueSync" Type="String" MaxLength="2" FixedLength="false" Unicode="false" />
+    <Property Name="AdditionalFare" Type="Decimal" Precision="19" Scale="4" />
+    <Property Name="TollCharges" Type="Decimal" Precision="19" Scale="4" />
+    <Property Name="TSReceivedTime" Type="DateTime" Precision="3" />
+    <Property Name="TEReceivedTime" Type="DateTime" Precision="3" />
+    <Property Name="GoogleTotalDistance" Type="Double" />
+    <Property Name="GoogleCumulateDistance" Type="Double" />
+    <Property Name="ProductTypeID" Type="Byte" />
+    <Property Name="IsRideShare" Type="Byte" />
+    <Property Name="CrossSellingFare" Type="Decimal" Precision="19" Scale="4" />
+    <Property Name="DistanceCalStatusID" Type="Int32" />
+    <Property Name="CalcHiredDistance" Type="Double" />
+    <Property Name="CalcFare" Type="Decimal" Precision="19" Scale="4" />
+    <Property Name="CalcOncallDistance" Type="Double" />
+    <Property Name="RideTime" Type="Int32" />
+    <Property Name="RideTimeFare" Type="Decimal" Precision="19" Scale="4" />
+    <Property Name="SGST" Type="Decimal" Precision="19" Scale="4" />
+    <Property Name="CGST" Type="Decimal" Precision="19" Scale="4" />
+    <Property Name="IGST" Type="Decimal" Precision="19" Scale="4" />
+    <Property Name="TSOutCallStatus" Type="Byte" />
+    <Property Name="PWSCash" Type="Decimal" Precision="19" Scale="4" />
+    <Property Name="AirportToll" Type="Double" />
+    <Property Name="Garage_Drop_Distance" Type="Byte" />
+  </EntityType>
+  <EntityType Name="tbl_Payment_Link">
+    <Key>
+      <PropertyRef Name="PaymentLink_Id" />
+    </Key>
+    <Property Name="Payment_Transaction_ID" Type="String" Nullable="false" MaxLength="100" FixedLength="false" Unicode="true" />
+    <Property Name="Request_RefId" Type="String" Nullable="false" MaxLength="1000" FixedLength="false" Unicode="true" />
+    <Property Name="Payment_Amount_Paise" Type="Int64" Nullable="false" />
+    <Property Name="PG_OrderId" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
+    <Property Name="PG_PaymentId" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
+    <Property Name="PG_InvoiceId" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
+    <Property Name="PG_ReceiptNo" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
+    <Property Name="PG_Ref_Data" Type="String" MaxLength="4000" FixedLength="false" Unicode="true" />
+    <Property Name="Payment_Source" Type="Int32" />
+    <Property Name="Payment_Method" Type="Int32" />
+    <Property Name="Url" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+    <Property Name="Description" Type="String" MaxLength="1000" FixedLength="false" Unicode="true" />
+    <Property Name="Contact" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+    <Property Name="Email" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
+    <Property Name="Status" Type="Int32" Nullable="false" />
+    <Property Name="CreatedOn" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="LastUpdatedOn" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="PaymentLink_Id" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+  </EntityType>
+  <ComplexType Name="usp_Wallet_GetPartialAmountTransactionDetails_Result">
+    <Property Type="Int32" Name="JobID" Nullable="true" />
+    <Property Type="String" Name="MobileNumber" Nullable="true" MaxLength="40" />
+    <Property Type="Decimal" Name="Amount" Nullable="true" Precision="19" />
+    <Property Type="Int32" Name="ProviderID" Nullable="false" />
+    <Property Type="DateTime" Name="RecordedDateTime" Nullable="true" Precision="23" />
+    <Property Type="String" Name="OrderId" Nullable="true" MaxLength="200" />
+    <Property Type="String" Name="EmailAddress" Nullable="true" MaxLength="200" />
+    <Property Type="String" Name="AmountType" Nullable="true" MaxLength="4" />
+    <Property Type="Int32" Name="TripID" Nullable="true" />
+    <Property Type="Int32" Name="ID" Nullable="true" />
+  </ComplexType>
+  <EntityType Name="Tbl_Payment_BlackListedCards">
+    <Key>
+      <PropertyRef Name="BlackListedCardId" />
+    </Key>
+    <Property Name="BlackListedCardId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="IssuerCode" Type="String" MaxLength="255" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="NetworkName" Type="String" MaxLength="255" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="CardType" Type="String" MaxLength="255" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="IsActive" Type="Boolean" Nullable="false" />
+    <Property Name="CreatedOn" Type="DateTime" Precision="3" Nullable="false" />
+    <Property Name="UpdatedOn" Type="DateTime" Precision="3" Nullable="false" />
+  </EntityType>
+  <EntityType Name="tblCabMaster">
+    <Key>
+      <PropertyRef Name="CabID" />
+    </Key>
+    <Property Name="CabID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="CabTypeID" Type="Int16" />
+    <Property Name="CabRegistrationNo" Type="String" Nullable="false" MaxLength="30" FixedLength="false" Unicode="false" />
+    <Property Name="RegistrationDate" Type="DateTime" Precision="3" />
+    <Property Name="EngineNo" Type="String" MaxLength="30" FixedLength="false" Unicode="false" />
+    <Property Name="ChasisNo" Type="String" MaxLength="35" FixedLength="false" Unicode="false" />
+    <Property Name="CabYearMake" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
+    <Property Name="SpeedLimit" Type="Byte" />
+    <Property Name="OdoMeterNo" Type="String" MaxLength="30" FixedLength="false" Unicode="false" />
+    <Property Name="CityID" Type="Int16" Nullable="false" />
+    <Property Name="CabModelName" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="CabCompanyName" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="CabDesc" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+    <Property Name="CabStatusID" Type="Byte" Nullable="false" />
+    <Property Name="SeibelCabID" Type="String" MaxLength="30" FixedLength="false" Unicode="false" />
+    <Property Name="CabLatitude" Type="Single" />
+    <Property Name="CabLongitude" Type="Single" />
+    <Property Name="MeterStatus" Type="Byte" />
+    <Property Name="IgnitionStatus" Type="Boolean" />
+    <Property Name="CabGPSDateTime" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="Speed" Type="Byte" />
+    <Property Name="Direction" Type="Int16" />
+    <Property Name="CabLocation" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+    <Property Name="RecordUpdateTime" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="OdoMeterReading" Type="Double" />
+    <Property Name="OdometerUpdateUserID" Type="Int32" />
+    <Property Name="PreviousOdometer" Type="Double" />
+    <Property Name="OdometerUpdateTime" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="LocalityID" Type="Int32" />
+    <Property Name="LocalityName" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+    <Property Name="ZoneID" Type="Int32" />
+    <Property Name="ZoneName" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="SubLocalityID" Type="Int32" />
+    <Property Name="GPSFixedLocation" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+    <Property Name="GPSFixedTime" Type="DateTime" Precision="3" />
+    <Property Name="GPSFixedLatitude" Type="Single" />
+    <Property Name="GPSFixedLongitude" Type="Single" />
+    <Property Name="GPSFixedTimeForDispatch" Type="DateTime" Precision="3" />
+    <Property Name="CabModel_Actual" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="BrandTypeID" Type="Byte" />
+    <Property Name="ProductTypeID" Type="Byte" />
+    <Property Name="SPID" Type="String" MaxLength="30" FixedLength="false" Unicode="false" />
+    <Property Name="CabColor" Type="String" MaxLength="30" FixedLength="false" Unicode="false" />
+    <Property Name="BusinessCategoryID" Type="Byte" />
+    <Property Name="Vehicle_Identification_No" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+    <Property Name="PermitType" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+    <Property Name="ActualCity" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="ActualState" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+  </EntityType>
+</Schema>

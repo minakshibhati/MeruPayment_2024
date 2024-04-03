@@ -1,0 +1,2 @@
+D:\Payment\MeruPayment.AppEx\obj\Debug\MeruPayment.AppEx.csproj.AssemblyReference.cache
+D:\Payment\MeruPayment.AppEx\obj\Debug\MeruPayment.AppEx.csproj.CoreCompileInputs.cache

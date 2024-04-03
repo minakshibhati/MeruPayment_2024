@@ -1,0 +1,5 @@
+D:\Payment\MeruPaymentReconcileService\obj\Debug\MeruPaymentReconcileService.csproj.AssemblyReference.cache
+D:\Payment\MeruPaymentReconcileService\obj\Debug\MeruPaymentReconcileService.MeruPaymentReconcileService.resources
+D:\Payment\MeruPaymentReconcileService\obj\Debug\MeruPaymentReconcileService.ProjectInstaller.resources
+D:\Payment\MeruPaymentReconcileService\obj\Debug\MeruPaymentReconcileService.csproj.GenerateResource.cache
+D:\Payment\MeruPaymentReconcileService\obj\Debug\MeruPaymentReconcileService.csproj.CoreCompileInputs.cache

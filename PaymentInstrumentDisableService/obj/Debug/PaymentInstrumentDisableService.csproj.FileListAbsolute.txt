@@ -1,0 +1,4 @@
+D:\Payment\PaymentInstrumentDisableService\obj\Debug\PaymentInstrumentDisableService.csproj.AssemblyReference.cache
+D:\Payment\PaymentInstrumentDisableService\obj\Debug\PaymentInstrumentDisableService.ProjectInstaller.resources
+D:\Payment\PaymentInstrumentDisableService\obj\Debug\PaymentInstrumentDisableService.csproj.GenerateResource.cache
+D:\Payment\PaymentInstrumentDisableService\obj\Debug\PaymentInstrumentDisableService.csproj.CoreCompileInputs.cache

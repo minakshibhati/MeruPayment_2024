@@ -1,0 +1,116 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="12.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{1779ACC1-DB2C-4156-96BA-D2489FD35F67}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>MeruPaymentBO</RootNamespace>
+    <AssemblyName>MeruPaymentBO</AssemblyName>
+    <TargetFrameworkVersion>v4.7.2</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <TargetFrameworkProfile />
+    <SolutionDir Condition="$(SolutionDir) == '' Or $(SolutionDir) == '*Undefined*'">..\MeruPayment\</SolutionDir>
+    <RestorePackages>true</RestorePackages>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="Newtonsoft.Json, Version=12.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
+      <HintPath>..\packages\Newtonsoft.Json.12.0.3\lib\net45\Newtonsoft.Json.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.ComponentModel.DataAnnotations" />
+    <Reference Include="System.Configuration" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.IO.Compression" />
+    <Reference Include="System.Runtime.Serialization" />
+    <Reference Include="System.ServiceModel" />
+    <Reference Include="System.Transactions" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="AutoChargeBO.cs" />
+    <Compile Include="CardAuthCheckoutBO.cs" />
+    <Compile Include="CardAutoChargeBO.cs" />
+    <Compile Include="CardDeleteBO.cs" />
+    <Compile Include="Checkout.cs" />
+    <Compile Include="DTO\CardAutoChargeRequestDTO.cs" />
+    <Compile Include="DTO\CardAuthCheckoutRequestDTO.cs" />
+    <Compile Include="CardBO.cs" />
+    <Compile Include="CustomerBO.cs" />
+    <Compile Include="DTO\PaymentCheckoutRequestDTO.cs" />
+    <Compile Include="ExternalRequestBO.cs" />
+    <Compile Include="MeruPaymentBO.cs" />
+    <Compile Include="SuccessCallBackResponse.cs" />
+    <Compile Include="OrderRazorPay.cs" />
+    <Compile Include="OrderBO.cs" />
+    <Compile Include="PaymentGatewayMasterBO.cs" />
+    <Compile Include="PaymentLinkBO.cs" />
+    <Compile Include="PaymentMethodMasterBO.cs" />
+    <Compile Include="PaymentRequestSystemMasterBO.cs" />
+    <Compile Include="PaymentStatusMasterBO.cs" />
+    <Compile Include="PayTMCheckout.cs" />
+    <Compile Include="PayTMPaymentRequestBO.cs" />
+    <Compile Include="PayTMRefundBO.cs" />
+    <Compile Include="PayTMTransactionBO.cs" />
+    <Compile Include="Paytm\AcceptRefund.cs" />
+    <Compile Include="Paytm\PaymentSuccess.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="RazorpayCardBO.cs" />
+    <Compile Include="RazorpayCustomerBO.cs" />
+    <Compile Include="RazorpayOrderBO.cs" />
+    <Compile Include="RazorpayPaymentBO.cs" />
+    <Compile Include="RazorpayRefundBO.cs" />
+    <Compile Include="Razoypay\InvoiceExpired.cs" />
+    <Compile Include="Razoypay\InvoicePaid.cs" />
+    <Compile Include="Razoypay\OrderPaid.cs" />
+    <Compile Include="Razoypay\PaymentAuthorized.cs" />
+    <Compile Include="Razoypay\PaymentCaptured.cs" />
+    <Compile Include="Razoypay\PaymentDisputeCreated.cs" />
+    <Compile Include="Razoypay\PaymentFailed.cs" />
+    <Compile Include="Razoypay\pragatiQueue.cs" />
+    <Compile Include="Razoypay\SucbscriptionCharged.cs" />
+    <Compile Include="RefundRequestBO.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="packages.config" />
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <Import Project="$(SolutionDir)\.nuget\NuGet.targets" Condition="Exists('$(SolutionDir)\.nuget\NuGet.targets')" />
+  <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">
+    <PropertyGroup>
+      <ErrorText>This project references NuGet package(s) that are missing on this computer. Enable NuGet Package Restore to download them.  For more information, see http://go.microsoft.com/fwlink/?LinkID=322105. The missing file is {0}.</ErrorText>
+    </PropertyGroup>
+    <Error Condition="!Exists('$(SolutionDir)\.nuget\NuGet.targets')" Text="$([System.String]::Format('$(ErrorText)', '$(SolutionDir)\.nuget\NuGet.targets'))" />
+  </Target>
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

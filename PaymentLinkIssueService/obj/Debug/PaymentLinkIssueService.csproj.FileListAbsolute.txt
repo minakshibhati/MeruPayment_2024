@@ -1,0 +1,4 @@
+D:\Payment\PaymentLinkIssueService\obj\Debug\PaymentLinkIssueService.csproj.AssemblyReference.cache
+D:\Payment\PaymentLinkIssueService\obj\Debug\PaymentLinkIssueService.ProjectInstaller.resources
+D:\Payment\PaymentLinkIssueService\obj\Debug\PaymentLinkIssueService.csproj.GenerateResource.cache
+D:\Payment\PaymentLinkIssueService\obj\Debug\PaymentLinkIssueService.csproj.CoreCompileInputs.cache
